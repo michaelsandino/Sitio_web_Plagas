@@ -9,12 +9,12 @@
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" /> 
 
     <!-- Icono -->
-    <link rel="icon" href="img/android-icon.svg">
+    <link rel="icon" href="img/logo.png">
 
-    <title>WEB PAGE</title>
+    <title>Plagas APP</title>
   </head>
   
   <body>
@@ -22,9 +22,9 @@
     <!-- Menu -->
       <header class="container-fluit fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="img/android-icon.svg" width="30" height="30" alt="" loading="lazy">
-                WEB PAGE - APP</a>
+            <a class="navbar-brand subtitle" href="#">
+                <img src="img/logo.png" height="35" alt="" loading="lazy">
+                Plagas APP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,18 +59,51 @@
           </nav>
       </header>
 
+
       <!-- Banner -->
-      <section>
-            <img src="img/banner.png" alt="banner-app" class="img-fluid" style="width: 100vw;">
+      <section id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <img src="img/slide1.svg" class="d-block w-100" alt="...">
+            <div class="position-carousel">
+              <h1 class="h3 subtitle text-uppercase">Detector de Plagas</h1>
+              Descargar APP
+              <a href="#" class=""><img src="img/google-play.png" alt="Insignia_Google-Play" class="dowloader"></a>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <img src="img/slide2.svg" class="d-block w-100" alt="...">
+            <div class="position-carousel">
+              <h1 class="h3 subtitle text-uppercase">Detector de Plagas</h1>
+              Descargar APP
+              <a href="#" class=""><img src="img/google-play.png" alt="Insignia_Google-Play" class="dowloader"></a>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <img src="img/slide3.svg" class="d-block w-100" alt="...">
+            <div class="position-carousel">
+              <h1 class="h3 subtitle text-uppercase">Detector de Plagas</h1>
+              Descargar APP
+              <a href="#" class=""><img src="img/google-play.png" alt="Insignia_Google-Play" class="dowloader"></a>
+            </div>
+          </div>
+
+        </div>
       </section>
 
 
+      <!-- INFORMACIÓN ----------------------------------------------------------->
+
       <div class="container">
 
-        <!-- ACERCA DE -->
-      <section class="row mb-4">
 
-        <div class="col-12  pb-5">
+        <!-- ACERCA DE -->
+      <section class="row pb-3">
+
+        <div class="col-12 pb-5">
            <h2 class="text-center h4 title" id="acerca_de">Acerca de</h2>
         </div>
 
@@ -81,7 +114,7 @@
 
         <div class="col-12 col-md-6">
             <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur nam perferendis placeat delectus quis. Illo veniam quos dolores, minima quas, inventore quod cumque doloremque repellendus alias nulla, delectus ipsum!</p>
-            <img src="img/Logo.png" alt="logo_Sena&Sennova" class="w-50 center-img">
+            <img src="img/sena_sennova.png" alt="logo_Sena&Sennova" class="w-50 center-img">
             <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur nam perferendis placeat delectus quis. Illo veniam quos dolores, minima quas, inventore quod cumque doloremque repellendus alias nulla, delectus ipsum!</p>
         </div>
 
@@ -178,14 +211,15 @@
 
       </section>
 
-    <!-- MENSAJE -->
 
-    <div class="row mt-5 border message">
+    <!-- MENSAJE -->
+    <div class="row mt-5 border message p-5 text-white">
       <div class="col-12 ">
-        <h2 class="subtitle h4 text-center ">Mensaje</h2>
+        <h2 class="subtitle h4 text-center">Mensaje</h2>
         <p class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, laborum suscipit! Inventore deserunt, numquam magnam doloremque doloribus minus possimus sapiente sed veniam vero cupiditate provident repudiandae dolorem sit voluptatibus exercitationem.</p>
       </div>
     </div>
+
 
     <!-- PREGUNTAS FRECUENTES -->
       <section class="row mt-5">
@@ -200,13 +234,13 @@
             <div class="card">
               <div class="card-header" id="headingOne">
                 <h3 class="mb-0">
-                  <button class="btn btn-block text-left collapsed subtitle" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      Pregunta #1
+                  <button class="btn btn-block text-left collapsed subtitle question" type="button" data-toggle="collapse" data-target="#question1" aria-expanded="false" aria-controls="collapseOne">
+                      Pregunta #1   <i class="fas fa-caret-down icon-pf"></i>
                   </button>
                 </h3>
               </div>
           
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+              <div id="question1" class="collapse" aria-labelledby="headingOne">
                 <div class="card-body">
                   <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, alias beatae odio, expedita sequi praesentium ullam voluptatibus debitis porro eum quibusdam, repudiandae nulla cumque ratione officiis quisquam a natus earum?</p>
                 </div>
@@ -215,12 +249,12 @@
             <div class="card">
               <div class="card-header" id="headingTwo">
                 <h3 class="mb-0">
-                  <button class="btn btn-block text-left collapsed subtitle" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Pregunta #2
+                  <button class="btn btn-block text-left collapsed subtitle question" type="button" data-toggle="collapse" data-target="#question2" aria-expanded="false" aria-controls="collapseTwo">
+                    Pregunta #2 <i class="fas fa-caret-down icon-pf"></i>
                   </button>
                 </h3>
               </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+              <div id="question2" class="collapse" aria-labelledby="headingTwo">
                 <div class="card-body">
                  <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, voluptates autem reiciendis fuga nesciunt in omnis neque aspernatur dignissimos corporis laborum suscipit ad officiis excepturi ipsa. Tempore, odit quod. Unde?</p>
                 </div>
@@ -229,12 +263,12 @@
             <div class="card">
               <div class="card-header" id="headingThree">
                 <h3 class="mb-0">
-                  <button class="btn btn-block text-left collapsed subtitle" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Pregunta #3
+                  <button class="btn btn-block text-left collapsed subtitle question" type="button" data-toggle="collapse" data-target="#question3" aria-expanded="false" aria-controls="collapseThree">
+                    Pregunta #3 <i class="fas fa-caret-down icon-pf"></i>
                   </button>
                 </h3>
               </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+              <div id="question3" class="collapse" aria-labelledby="headingThree">
                 <div class="card-body">
                   <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus voluptas id maiores facilis quasi accusamus? Soluta, sunt dolores, recusandae possimus sed culpa explicabo nesciunt accusantium qui, voluptatum quaerat impedit minima.</p>
                 </div>
@@ -248,12 +282,14 @@
 
     </div>
 
-    <footer class="bg-success te align-self-end text-white mt-5">
 
-      <div class="row">
+    <!-- FOOTER - PIE DE PAGINA -->
+    
+    <footer class="align-self-end text-white mt-5 row">
+     
 
         <div class="col-12 col-md-4">
-        
+          
         </div>
 
         <div class="text-center col-12 col-md-4">Descargar App
@@ -261,16 +297,21 @@
         </div>
 
         <div class="col-12 col-md-4">
-        
+            <img src="img/sena_sennova.png" alt="" class="w-75 center-img" >
         </div>
     
-      </div>
-
-      <hr class="bg-gray">
-      <div class="text-center">© Todos los derechos reservados</div>
-    
+ 
+        <div class="col-12">
+          <hr class="bg-gray">
+          <div class="text-center">© Todos los derechos reservados <br></div>
+          <p class="text-center made-with"> Hecho con: <a href="https://getbootstrap.com/">Bootstrap V4.5</a>, 
+            <a href="https://fontawesome.com/">Font Awesome</a>, <a href="https://undraw.co/">unDraw</a>,
+            <a href="https://www.manypixels.co/gallery/">ManyPixels</a><a href="https://unsplash.com/">unsplash</a></p>
+        </div>
+  
     </footer>
 
+    <a  href="#" class="up"><i class="fas fa-caret-square-down sr go-up "></i></a>
     <!-- Bootstrap -->
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
