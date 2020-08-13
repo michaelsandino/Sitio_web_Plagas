@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <picture> <!-- configurar imagen mediante un picture y source  -->
+        <source srcset="img/slide1" media="(min-width:800px)">
+        <source srcset="img/slide2" media="(min-width:500px)">
+        <img src="img/ima1.jpg">
+    </picture>
+
+    <picture>
+        <source srcset="img/slide1.svg" class="d-block w-100" media="(min-width:550px)">
+        <img srcset="img/slide1_phone.svg" class="d-block w-100" alt="slide_1">
+    </picture>
+    
+</body>
+</html>

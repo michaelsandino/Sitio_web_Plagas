@@ -69,15 +69,39 @@ header{
     text-align: justify;
 }
 
-.position-carousel{
-    font-weight: 700;
-    font-family: var(--text_content);
-    color: white;
-    text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 10%;
+@media only screen and (max-width: 730px) {
+
+    .center-corousel{
+        display: flex;        
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .position-carousel{
+        font-weight: 700;
+        font-family: var(--text_content);
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 6%; 
+    } 
 }
+
+@media only screen and (min-width: 730px) {
+
+    .position-carousel{
+        font-weight: 700;
+        font-family: var(--text_content);
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 10%;
+    }
+    
+}
+
+
 
 .center-img{
     display:block;
