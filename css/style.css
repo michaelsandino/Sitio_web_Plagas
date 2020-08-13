@@ -22,7 +22,6 @@ html{
 
 body{
     padding-top:60px;
-    overflow-x: hidden;/*  Quitar Scroll horizontal */
 }
 
 header{
@@ -46,7 +45,7 @@ header{
     display:inline-block;
     content: "";
     background-color: var(--color_primary);
-    width: 35px;
+    width: 4.5%;
     height: 3px;
     position: relative;
     bottom: 5px;
@@ -57,7 +56,7 @@ header{
     display:inline-block;
     content: "";
     background-color: var(--color_primary);
-    width: 35px;
+    width: 4.5%;
     height: 3px;
     position: relative;
     bottom: 5px;
