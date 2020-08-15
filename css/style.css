@@ -10,6 +10,7 @@ html{
 :root{
     --color_primary:#eb9a12;
     --color_secundary:#0C9900;
+    --color-complementary:#e8c89a;
     --text-title:'Open Sans', sans-serif;
     --text_content:'Lato', sans-serif;
 
@@ -210,17 +211,37 @@ footer .col-6{
     width: 45px;
 }
 
-.made-with{
+footer a{
     color: #e9ebeb;
+}
+
+footer a:hover{
+    color: #e9ebeb;
+}
+
+.made-with{
     font-size: 14px; 
 }
 
-.made-with a{
-    color: #e9ebeb;
-    text-decoration: none;
+.color-primary{
+    background-color: var(--color_primary);
+    width: 150px; 
+    height: 150px;
+    margin: 0 auto;
 }
 
-.made-with a:hover{
-    color: #e9ebeb;
+.color-secundary{
+    background-color: var(--color_secundary);
+    width: 150px; 
+    height: 150px;
+    margin: 0 auto;
 }
+
+.color-complementary{
+    background-color: var(--color-complementary);
+    width: 150px; 
+    height: 150px;
+    margin: 0 auto;
+}
+
 
