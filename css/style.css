@@ -183,7 +183,7 @@ font-size: 40px;
     display: block;
     box-sizing: content-box;
     margin:1px auto;
-    width: 200px;
+    width: 200px; 
 }
 
 footer{
@@ -245,3 +245,6 @@ footer a:hover{
 }
 
 
+/* .modal{
+    z-index: var(--z-modal);
+} */
