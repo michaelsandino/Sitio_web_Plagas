@@ -131,10 +131,6 @@ font-size: 40px;
     height: 40px;
 }
 
-.shadow{
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
-}
-
 .icon-car{
     box-sizing: content-box;
     width: 50px;

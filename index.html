@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Plagas App, Detector de plagas">
 
     <!-- Tipografia -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@700&display=swap" rel="stylesheet" />
@@ -23,44 +24,28 @@
     <!-- Menu -->
     <header class="container-fluit fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand subtitle" href="#">
+            <a class="navbar-brand subtitle" href="./">
                 <img src="img/logo.png" height="35px" alt="" loading="lazy">
                 Plagas APP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#acerca_de">Acerca De</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#servicios">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#caracteristicas">Caracteristicas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#preguntas_frecuentes">Preguntas Frecuentes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Plagas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Contacto</a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="menu" data-toggle="collapse" data-target="#menu.show">
+                <div class="navbar-nav">
+                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="#acerca_de">Acerca De</a>
+                    <a class="nav-link active" href="#servicios">Servicios</a>
+                    <a class="nav-link active" href="#caracteristicas">Caracteristicas</a>
+                    <a class="nav-link active" href="#preguntas_frecuentes">Preguntas Frecuentes</a>
+
+                    <a class="nav-link disabled" href="#">Blog</a>
+                    <a class="nav-link disabled" href="#">Plagas</a>
+                    <a class="nav-link disabled" href="#">Contacto</a>
+                </div>
             </div>
         </nav>
     </header>
-
 
     <!-- Banner -->
     <section id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
@@ -68,8 +53,8 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <picture>
-                    <source srcset="img/slide1.svg" class="d-block w-100" media="(min-width:730px)">
-                    <img srcset="img/slide1_phone.svg" class="d-block w-100" alt="slide_1">
+                    <source srcset="img/slide1.jpg" class="d-block w-100" media="(min-width:730px)">
+                    <img srcset="img/slide1_phone.jpg" class="d-block w-100" alt="slide_1">
                 </picture>
                 <div class="center-corousel">
                     <div class="position-carousel ">
@@ -82,8 +67,8 @@
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <picture>
-                    <source srcset="img/slide2.svg" class="d-block w-100" media="(min-width:730px)">
-                    <img srcset="img/slide2_phone.svg" class="d-block w-100" alt="slide_1">
+                    <source srcset="img/slide2.jpg" class="d-block w-100" media="(min-width:730px)">
+                    <img srcset="img/slide2_phone.jpg" class="d-block w-100" alt="slide_1">
                 </picture>
                 <div class="center-corousel">
                     <div class="position-carousel ">
@@ -96,8 +81,8 @@
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <picture>
-                    <source srcset="img/slide3.svg" class="d-block w-100" media="(min-width:730px)">
-                    <img srcset="img/slide3_phone.svg" class="d-block w-100" alt="slide_1">
+                    <source srcset="img/slide3.jpg" class="d-block w-100" media="(min-width:730px)">
+                    <img srcset="img/slide3_phone.jpg" class="d-block w-100" alt="slide_1">
                 </picture>
                 <div class="center-corousel">
                     <div class="position-carousel ">
@@ -305,7 +290,7 @@
 
         <div class="row">
 
-            <div class="col-6 col-lg-3 col-xl-4">
+            <div class="col-6 col-md-6 col-xl-4">
 
                 ENLACES RAPIDOS
                <ul class="text-left">
@@ -314,13 +299,13 @@
                </ul>                       
             </div>
 
-            <div class="col-12 col-lg-3 col-xl-4">
+            <div class="col-12 col-md-6 col-xl-4">
                 DESCARGAR APP
                 <a href="#" class=""><img src="img/google-play.png" alt="Insignia_Google-Play" class="dowloader"></a>
            
             </div>
 
-            <div class="col-6 col-lg-3 col-xl-4">
+            <div class="col-8 col-md-6 col-xl-4 mx-auto">
                 <img src="img/sena_sennova-white.svg" alt="senna_sennova" class="w-75 center-img">
             </div>
 
@@ -328,7 +313,7 @@
                 <hr class="bg-gray">
                 <p class="made-with">
                     Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
-                    <br>Sitio Web hecho con: <a href="https://getbootstrap.com/">Bootstrap V4.5</a>
+                    <br>Sitio Web hecho con: <a href="https://getbootstrap.com/"  target="_blank">Bootstrap V4.5</a>
                 </p>
             </div>
 
@@ -336,7 +321,8 @@
 
     </footer>
 
-    <a href="#" class="go-up"> <img src="icons/boton_flecha.svg" alt="arrow" class="arrow"> </a>
+    <!-- <a href="#" class="go-up"> <img src="icons/boton_flecha.svg" alt="arrow" class="arrow"> </a> -->
+    
     <!-- Bootstrap -->
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
