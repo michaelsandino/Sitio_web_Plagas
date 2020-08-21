@@ -8,11 +8,11 @@ html{
 }
 
 :root{
-    --color_primary:#eb9a12;
-    --color_secundary:#0C9900;
-    --color-complementary:#e8c89a;
-    --text-title:'Open Sans', sans-serif;
-    --text_content:'Lato', sans-serif;
+    --primary_color:#eb9a12;
+    --secundary_color:#0C9900;
+    --complementary_color:#c97f00;
+    --title_text:'Open Sans', sans-serif;
+    --content-text:'Lato', sans-serif;
 
     --z-back : -10;
     --z-normal : 1;
@@ -26,7 +26,7 @@ body{
 }
 
 header{
-    font-family: var(--text_content);
+    font-family: var(--content-text);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
 }
 
@@ -37,7 +37,7 @@ header{
 }
 
 .title,.subtitle{
-    font-family: var(--text-title);
+    font-family: var(--title_text);
 }
 
 
@@ -45,7 +45,7 @@ header{
     margin-left: 10px;
     display:inline-block;
     content: "";
-    background-color: var(--color_primary);
+    background-color: var(--primary_color);
     width: 4.5%;
     height: 3px;
     position: relative;
@@ -56,7 +56,7 @@ header{
     margin-right: 10px;
     display:inline-block;
     content: "";
-    background-color: var(--color_primary);
+    background-color: var(--primary_color);
     width: 4.5%;
     height: 3px;
     position: relative;
@@ -64,7 +64,7 @@ header{
 }
 
 .text{
-    font-family: var(--text_content);
+    font-family: var(--content-text);
     line-height:28px;
     text-align: justify;
 }
@@ -79,7 +79,7 @@ header{
 
     .position-carousel{
         font-weight: 700;
-        font-family: var(--text_content);
+        font-family: var(--content-text);
         color: white;
         text-align: center;
         position: absolute;
@@ -91,7 +91,7 @@ header{
 
     .position-carousel{
         font-weight: 700;
-        font-family: var(--text_content);
+        font-family: var(--content-text);
         color: white;
         text-align: center;
         position: absolute;
@@ -100,8 +100,6 @@ header{
     }
     
 }
-
-
 
 .center-img{
     display:block;
@@ -113,7 +111,7 @@ header{
 }
 
 .box-icon{
-border: 2px solid var(--color_primary);
+border: 2px solid var(--primary_color);
 width: 70px;
 height: 70px;
 border-radius: 50px;
@@ -122,7 +120,7 @@ display: flex;
 text-align: center;
 justify-content: center;
 align-items: center;
-color: var(--color_primary);
+color: var(--primary_color);
 font-size: 40px;
 }
 
@@ -199,7 +197,7 @@ footer .col-6{
     bottom: 8px;
     right: 8px;
     transform: rotate(-90deg);
-    background-color: var(--color_primary);
+    background-color: var(--primary_color);
 }
 
 .arrow{
@@ -215,26 +213,36 @@ footer a:hover{
     color: #e9ebeb;
 }
 
+/* .icon-social-media{
+    box-sizing: content-box;
+    width: 50px;
+    height: 50px;  
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    margin: 0 auto;
+} */
+
 .made-with{
     font-size: 14px; 
 }
 
 .color-primary{
-    background-color: var(--color_primary);
+    background-color: var(--primary_color);
     width: 150px; 
     height: 150px;
     margin: 0 auto;
 }
 
 .color-secundary{
-    background-color: var(--color_secundary);
+    background-color: var(--secundary_color);
     width: 150px; 
     height: 150px;
     margin: 0 auto;
 }
 
 .color-complementary{
-    background-color: var(--color-complementary);
+    background-color: var(--complementary_color);
     width: 150px; 
     height: 150px;
     margin: 0 auto;
