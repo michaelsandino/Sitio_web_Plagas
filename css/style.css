@@ -71,13 +71,13 @@ header{
 
 @media only screen and (max-width: 730px) {
 
-    .center-corousel{
+    .carousel-center{
         display: flex;        
         justify-content: center;
         align-items: flex-end;
     }
 
-    .position-carousel{
+    .carousel-position{
         font-weight: 700;
         font-family: var(--content-text);
         color: white;
@@ -89,7 +89,7 @@ header{
 
 @media only screen and (min-width: 730px) {
 
-    .position-carousel{
+    .carousel-position{
         font-weight: 700;
         font-family: var(--content-text);
         color: white;
@@ -110,7 +110,7 @@ header{
     background-color:#f3f2f2;
 }
 
-.box-icon{
+.icon-box{
 border: 2px solid var(--primary_color);
 width: 70px;
 height: 70px;
@@ -129,7 +129,7 @@ font-size: 40px;
     height: 40px;
 }
 
-.icon-car{
+.card-icon{
     box-sizing: content-box;
     width: 50px;
     height: 50px;  
@@ -166,14 +166,14 @@ font-size: 40px;
     content: "?";
 }
 
-.icon-pf{
+.question-icon{
     margin-top: 6px;
     width: 12px;
     transform: rotate(90deg);
     float: right;
 }
 
-.dowloader{
+.download-app{
     display: block;
     box-sizing: content-box;
     margin:1px auto;
@@ -223,7 +223,7 @@ footer a:hover{
     margin: 0 auto;
 } */
 
-.made-with{
+.attributions{
     font-size: 14px; 
 }
 
