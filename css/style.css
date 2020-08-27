@@ -32,6 +32,11 @@ body{
 header{
     font-family: var(--content-text);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+/*     position: fixed;
+    width: 100%;
+    top: -1px;
+    left: 0;
+    z-index: var(--z-fixed); */
 }
 
 
