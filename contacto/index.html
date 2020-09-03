@@ -29,7 +29,7 @@
     <title>Contacto</title>
 </head>
 
-<body class="separator">
+<body>
 
     <!-- Menu -->
     <header class="container-fluit fixed-top">
@@ -57,15 +57,48 @@
     </header>
 
     <!-- CONTENIDO -->
-    <div class="container-fluid">
+    <div class="container">
         <section class="row">
-            <div class="col-12">
-                <h2 class="text-center h4 title" id="">Contacto</h2>
-                <p class="text text-center pb-3">Modulo de contacto en Construcción...</p>
+
+            <!-- Titulo -->
+            <div class="col-12 pb-5">
+                <h2 class="text-center h4 title">Contacto</h2>
             </div>
-            <div class="col-10 col-md-6 mx-auto">
-                <img src="../img/building.svg" alt="pagina_en_construcción" class="center-img w-100">
+
+            <!-- Información de contacto -->
+            <div class="col-12 col-lg-4">
+                <h3 class="h5 subtitle pb-4">Información de contacto</h3>
+                <p class="text ml-2"><img src="../icons/correo.svg" alt="" class="icon mr-3">correo@gmail.com</p>
+                <p class="text ml-2"><img src="../icons/ubicacion.svg" alt="" class="icon mr-3">Calle 3A #10 Norte</p>
+                <p class="text ml-2"><img src="../icons/telefono.svg" alt="" class="icon mr-3">3124567890</p>
             </div>
+            
+            <!-- Formulario -->
+            <div class="col-12 col-lg-8">
+
+                <h3 class="h5 subtitle pb-4">Tienes alguna duda? Escribenos!</h3>
+                <form>
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="form-group">
+                      <label for="correo">Correo</label>
+                      <input type="text" class="form-control" id="correo">
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" class="form-control" id="asunto">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block mt-4">Enviar</button>
+                </form>
+            
+            </div>
+    
         </section>
     </div>
 
@@ -106,8 +139,6 @@
 
         </div>
     </footer>
-
-    <a href="#" class="go-up"> <img src="../icons/boton_flecha.svg" alt="boton_flecha" class="arrow"> </a>
         
     <!-- Bootstrap -->
     <script src="../js/jquery-3.5.1.slim.min.js"></script>

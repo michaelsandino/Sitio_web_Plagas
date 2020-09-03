@@ -21,12 +21,10 @@ html{
     --z-modal : 1000; 
 }
 
-body{
-    padding-top:60px;
-}
-
+/* Para las secciones de novedades inicio plagas */
+/* Permite que el baner no se oculte */
 .separator{
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 header{
@@ -41,14 +39,13 @@ header{
 
 
 .title{
-    padding-top: 70px;
+    padding-top: 90px;
     text-transform:uppercase;
 }
 
 .title,.subtitle{
     font-family: var(--title_text);
 }
-
 
 .title::after{
     margin-left: 10px;
@@ -200,6 +197,7 @@ footer .col-6{
     margin:0 auto;
 }
 
+/* Boton de subir */
 .go-up{
     border-radius: 20px;
     position: fixed;
@@ -209,6 +207,7 @@ footer .col-6{
     background-color: var(--primary_color);
 }
 
+/* Flecha del boton de subir */
 .arrow{
     padding: 12px;
     width: 45px;
@@ -236,6 +235,7 @@ footer a:hover{
     font-size: 14px; 
 }
 
+/* COLORES EN IDENTIDAD VISUAL */
 .color-primary{
     background-color: var(--primary_color);
     width: 150px; 
@@ -257,7 +257,81 @@ footer a:hover{
     margin: 0 auto;
 }
 
+.date-text{
+    font-family: var(--content-text);
+    text-align: left;
+    color: #838383;
+}
 
-/* .modal{
-    z-index: var(--z-modal);
-} */
+/* BANNER DE NOVEDADES */
+@media only screen and (max-width: 574px) {
+    .banner{
+        background-image: url(../img/banner-phone.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position:bottom;
+        height: 400px;
+        padding-top: 20px;
+    }
+    .banner div{
+        padding-bottom:10px ;
+    }
+}
+
+@media only screen and (min-width: 575px) {
+    .banner{
+        padding-top: 50px;
+        background-image: url(../img/banner.jpg);
+        background-repeat: no-repeat;
+        height: 310px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+}
+
+.banner div{
+    text-shadow: 0px 0px 1px black;
+} 
+
+.banner + section > article{
+    padding-bottom: 25px;
+}
+
+
+/* LINEA VERDE EN PLAGAS */
+.line{
+    width: 100%;
+    height: 10px;
+    background-color: var(--complementary_color);  
+    margin-top: 20px;
+}
+
+/* FONDO NARANJA */
+.bg-orange{
+    background-color: var(--primary_color);
+}
+
+/* puntos suspensivos en resultados de plagas */
+.plague-text{
+    height: 200px;
+    overflow: hidden;
+}
+
+.ellipsis{ 
+    text-align: center;
+    line-height:0px;
+    padding-bottom: 30px;
+    font-size: 50px;
+}
+
+
+/* Paginación en plagas */
+.pagination .page-link{
+    color:#8f5a00;
+}
+
+.pagination .page-link:hover{
+    color:#332000;
+    border: 0;
+}

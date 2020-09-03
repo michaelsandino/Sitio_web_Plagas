@@ -29,7 +29,7 @@
     <title>Plagas</title>
 </head>
 
-<body class="separator">
+<body>
 
     <!-- Menu -->
     <header class="container-fluit fixed-top">
@@ -56,17 +56,77 @@
         </nav>
     </header>
 
-    <!-- CONTENIDO -->
+    <!-- BUSCADOR Y MENSAJE -->
     <div class="container-fluid">
+
         <section class="row">
+            
+            <!-- Titulo y subtitulo -->
             <div class="col-12">
-                <h2 class="text-center h4 title" id="">Plagas</h2>
-                <p class="text text-center pb-3">Modulo de plagas en Construcción...</p>
+                <h2 class="text-center h4 title pb-4">Plagas</h2>
+                <h3 class="h5 subtitle">Consultar</h3>
             </div>
-            <div class="col-10 col-md-6 mx-auto">
-                <img src="../img/building.svg" alt="pagina_en_construcción" class="center-img w-100">
+            <!-- Mensaje -->
+            <div class="col-12 col-lg-6 pb-3">
+                <p class="text mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus accusantium reprehenderit laudantium omnis, harum at recusandae non ratione.</p>
             </div>
+            <!-- Buscardor -->
+            <div class="col-12 col-lg-6">
+                <form class="form-inline justify-content-center">
+                    <input class="form-control mr-sm-2 w-75" type="search" placeholder="Nombre de la plaga" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 text" type="submit">Buscar</button>
+                </form>
+            </div>
+
+         <div class="line"></div>
         </section>
+
+
+        <!-- RESULTADOS DE PLAGAS -->
+        <section class="row">
+
+            <?php
+
+            $i = 0;
+
+            for ($i=0; $i < 8; $i++) { 
+                echo 
+                "<article class=\"col-9 col-sm-6 col-md-4 col-lg-3 mt-4 mx-auto\">
+                <div class=\"card text-center shadow\" style=\"width: 100%;\">
+                    <div class=\"card-header subtitle\">NombrePlag</div>
+                    <img src=\"../img/plaga.jpg\" class=\"card-img-top\" alt=\"...\">
+                    <div class=\"card-body\">
+                    <p class=\"card-text text plague-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse at, laborum illum repellendus soluta enim dicta doloremque! Ab ea deserunt libero magni accusantium inventore cupiditate eveniet incidunt sunt? Sit, non! lo Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus ipsam at repellendus repellat, pariatur ea, explicabo odit itaque vitae delectus repudiandae quasi, corrupti eum incidunt labore laborum placeat similique.</p>
+                    <p class=\"ellipsis text\">...</p> 
+                    <a href=\"\" class=\"btn btn-danger text\">Ver Más</a>
+                    </div>
+                </div>
+            </article>"
+                ;
+            }
+
+            ?>
+
+            <div class="col-auto mx-auto mt-5">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
     </div>
 
 
@@ -108,7 +168,7 @@
         </div>
     </footer>
 
-    <a href="#" class="go-up"> <img src="../icons/boton_flecha.svg" alt="boton_flecha" class="arrow"> </a>
+    <a href="#" class="go-up"> <img src="../icons/flecha-boton.svg" alt="flecha_boton" class="arrow white-icon"> </a>
         
     <!-- Bootstrap -->
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
