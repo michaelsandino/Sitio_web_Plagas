@@ -12,7 +12,7 @@
     <meta name="og:title" content="Plagas APP - Contacto">
     <meta name="og:description" content="Si tiene alguna duda puede comunicarse con nosotros llenando el formulario o utilizando la Información de contacto.">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/contacto">
+    <meta name="og:url" content="https://michaelsandino.github.io/Sitio_web_Plagas/contacto">
     <meta name="og:image" content="../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
     
@@ -147,3 +147,20 @@
 </body>
     
 </html>
+
+<?php
+
+    $destination = "developerworldsas@gmail.com";
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    $content = "Nombre: " . $name . "\nCorreo: " . $email . "\nTema: " . $subject . "\nMensaje: " . $message;
+    mail($destination, "Contacto desde el sitio web - PLAGAS APP", $content);
+    
+    echo"<script language='javascript'>alert('Mensaje enviado - Pronto nos comunicaremos con usted.');
+    location.replace('../contacto');
+    </script>";
+
+?>
