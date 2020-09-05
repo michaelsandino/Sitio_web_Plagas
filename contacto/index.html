@@ -68,16 +68,16 @@
             <!-- Información de contacto -->
             <div class="col-12 col-lg-4 pb-5">
                 <h2 class="h5 subtitle pb-4">Información de contacto</h2>
-                <p class="text ml-2"><img src="../icons/correo.svg" alt="" class="icon mr-3">correo@gmail.com</p>
-                <p class="text ml-2"><img src="../icons/ubicacion.svg" alt="" class="icon mr-3">Calle 3A #10 Norte</p>
-                <p class="text ml-2"><img src="../icons/telefono.svg" alt="" class="icon mr-3">3124567890</p>
+                <p class="text ml-2"><img src="../icons/correo.svg" alt="icono_correo" class="icon mr-3">correo@gmail.com</p>
+                <p class="text ml-2"><img src="../icons/ubicacion.svg" alt="icono_dirección" class="icon mr-3">Calle 3A #10 Norte</p>
+                <p class="text ml-2"><img src="../icons/telefono.svg" alt="icono_telefono" class="icon mr-3">3124567890</p>
             </div>
             
             <!-- Formulario -->
             <div class="col-12 col-lg-8">
 
                 <h2 class="h5 subtitle pb-4">Tienes alguna duda? Escribenos!</h2>
-                <form action="https://plagas-app.netlify.app/contacto/envio" name="Formulario de Contacto" method="POST" data-netlify="true">
+                <form action="/contacto/envio/" name="Formulario de Contacto" method="POST" data-netlify="true" data-netlify-recaptcha="true">
                     <div class="form-group">
                         <label for="asunto" class="text">Asunto</label>
                         <input type="text" class="form-control" id="asunto" name="subject" required>
@@ -93,6 +93,9 @@
                     <div class="form-group">
                         <label for="mensaje" class="text">Mensaje</label>
                         <textarea class="form-control" id="mensaje" rows="4" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="g-recaptcha" data-sitekey="6LfxQcgZAAAAADJG0WWnewPuWcnuclh0OStiM_Rw" data-callback='onSubmit' data-action='submit'>Submit</button>
                     </div>
                     <button type="submit" class="btn btn-success btn-block mt-4">Enviar</button>
                 </form>
@@ -146,6 +149,13 @@
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+        function onSubmit(token) {
+          document.getElementById("demo-form").submit();
+        }
+      </script>
 </body>
     
 </html>
