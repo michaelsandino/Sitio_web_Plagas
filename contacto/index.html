@@ -77,7 +77,11 @@
             <div class="col-12 col-lg-8">
 
                 <h2 class="h5 subtitle pb-4">Tienes alguna duda? Escribenos!</h2>
-                <form action="enviar/" name="Contacto desde Plagas APP" method="POST" netlify>
+                <form action="path" name="Formulario de Contacto" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                    <div class="form-group">
+                        <label for="asunto" class="text">Asunto</label>
+                        <input type="text" class="form-control" id="asunto" name="subject" required>
+                    </div>
                     <div class="form-group">
                       <label for="nombre" class="text">Nombre</label>
                       <input type="text" class="form-control" id="nombre" name="name" required>
@@ -87,13 +91,10 @@
                       <input type="email" class="form-control" id="correo" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="asunto" class="text">Asunto</label>
-                        <input type="text" class="form-control" id="asunto" name="subject" required>
-                    </div>
-                    <div class="form-group">
                         <label for="mensaje" class="text">Mensaje</label>
                         <textarea class="form-control" id="mensaje" rows="4" name="message" required></textarea>
                     </div>
+                    <div data-netlify-recaptcha="true" required></div>
                     <button type="submit" class="btn btn-success btn-block mt-4">Enviar</button>
                 </form>
                 
