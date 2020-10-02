@@ -66,7 +66,7 @@
 
 
               <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-                <form action="" method="POST">
+
                     <div class="form-group">
                       <label for="email">Correo</label>
                       <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -76,7 +76,7 @@
                       <input type="password" class="form-control" id="password">
                     </div>
                     <button type="submit" class="btn btn-success btn-block mt-4">Iniciar sesión</button>
-                  </form>
+ 
                   <hr>
                   <p class="text text-center">¿No tienes una cuenta? <a href="../registro">Registrarse</a></p>
                   <p class="text text-center"><a href="">¿Olvidaste tu Contraseña?</a></p> 
@@ -131,6 +131,30 @@
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-auth.js"></script>
+
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAY6X2qrqxr62f8tPc4nRu4te3-FUGJS6k",
+        authDomain: "laapp2020-71f62.firebaseapp.com",
+        databaseURL: "https://laapp2020-71f62.firebaseio.com",
+        projectId: "laapp2020-71f62",
+        storageBucket: "laapp2020-71f62.appspot.com",
+        messagingSenderId: "797656056084",
+        appId: "1:797656056084:web:342d26bdd694a17d300201",
+        measurementId: "G-YRL44NNS72"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+    <!-- Autenticación -->
+    <script src="../js/authentication.js"></script>
 
 </body>
 
