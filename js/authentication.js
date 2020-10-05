@@ -51,8 +51,6 @@ function registrar(){
       .catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
 
         var register_error = document.getElementById('register_error')
         register_error.innerHTML = 'Correo invalido'
@@ -114,9 +112,7 @@ function acceso (){
 function observador (){  
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      console.log('Existe usuario activo')
       /* Crear mensaje de bienvenida */
-      aparece(user)
       var displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -124,10 +120,8 @@ function observador (){
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      
-      console.log(user.emailVerified)
+      window.location.replace("../usuario");
     } else {
-      console.log('NO existe usuario activo')
       /* Borrar mensajes al cerrar sesión */
       var contenido = document.getElementById('success-message')
       contenido.innerHTML = '';
@@ -135,29 +129,6 @@ function observador (){
   });
 }
 observador();
-
-/* Mensajes de bienvenida */
-function aparece(user){
-  var user = user;
-  var contenido = document.getElementById('success-message')
-  if(user.emailVerified){
-    contenido.innerHTML = '<div class="alert alert-success text-center" role="alert">Ha iniciado sesión correctamente,</div> <button class="btn btn-danger btn-block" onclick="cerrar()">Cerrar Sesion</button>';
-  }else{
-    contenido.innerHTML = '<div class="alert alert-success text-center" role="alert">Ha iniciado sesión correctamente</div> <div class="alert alert-danger text-center" role="alert">Recuerda: Tu correo no esta verificado</div> <button class="btn btn-danger btn-block" onclick="cerrar()">Cerrar Sesion</button>';
-  }
-}
-
-/* Funcion de cerrar Sesión */
-function cerrar(){
-  firebase.auth().signOut()
-  .then(function(){
-    console.log('Saliendo')
-    window.location.replace("../ingresar");
-  })
-  .catch(function(error){
-    console.log(error)
-  })
-}
 
 /* Función de verificacion de correo */
 function verificar(){

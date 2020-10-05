@@ -359,3 +359,9 @@ font-size: 40px;
 .send-email{
     margin-top:92px;
 }
+
+/* @media screen  and (min-width:992px){
+    .menu-divider{
+        display: none;
+    }
+} */

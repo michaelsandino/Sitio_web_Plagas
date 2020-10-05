@@ -26,23 +26,33 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../img/logo.svg">
 
-    <title>Identidad Visual | Plagas APP</title>
+    <title>Usuario | Plagas APP</title>
 
 </head>
 <body>
 
     <header class="container-fluit fixed-top">
-        <nav class="navbar navbar-expand navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Identidad Visual</a>
+                Usuario | Plagas APP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../"><img src="../icons/flecha.svg" class="pl-2"  alt="flecha_de_atras" height="15px" style="transform: rotate(180deg);">Inicio</a>
+                        <hr class="menu-divider">
+                        <a class="nav-link active" href="../"><img src="../icons/usuario.svg" class="pr-2"  alt="icono_usuario" height="20px">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../"><img src="../icons/estudio.svg" class="pr-2"  alt="icono_estudio" height="20px">Formación Académica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../"><img src="../icons/ecologico.svg" class="pr-2"  alt="icono_cultivo" height="20px">Cultivos</a>
+                    </li>
+                    <li class="nav-item" id="exit">
+                        
                     </li>
                 </ul>
             </div>
@@ -56,8 +66,10 @@
             
             <div class="col-12">
                 <h2 class="text-center h4 title">Bienvenido</h2>
-
+                <br>
                 <div id="success-message"></div>
+                <img src="../img/welcome.svg" alt="" class="pt-4 w-50 center-img">
+                
             </div>
 
         </section>
@@ -113,27 +125,16 @@
 
     <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-analytics.js"></script>
+
+    <!-- Sistema de autenticación -->
     <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-auth.js"></script>
 
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyAY6X2qrqxr62f8tPc4nRu4te3-FUGJS6k",
-        authDomain: "laapp2020-71f62.firebaseapp.com",
-        databaseURL: "https://laapp2020-71f62.firebaseio.com",
-        projectId: "laapp2020-71f62",
-        storageBucket: "laapp2020-71f62.appspot.com",
-        messagingSenderId: "797656056084",
-        appId: "1:797656056084:web:342d26bdd694a17d300201",
-        measurementId: "G-YRL44NNS72"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    </script>
+    <!-- Credenciales de firebase -->
+    <script src="../js/firebase.js"></script>
 
     <!-- Autenticación -->
-    <script src="../js/authentication.js"></script>
+    <script src="../js/observer.js"></script>
 
 </body>
 </html>
