@@ -1,4 +1,48 @@
-/* Función de registrar usuarios */
+/* Función de registrarse con Google */
+function google(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    var token = result.credential.accessToken;
+    var user = result.user;
+  })
+
+  .then(result => {
+    window.location.replace("../usuario");
+  })
+  
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+  });
+}
+
+/* Función de registrarse con facebook */
+function facebook() {
+  var provider = new firebase.auth.FacebookAuthProvider();
+  provider.addScope('user_birthday');
+
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    var token = result.credential.accessToken;
+    var user = result.user;
+  })
+
+  .then(result => {
+    window.location.replace("../usuario");
+  })
+
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+  });
+}
+
+/* Función de registrar usuarios con correo */
 function registrar(){
     var email = document.getElementById('email-register').value;
     var password = document.getElementById('password-register').value;
@@ -61,7 +105,7 @@ function registrar(){
 }
 
 /* Función de acceso usuarios */
-function acceso (){
+function acceso(){
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
