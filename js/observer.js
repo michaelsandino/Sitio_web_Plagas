@@ -29,7 +29,7 @@ function message(user){
     var contenido = document.getElementById('success-message')
     var exit = document.getElementById('exit')
     if(user.emailVerified){
-      contenido.innerHTML = '<div class="alert alert-success text-center" role="alert">Ha iniciado sesión correctamente,</div>';
+      contenido.innerHTML = '<div class="alert alert-success text-center" role="alert">Ha iniciado sesión correctamente</div>';
       exit.innerHTML = '<hr class="menu-divider"> <button class="nav-link active btn btn-link" onclick="exit()"><img src="../icons/salida.svg" class="pr-2"  alt="icono_salir" height="20px">Cerrar Sesión</button>';
     }else{
       contenido.innerHTML = '<div class="alert alert-success text-center" role="alert">Ha iniciado sesión correctamente</div> <div class="alert alert-danger text-center" role="alert">Recuerda: Tu correo no esta verificado</div>';
