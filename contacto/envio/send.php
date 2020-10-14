@@ -1,6 +1,6 @@
 <?php
 
-    $destination = "correo@gmail.com";
+    $destination = "msandino.projects@gmail.com";
     $subject = $_POST["subject"];
     $name = $_POST["name"];
     $email = $_POST["email"];
