@@ -1,11 +1,8 @@
 <?php
-
     $server = "localhost";
     $user = "root";
     $password = "";
     $database = "img";
-
-    $table = "plagas_img";
 
     /* error_reporting(0); -> No genera errores */
 

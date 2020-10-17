@@ -149,7 +149,7 @@ function observer (){
       var uid = user.uid;
       var providerData = user.providerData;
       console.log("ingresando...")
-      window.location.replace("../usuario");
+      window.location.replace("../usuario/inicio");
     } else {
       /* Borrar mensajes al cerrar sesión */
       console.log("Sesión cerrada...")
