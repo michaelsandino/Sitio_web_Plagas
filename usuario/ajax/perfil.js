@@ -1,13 +1,10 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       message(user)
-      var displayName = user.displayName;
+
       var email = user.email;
-      var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
+
       var img = document.getElementById('img')
       img.innerHTML = `<img src="${photoURL}" alt="" class="mb-4 img-thumbnail center-img" width="120px">`;
 

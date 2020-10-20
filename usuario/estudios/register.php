@@ -9,7 +9,7 @@
     $fechagrado = $_POST['fechGrado'];
     $IdUsuario = $_POST['ideUsu'];
 
-    $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$IdUsuario')";
+    $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$IdUsuario',null)";
     $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
 	
     if($result){

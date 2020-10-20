@@ -84,8 +84,8 @@ $("#p_update").submit(function(e){
 
 });   
 
-/* Actualizar estudios */
 
+/* Actualizar estudios */
 $("#e_update").submit(function(e){
   e.preventDefault();
 
@@ -124,7 +124,7 @@ if(loc.indexOf('?')>0)
           type:'POST',
       
           beforeSend:function (objeto) {
-            $("#message").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
           },
           success: function(response)
           {
@@ -144,3 +144,61 @@ if(loc.indexOf('?')>0)
 }
 
 });   
+
+
+/* Actualizar cultivos */
+$("#c_update").submit(function(e){
+  e.preventDefault();
+
+  /* Actualizar estudios */
+  var loc = document.location.href;
+// si existe el interrogante
+if(loc.indexOf('?')>0)
+{
+    // cogemos la parte de la url que hay despues del interrogante
+    var id = loc.split('=')[1];
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        message(user)
+        var nameR = document.getElementById('nameR').value;
+        var nameC = document.getElementById('nameC').value;
+        var descrip = document.getElementById('descrip').value;
+        var email = user.email;
+  
+        var parametro = 
+        {
+          "id_user":email,
+          "id_cultivo":id,
+          "nameR":nameR,
+          "nameC":nameC,
+          "descrip":descrip
+
+        };
+
+        $.ajax({
+          data: parametro,
+          url: 'update_action.php',
+          type:'POST',
+      
+          beforeSend:function (objeto) {
+            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          },
+          success: function(response)
+          {
+              $('#message').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.replace("../cultivos");}, 5000);
+          },
+          error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+    
+        });
+      }
+    });
+
+}else{
+  window.location.replace("../cultivos");
+}
+
+});  
