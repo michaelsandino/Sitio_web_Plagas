@@ -1,4 +1,5 @@
-$("#register").submit(function(e){
+/* Completar Resgistro de usuarios */
+$("#u_register").submit(function(e){
     e.preventDefault();
 
     var email = document.getElementById('email').value;
@@ -26,7 +27,7 @@ $("#register").submit(function(e){
         data:parametro,
 
         beforeSend:function (objeto) {
-          $("#message").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
       },
         success: function(response)
         {    
@@ -40,7 +41,8 @@ $("#register").submit(function(e){
 
 });    
 
-$("#update").submit(function(e){
+/* Actualizar Perfil */
+$("#p_update").submit(function(e){
   e.preventDefault();
 
   var email = document.getElementById('email').value;
@@ -63,7 +65,7 @@ $("#update").submit(function(e){
   };
 
   $.ajax({
-      url:'actualizar.php',
+      url:'update.php',
       type:'POST',
       data:parametro,
 
@@ -82,4 +84,63 @@ $("#update").submit(function(e){
 
 });   
 
+/* Actualizar estudios */
+
+$("#e_update").submit(function(e){
+  e.preventDefault();
+
+  /* Actualizar estudios */
+  var loc = document.location.href;
+// si existe el interrogante
+if(loc.indexOf('?')>0)
+{
+    // cogemos la parte de la url que hay despues del interrogante
+    var id = loc.split('=')[1];
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        message(user)
+        var nvformativo = document.getElementById('nvformativo').value;
+        var titulo = document.getElementById('titulo').value;
+        var entidadEdu = document.getElementById('entidadEdu').value;
+        var fechGrado = document.getElementById('fechGrado').value;
+        var email = user.email;
   
+        var parametro = 
+        {
+          "ideUsu":email,
+          "id":id,
+
+          "nvformativo":nvformativo,
+          "titulo":titulo,
+          "entidadEdu":entidadEdu,
+          "fechGrado":fechGrado
+
+        };
+
+        $.ajax({
+          data: parametro,
+          url: 'update_action.php',
+          type:'POST',
+      
+          beforeSend:function (objeto) {
+            $("#message").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          },
+          success: function(response)
+          {
+              $('#message').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.replace("../estudios");}, 5000);
+          },
+          error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+    
+        });
+      }
+    });
+
+}else{
+  window.location.replace("../estudios");
+}
+
+});   

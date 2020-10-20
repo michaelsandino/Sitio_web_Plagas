@@ -1,6 +1,5 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      /* Crear mensaje de bienvenida */
       message(user)
       var displayName = user.displayName;
       var email = user.email;
@@ -9,6 +8,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
+      var img = document.getElementById('img')
+      img.innerHTML = `<img src="${photoURL}" alt="" class="mb-4 img-thumbnail center-img" width="120px">`;
 
       var parametro = 
       {
@@ -17,7 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   
       $.ajax({
         data: parametro,
-        url: '../perfil/consult.php',
+        url: 'consult.php',
         type: 'POST',
         
         beforeSend:function (objeto) {
@@ -28,20 +29,27 @@ firebase.auth().onAuthStateChanged(function(user) {
           var objeto = JSON.parse(data);
 
           email = objeto.email; 
-          name = objeto.name; 
-          apellido = objeto.apellido; 
+          name = objeto.nameUsu; 
+          apellido = objeto.apellidoUsu; 
           ti = objeto.ti; 
           ni = objeto.ni; 
           fechanacimiento = objeto.fechanacimiento; 
           telefono = objeto.telefono; 
 
-          document.update.email.value = email;
-          document.update.nombre.value = name;
-          document.update.apellido.value = apellido;
-          document.update.ti.value = ti;
-          document.update.ni.value = ni;
-          document.update.fechanacimiento.value = fechanacimiento;      
-          document.update.telefono.value = telefono;      
+          var text_email = document.getElementById('text_email')
+          text_email.innerHTML = email;
+
+          var text_perfil = document.getElementById('text_perfil')
+          text_perfil.innerHTML = `${name} ${apellido}`;
+
+          var text_perfil = document.getElementById('text_identificacion')
+          text_perfil.innerHTML = `${ti} ${ni}`;
+
+          var text_perfil = document.getElementById('text_fecha')
+          text_perfil.innerHTML = `${fechanacimiento}`;
+
+          var text_perfil = document.getElementById('text_telefono')
+          text_perfil.innerHTML = `${telefono}`;         
         },
         error: function (err) {
           alert("Disculpe, ocurrio un error");           

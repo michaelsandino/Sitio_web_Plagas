@@ -2,7 +2,7 @@
     $server = "localhost";
     $user = "root";
     $password = "";
-    $database = "img";
+    $database = "plagas2020";
 
     /* error_reporting(0); -> No genera errores */
 

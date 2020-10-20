@@ -370,3 +370,12 @@ font-size: 40px;
     box-shadow: 0 0 0 0;
 }
 
+.edit{
+    top: 0;
+    right: 0;
+}
+
+.clear{
+    bottom: 0;
+    right: 0;
+}

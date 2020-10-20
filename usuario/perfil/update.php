@@ -9,10 +9,10 @@
     $fechanacimiento = $_POST['fechanacimiento'];
     $telefono = $_POST['telefono'];
 
-    $update = "UPDATE user SET name='$name', apellido='$apellido',ti='$ti',
+    $update = "UPDATE usuarioapp SET nameUsu='$name', apellidoUsu='$apellido',ti='$ti',
     ni='$ni',fechanacimiento='$fechanacimiento',telefono='$telefono' WHERE email='$email'";
     
-    $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');;
+    $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
     include("../../disconnect.php");
 
@@ -21,8 +21,5 @@
         Información actualizada con exito - Sera redireccionado en un momento.
         </div>';
     }
-
-
-    
 
 ?>

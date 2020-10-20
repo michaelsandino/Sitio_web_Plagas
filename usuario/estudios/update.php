@@ -2,16 +2,17 @@
 
     include("../../connect.php");
 
-    $email = $_POST['email'];
+    $id_usu = $_POST['ideUsu'];
+    $idFormacion = $_POST['id'];
 
-    $consult="SELECT * FROM usuarioapp WHERE email='$email'";  
+    $consult="SELECT * FROM formacionapp WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";  
     $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
     while ($a = mysqli_fetch_assoc($result)) {
         $json=$a;
     }
     echo json_encode($json);
-
+    
     include("../../disconnect.php");
 
 ?>
