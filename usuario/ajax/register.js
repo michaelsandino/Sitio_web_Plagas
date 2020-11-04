@@ -1,122 +1,14 @@
-url = window.location.pathname;
+/* Colocar email en el campo indicado */
+firebase.auth().onAuthStateChanged(function(user) {
+  var email = user.email;
+  document.register.email.value = email;              
+});
 
-/* Consutar perfil */
-if(url.split('/').reverse()[0] == ""){   
-  firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        message(user)
-        var email = user.email;
-        var photoURL = user.photoURL;
+/* Completar Resgistro de usuarios */
+$("#u_register").submit(function(e){
+    e.preventDefault();
 
-        var img = document.getElementById('img')
-        img.innerHTML = `<img src="${photoURL}" alt="" class="mb-4 img-thumbnail center-img" width="120px">`;
-
-        var parametro = 
-        {
-          "email":email
-        };
-    
-        $.ajax({
-          data: parametro,
-          url: 'consult.php',
-          type: 'POST',
-          
-          beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-          },
-          success: function(data)
-          {
-            var objeto = JSON.parse(data);
-
-            email = objeto.email; 
-            name = objeto.nameUsu; 
-            apellido = objeto.apellidoUsu; 
-            ti = objeto.ti; 
-            ni = objeto.ni; 
-            fechanacimiento = objeto.fechanacimiento; 
-            telefono = objeto.telefono; 
-
-            var text_email = document.getElementById('text_email')
-            text_email.innerHTML = email;
-
-            var text_perfil = document.getElementById('text_perfil')
-            text_perfil.innerHTML = `${name} ${apellido}`;
-
-            var text_perfil = document.getElementById('text_identificacion')
-            text_perfil.innerHTML = `${ti} ${ni}`;
-
-            var text_perfil = document.getElementById('text_fecha')
-            text_perfil.innerHTML = `${fechanacimiento}`;
-
-            var text_perfil = document.getElementById('text_telefono')
-            text_perfil.innerHTML = `${telefono}`;         
-          },
-          error: function (err) {
-            alert("Disculpe, ocurrio un error");           
-          }
-
-        });
-      }
-  });
-}
-
-/* Consulta para actualizar */
-if(url.split('/').reverse()[0] == "actualizar.html"){   
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      message(user)
-      var email = user.email;
-
-      var parametro = 
-      {
-        "email":email
-      };
-  
-      $.ajax({
-        data: parametro,
-        url: '../perfil/consult.php',
-        type: 'POST',
-        
-        beforeSend:function (objeto) {
-          $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(data)
-        {
-          var objeto = JSON.parse(data);
-
-          email = objeto.email; 
-          name = objeto.nameUsu; 
-          apellido = objeto.apellidoUsu; 
-          ti = objeto.ti; 
-          ni = objeto.ni; 
-          fechanacimiento = objeto.fechanacimiento; 
-          telefono = objeto.telefono; 
-
-          document.update.email.value = email;
-          document.update.nombre.value = name;
-          document.update.apellido.value = apellido;
-          document.update.ti.value = ti;
-          document.update.ni.value = ni;
-          document.update.fechanacimiento.value = fechanacimiento;      
-          document.update.telefono.value = telefono;      
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
-        }
-
-      });
-    }
-  });
-}
-
-
-/* Actualizar Perfil */
-$("#p_update").submit(function(e){
-  e.preventDefault();
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      message(user)
+    firebase.auth().onAuthStateChanged(function(user) {
       var email = user.email;
       var nombre = document.getElementById('nombre').value;
       var apellido = document.getElementById('apellido').value;
@@ -219,23 +111,30 @@ $("#p_update").submit(function(e){
         };
 
         $.ajax({
-            url:'update.php',
+            url:'register.php',
             type:'POST',
             data:parametro,
 
             beforeSend:function (objeto) {
-              $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
           },
             success: function(response)
             {    
               $("#message").html(response).fadeIn("slow"); 
-              setTimeout(function(){window.location.replace("../perfil");}, 5000);
+              setTimeout(function(){window.location.replace("../inicio");}, 5000);
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
           }
         });
+
       }
-    }
-  }); 
-});   
+    });
+});    
+
+
+
+
+ 
+
+

@@ -9,7 +9,7 @@
     $entidadEdu = $_POST['entidadEdu'];
     $fechGrado = $_POST['fechGrado'];
 
-    $update = "UPDATE formacionapp SET nivelFormacion='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
+    $update = "UPDATE formacionapp SET nivelformativo='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
     fechaGrado='$fechGrado' WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";
     
     $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');

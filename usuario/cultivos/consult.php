@@ -16,7 +16,7 @@ while($view = mysqli_fetch_array($result))
 
         <div class="row">
             <div class="col-5 col-lg-4 pr-0">
-                <img src="plagas_img/test.jpg" class="w-100 ml-3" alt="imagen_cultivo">
+                <img src="plagas_img/cultivo.jpg" class="w-100 ml-3" alt="imagen_cultivo">
             </div>
 
             <div class="col-6 col-lg-7">
