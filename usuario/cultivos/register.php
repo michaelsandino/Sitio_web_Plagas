@@ -5,19 +5,36 @@
     $nameR = $_POST['nameR'];
     $nameC = $_POST['nameC'];
     $descrip = $_POST['descrip'];
-    $id = $_POST['id'];
+    $photo = $_FILES['photo'];
+    $id_user = $_POST['id_user'];
 
-    $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id',null)";
-    $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
+    if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
+       
+        $name_encrip = md5($photo['tmp_name']).".jpg";
+        $route = "plagas_img/".$name_encrip;
+        move_uploaded_file($photo["tmp_name"],$route);
 
-    if($result){
-        echo '<div class="alert alert-success text-center mt-3" role="alert">
-        Información enviada con exito
+        $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$name_encrip')";
+        $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
+    
+        if($result){
+            echo '<div class="alert alert-success text-center mt-3" role="alert">
+            Información enviada con exito
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
+        }
+    }else{
+        echo '<div class="alert alert-danger text-center mt-3" role="alert">
+        El formato de la imagen no es valida
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
         </div>';
     }
+
+
 
     include("../../disconnect.php");
 
