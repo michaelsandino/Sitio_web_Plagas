@@ -11,7 +11,7 @@
     if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
        
         $name_encrip = md5($photo['tmp_name']).".jpg";
-        $route = "plagas_img/".$name_encrip;
+        $route = "cultivos_img/".$name_encrip;
         move_uploaded_file($photo["tmp_name"],$route);
 
         $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$name_encrip')";

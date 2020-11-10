@@ -79,7 +79,7 @@
 
                 <div id="progress"></div>
                 
-                <form name="update" id="e_update">
+                <form name="update" id="e_update" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nvformativo">Nivel de Formación</label>
                         <input type="text" class="form-control nvformativo_color" id="nvformativo" name="nvformativo">
@@ -101,8 +101,14 @@
                         <small class="form-text text-danger" id="fechGrado_error"></small>
                     </div>
                     <div class="form-group">
-                        <label for="img">Cargar certificado (PDF)</label><br>
-                        <input type="file" name="certificado">
+                        <label for="descrip">Archivo</label>
+                        <div id="file_pdf" class="border bg-light">
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="pdf">Actualizar certificado (PDF)</label><br>
+                        <input type="file" name="pdf" id="pdf" class="pdf_color">
+                        <small class="form-text text-danger" id="pdf_error"></small>
                     </div>
     
                     <a href="../estudios/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>

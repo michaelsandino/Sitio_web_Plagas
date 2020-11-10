@@ -2,9 +2,9 @@
 
 include("../../connect.php");
 
-$email = $_POST['email'];
+$idUsuCultivo = $_POST['idUsuCultivo'];
 
-$consult="SELECT * FROM cultivo WHERE idUsuCultivo='$email'";  
+$consult="SELECT * FROM cultivo WHERE idUsuCultivo='$idUsuCultivo'";  
 $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
 while($view = mysqli_fetch_array($result))
@@ -16,7 +16,7 @@ while($view = mysqli_fetch_array($result))
 
         <div class="row">
             <div class="col-5 col-lg-4 pr-0">
-                <img src="plagas_img/'.$view['imagenC'].'" class="w-100 ml-3" alt="imagen_cultivo">
+                <img src="cultivos_img/'.$view['imagenC'].'" class="w-100 ml-3" alt="imagen_cultivo">
             </div>
 
             <div class="col-6 col-lg-7">

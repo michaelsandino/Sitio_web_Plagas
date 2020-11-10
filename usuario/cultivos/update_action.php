@@ -25,11 +25,21 @@
     }else{
 
         if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
+
+            /* ELIMINAR FOTO */
+            $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo'";  
+            $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+           
+            while($view = mysqli_fetch_array($consult))
+            {
+                unlink('cultivos_img/'.$view['imagenC']); 
+            }
+
+            /* Actualizar foto */
        
             $name_encrip = md5($photo['tmp_name']).".jpg";
-            $route = "plagas_img/".$name_encrip;
+            $route = "cultivos_img/".$name_encrip;
             move_uploaded_file($photo["tmp_name"],$route);
-
             
             $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip',imagenC='$name_encrip'
             WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";
@@ -41,15 +51,7 @@
                 Información actualizada con exito - Sera redireccionado en un momento.
                 </div>';
             }  
-        
-             /* ELIMINAR FOTO */
-             $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo'";  
-             $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-            
-             while($view = mysqli_fetch_array($consult))
-             {
-                 unlink('plagas_img/'.$view['imagenC']); 
-             }
+    
     
         }else{
             echo '<div class="alert alert-danger text-center mt-3" role="alert">

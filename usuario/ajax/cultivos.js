@@ -11,7 +11,7 @@ if(url.split('/').reverse()[0] == ""){
     
           var parametro = 
           {
-            "email":email
+            "idUsuCultivo":email
           };
       
           $.ajax({
@@ -38,32 +38,41 @@ if(url.split('/').reverse()[0] == ""){
     setInterval(cultivos, 3000);
 
 
-  /* Eliminar estudios */
+  /* Eliminar cultivos */
   function eliminar(id_cultivo){
 
-    if (confirm("Esta seguro que desea eliminar este estudio?"))
+    if (confirm("Esta seguro que desea eliminar este cultivo?"))
     {
-      var parametro = 
-      {
-        "id_cultivo":id_cultivo,
-      };
-    
-      $.ajax({
-        data: parametro,
-        url: 'delete.php',
-        type:'POST',
 
-        beforeSend:function (objeto) {
-          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-          $('#eliminado').html(response).fadeIn("slow");
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          message(user)
+          var email = user.email;
+          
+          var parametro = 
+          {
+            "id_cultivo":id_cultivo,
+            "idUsuCultivo":email,
+          };
+        
+          $.ajax({
+            data: parametro,
+            url: 'delete.php',
+            type:'POST',
+
+            beforeSend:function (objeto) {
+              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+              $('#eliminado').html(response).fadeIn("slow");
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+        
+          });
         }
-    
       });
     }
     
@@ -203,7 +212,7 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
                 document.update.descrip.value = descripCultivo;
 
                 var plant_img = document.getElementById('plant-img')
-                plant_img.innerHTML = '<img src="plagas_img/'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+                plant_img.innerHTML = '<img src="cultivos_img/'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
           
               },
               error: function (err) {
