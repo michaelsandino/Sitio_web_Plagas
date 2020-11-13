@@ -80,7 +80,7 @@ if(url.split('/').reverse()[0] == ""){
   
 
 /* Registar cultivo */
-  $('#btn_enviar').on("click", function(e){
+  $("#c_register").submit(function(e){
     e.preventDefault();
 
     var nameR = document.getElementById('nameR').value;
