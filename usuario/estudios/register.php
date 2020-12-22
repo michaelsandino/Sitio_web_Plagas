@@ -16,6 +16,8 @@
         $route = "estudios_pdf/".$name_encrip;
         move_uploaded_file($pdf["tmp_name"],$route);
 
+        $location = "https://plagas-app.emprendegrm.com/usuario/estudios/estudios_pdf/".$name_encrip;
+
         $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_user','$name_encrip')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
         

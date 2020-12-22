@@ -4,6 +4,11 @@
     $password = "";
     $database = "emprende_plagas";
 
+    /* $server = "190.8.176.241";
+    $user = "emprende_Admirantex";
+    $password = "123Admirantex";
+    $database = "emprende_plagas";
+ */
     /* error_reporting(0); -> No genera errores */
 
     $connect = new mysqli($server,$user,$password,$database);
