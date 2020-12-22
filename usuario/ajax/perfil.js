@@ -31,8 +31,8 @@ if(url.split('/').reverse()[0] == ""){
             email = objeto.email; 
             name = objeto.nameUsu; 
             apellido = objeto.apellidoUsu; 
-            ti = objeto.ti; 
-            ni = objeto.ni; 
+            tp_id = objeto.tp_id; 
+            identidad = objeto.identidad; 
             fechanacimiento = objeto.fechanacimiento; 
             telefono = objeto.telefono; 
 
@@ -43,7 +43,7 @@ if(url.split('/').reverse()[0] == ""){
             text_perfil.innerHTML = `${name} ${apellido}`;
 
             var text_perfil = document.getElementById('text_identificacion')
-            text_perfil.innerHTML = `${ti} ${ni}`;
+            text_perfil.innerHTML = `${tp_id} ${identidad}`;
 
             var text_perfil = document.getElementById('text_fecha')
             text_perfil.innerHTML = `${fechanacimiento}`;
@@ -87,16 +87,16 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
           email = objeto.email; 
           name = objeto.nameUsu; 
           apellido = objeto.apellidoUsu; 
-          ti = objeto.ti; 
-          ni = objeto.ni; 
+          tp_id = objeto.tp_id; 
+          identidad = objeto.identidad; 
           fechanacimiento = objeto.fechanacimiento; 
           telefono = objeto.telefono; 
 
           document.update.email.value = email;
           document.update.nombre.value = name;
           document.update.apellido.value = apellido;
-          document.update.ti.value = ti;
-          document.update.ni.value = ni;
+          document.update.ti.value = tp_id;
+          document.update.ni.value = identidad;
           document.update.fechanacimiento.value = fechanacimiento;      
           document.update.telefono.value = telefono;      
         },
