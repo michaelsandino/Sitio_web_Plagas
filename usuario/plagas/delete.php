@@ -23,7 +23,7 @@
                 
                 if ($result){
                     echo '<div class="alert alert-success text-center mt-3" role="alert">
-                    Plaga eliminada con Exito - - Se actualizara dentro un momento el listado de plagas.
+                    Plaga eliminada con Exito - Se actualizara dentro un momento el listado de plagas.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
