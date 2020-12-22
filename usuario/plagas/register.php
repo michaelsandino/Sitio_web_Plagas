@@ -38,7 +38,7 @@
                     $routeD = "plagas_img/".$name_encripD;
                     move_uploaded_file($photoD["tmp_name"],$routeD);
             
-                    $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$name_encripA','$name_encripB','$name_encripC','$name_encripD')";
+                    $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$name_encripA','$name_encripB','$name_encripC','$name_encripD','Pendiente','https://emprendegrm.com/Plagas/rasenaPlaga1.html')";
                     $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
                 
                     if($result){
