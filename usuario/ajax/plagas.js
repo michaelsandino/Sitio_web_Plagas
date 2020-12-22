@@ -62,7 +62,7 @@ if(url.split('/').reverse()[0] == ""){
             var objeto = JSON.parse(data);
             nameRegional = objeto.nameRegional;
             
-            var plag_name = document.getElementById('plag_name')
+            var plag_name = document.getElementById('planta_name')
             plag_name.innerHTML = nameRegional 
             
             },

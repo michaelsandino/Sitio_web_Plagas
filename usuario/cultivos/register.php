@@ -14,7 +14,7 @@
         $route = "cultivos_img/".$name_encrip;
         move_uploaded_file($photo["tmp_name"],$route);
 
-        $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$name_encrip')";
+        $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$name_encrip','pendite')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
     
         if($result){

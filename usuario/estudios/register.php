@@ -21,7 +21,7 @@
         
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información enviada con exito
+            Información enviada con exito.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -29,7 +29,7 @@
         }
     }else{
         echo '<div class="alert alert-danger text-center mt-3" role="alert">
-        El formato del archivo no es valida
+        El formato del archivo no es valida.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>

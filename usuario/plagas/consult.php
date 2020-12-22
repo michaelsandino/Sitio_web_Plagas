@@ -49,7 +49,7 @@ while($view = mysqli_fetch_array($result))
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="actualizar.html?plaga='.$view['id_plagas'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
             <button class="dropdown-item" onclick="eliminar('.$view['id_plagas'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-            <a class="dropdown-item" href="../plagas/?plaga='.$view['id_plagas'].'"><img src="../../icons/ajustes.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
+            <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
         </div>
         </div>
 
