@@ -35,7 +35,6 @@ if(url.split('/').reverse()[0] == ""){
       });
     }
     cultivos();
-    setInterval(cultivos, 3000);
 
 
   /* Eliminar cultivos */
@@ -66,6 +65,7 @@ if(url.split('/').reverse()[0] == ""){
             success: function(response)
             {
               $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -156,7 +156,8 @@ if(url.split('/').reverse()[0] == ""){
               success: function(response)
               {    
                 $("#message").html(response).fadeIn("slow");
-                document.getElementById("c_register").reset();     
+                document.getElementById("c_register").reset();  
+                setTimeout(function(){window.location.reload();}, 3000);   
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           

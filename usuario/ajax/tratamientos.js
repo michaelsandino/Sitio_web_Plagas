@@ -55,7 +55,6 @@ if(url.split('/').reverse()[0] == ""){
     }
   }
     tratamientos();
-    /* setInterval(cultivos, 3000); */
 
 
 

@@ -19,7 +19,7 @@
     
     if ($result){
         echo '<div class="alert alert-success text-center mt-3" role="alert">
-        Cultivo eliminado con Exito
+        Cultivo eliminado con Exito - Se actualizara dentro un momento el listado de cultivos.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>

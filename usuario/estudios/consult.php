@@ -12,10 +12,10 @@
         echo 
         '<div class="col-12 border rounded pt-2 pb-2">
         <p class="text">
-        Nivel: '.$view['nivelFormativo'].'<br>
-        Titulo: '.$view['tituloFormacion'].'<br>
-        Institución: '.$view['entidadEducativa'].'<br>
-        Fecha de grado: '.$view['fechaGrado'].'
+        <strong>Nivel:</strong> '.$view['nivelFormativo'].'<br>
+        <strong>Titulo:</strong> '.$view['tituloFormacion'].'<br>
+        <strong>Institución:</strong> '.$view['entidadEducativa'].'<br>
+        <strong>Fecha de grado:</strong> '.$view['fechaGrado'].'
         </p>
         <a class="text-primary" href="./estudios_pdf/'.$view['soporte'].'">Soporte...<img src="../../icons/nube-carga.svg" alt="icono_soporte" class="pl-2" height="20px"></a>
 

@@ -78,7 +78,6 @@ if(url.split('/').reverse()[0] == ""){
     }
   }
     plagas();
-    /* setInterval(cultivos, 3000); */
 
 
 

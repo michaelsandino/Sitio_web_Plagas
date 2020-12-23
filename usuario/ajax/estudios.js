@@ -34,7 +34,6 @@ if(url.split('/').reverse()[0] == ""){
     });
   }
     estudios();
-    setInterval(estudios, 3000);
 
   /* Eliminar estudios */
   function eliminar(idFormacion){
@@ -64,6 +63,7 @@ if(url.split('/').reverse()[0] == ""){
             {
               console.log(response)
               $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -162,7 +162,9 @@ if(url.split('/').reverse()[0] == ""){
               success: function(response)
               {    
                 $("#message").html(response).fadeIn("slow");
-                document.getElementById("e_register").reset();     
+                document.getElementById("e_register").reset();   
+                
+                setTimeout(function(){window.location.reload();}, 3000);
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           
