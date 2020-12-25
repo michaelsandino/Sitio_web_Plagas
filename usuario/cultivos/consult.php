@@ -20,7 +20,7 @@ while($view = mysqli_fetch_array($result))
             </div>
 
             <div class="col-6 col-lg-7">
-                <p class="text text-left mx-3">Nombre científicio: <br>'.$view['nameCientifico'].'</p>
+                <p class="text text-left mx-3"><strong>Nombre científico:</strong> <br>'.$view['nameCientifico'].'</p>
             </div>
 
             <div class="col-12">

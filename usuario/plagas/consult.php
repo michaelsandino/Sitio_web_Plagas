@@ -18,8 +18,8 @@ while($view = mysqli_fetch_array($result))
         <div class="row">
 
             <div class="col-12">
-                <p class="text text-left mx-3">Tipo: '.$view['tp_plaga'].' <br> 
-                Nombre científicio: '.$view['nombreC_plagas'].'</p>
+                <p class="text text-left mx-3"><strong>Tipo:</strong> '.$view['tp_plaga'].' <br> 
+                <strong>Nombre científico:</strong> '.$view['nombreC_plagas'].'</p>
             </div>
 
             <div class="col-12">
