@@ -9,10 +9,10 @@
     <meta name="title" content="Plagas APP">
     <meta name="description" content="Aplicación para la detección de plagas en cultivos, Desarrollado por SENNOVA.">
 
-    <meta name="og:title" content="Perfil | Plagas APP">
+    <meta name="og:title" content="Actualizar | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/perfil">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/actualizar">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Perfil | Plagas APP</title>
+    <title>Actualizar | Plagas APP</title>
 
 </head>
 <body>
@@ -35,33 +35,10 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Perfil | Plagas APP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <hr class="menu-divider">
-                        <a class="nav-link active" href="../inicio"><img src="../../icons/casa.svg" class="pr-2"  alt="icono_casa" height="20px">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href=""><img src="../../icons/usuario.svg" class="pr-2"  alt="icono_usuario" height="20px">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../estudios"><img src="../../icons/estudio.svg" class="pr-2"  alt="icono_estudio" height="20px">Formación Académica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../cultivos"><img src="../../icons/ecologico.svg" class="pr-2"  alt="icono_cultivo" height="20px">Cultivos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../../"><img src="../../icons/flecha.svg" class="pl-1"  alt="icono_flecha" height="20px" style="transform: rotate(180deg);">Salir</a>
-                    </li>
-                    <li class="nav-item" id="exit">
-                        
-                    </li>
-                </ul>
-            </div>
+                Actualizar | Plagas APP</a>
+            <?php
+            include '../menu.php';
+            ?>
         </nav>
     </header>
 
@@ -69,32 +46,56 @@
     <div class="container">
 
         <section class="row">
+            
             <div class="col-12">
-                <h1 class="text-center h4 title">Perfil</h1>  
+                <h1 class="text-center h4 title">Actualizar</h1>
                 <div id="success-message"></div>
             </div>
-        </section>
 
-        <section class="row">
-            <div class="col-10 col-md-6 col-lg-4 mx-auto">
+            <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
                 <div id="progress"></div>
-            </div>
-        </section>
+                
+                <form name="update" id="e_update" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nvformativo">Nivel de Formación</label>
+                        <input type="text" class="form-control nvformativo_color" id="nvformativo" name="nvformativo">
+                        <small class="form-text text-danger" id="nvformativo_error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="titulo">Titulo Obtenido</label>
+                        <input type="text" class="form-control titulo_color" id="titulo" name="titulo">
+                        <small class="form-text text-danger" id="titulo_error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="entidadEdu">Nombre de la institución</label>
+                        <input type="text" class="form-control entidadEdu_color" id="entidadEdu" name="entidadEdu">
+                        <small class="form-text text-danger" id="entidadEdu_error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechGrado">Fecha de grado</label>
+                        <input type="date" class="form-control fechGrado_color" id="fechGrado" name="fechGrado">
+                        <small class="form-text text-danger" id="fechGrado_error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrip">Archivo</label>
+                        <div id="file_pdf" class="border bg-light">
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="pdf">Actualizar certificado (PDF)</label><br>
+                        <input type="file" name="pdf" id="pdf" class="pdf_color">
+                        <small class="form-text text-danger" id="pdf_error"></small>
+                    </div>
+    
+                    <div id="btn-back" class="d-inline"></div>
+                    <div id="btn-update" class="d-inline"></div>
+  
+                </form>
 
-        <section class="row">
-            <div class="col-auto mx-auto">
- 
-                <div id="img"></div>
-
-                <div class="form-group">
-                    <p class="d-inline w-100"><img src="../../icons/correo.svg" class="mr-3" alt="icono_correo" width="25px"><div id="text_email" class="d-inline"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/perfil.svg" class="mr-3" alt="icono_perfil" width="25px"><div id="text_perfil" style="display: inline;"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/identificacion.svg" class="mr-3" alt="icono_identificacion" width="25"><div id="text_identificacion" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/fecha.svg" class="mr-3" alt="icono_fecha" width="25"><div id="text_fecha" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/celular.svg" class="mr-3" alt="icono_celular" width="25"><div id="text_telefono" class="d-inline"></div></p> 
-                </div>
-                <a class="btn btn-info btn-block mt-4" href="actualizar.html">Editar</a>
+                <div id="message"></div>
             </div>
+
         </section>
 
     </div>
@@ -140,11 +141,6 @@
         </div>
     </footer>
 
-
-    
-
-
-
     <!-- <a href="#" class="go-up"> <img src="../icons/flecha-boton.svg" alt="flecha_boton" class="arrow white-icon"> </a> -->
 
     <script src="../../js/jquery-3.5.1.slim.min.js"></script>
@@ -167,7 +163,7 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/perfil.js"></script>
+    <script src="../ajax/estudios.js"></script>
 
 </body>
 </html>

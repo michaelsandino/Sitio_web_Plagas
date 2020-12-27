@@ -65,7 +65,12 @@ if(url.split('/').reverse()[0] == ""){
             success: function(response)
             {
               $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
+
+              if (response.indexOf("El cultivo seleccionado no puede ser eliminado debido a que esta cuenta con una o más plagas registradas.")=='-1'){
+                setTimeout(function(){window.location.reload();}, 3000);
+              }
+
+
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -156,8 +161,11 @@ if(url.split('/').reverse()[0] == ""){
               success: function(response)
               {    
                 $("#message").html(response).fadeIn("slow");
-                document.getElementById("c_register").reset();  
-                setTimeout(function(){window.location.reload();}, 3000);   
+
+                if (response.indexOf("El formato de la imagen no es valida.")=='-1'){
+                  document.getElementById("c_register").reset();  
+                  setTimeout(function(){window.location.reload();}, 3000); 
+                }  
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           
@@ -171,14 +179,17 @@ if(url.split('/').reverse()[0] == ""){
 
 
 /* Consulta para actualizar cultivos */
-if(url.split('/').reverse()[0] == "actualizar.html"){ 
+if(url.split('/').reverse()[0] == "actualizar.php"){ 
 
-  var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
-    {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+
+   /* obtener los valores enviamos por GET */
+   var loc = window.location.search;
+    
+   if(loc)
+   {
+       /* Buscar en los valores el nombre del campo y obtener su valor*/
+       const urlParams  = new URLSearchParams(loc);
+       var id = urlParams .get('cultivo');
   
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
@@ -201,19 +212,31 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
               },
               success: function(data)
               {
-                var objeto = JSON.parse(data);
-      
-                nameRegional = objeto.nameRegional; 
-                nameCientifico = objeto.nameCientifico; 
-                descripCultivo = objeto.descripCultivo; 
-                imagenC = objeto.imagenC; 
+                if (data.indexOf("invalid_user")=='-1'){
+                  var objeto = JSON.parse(data);
+        
+                  nameRegional = objeto.nameRegional; 
+                  nameCientifico = objeto.nameCientifico; 
+                  descripCultivo = objeto.descripCultivo; 
+                  imagenC = objeto.imagenC; 
 
-                document.update.nameR.value = nameRegional;
-                document.update.nameC.value = nameCientifico;
-                document.update.descrip.value = descripCultivo;
+                  document.update.nameR.value = nameRegional;
+                  document.update.nameC.value = nameCientifico;
+                  document.update.descrip.value = descripCultivo;
 
-                var plant_img = document.getElementById('plant-img')
-                plant_img.innerHTML = '<img src="cultivos_img/'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+                  var plant_img = document.getElementById('plant-img')
+                  plant_img.innerHTML = '<img src="cultivos_img/'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+
+                  var btn_back = document.getElementById('btn-back')
+                  btn_back.innerHTML = '<a href="../cultivos/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+    
+                  var btn_update = document.getElementById('btn-update')
+                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
+
+                }else{
+                  window.location.replace('../cultivos');
+                }
+                
           
               },
               error: function (err) {
@@ -225,7 +248,7 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
         });
 
     }else{
-      window.location.replace("../estudios");
+      window.location.replace("../cultivos");
     }
 }
 
@@ -233,12 +256,14 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
 $("#c_update").submit(function(e){
   e.preventDefault();
 
-  var loc = document.location.href;
-// si existe el interrogante
-if(loc.indexOf('?')>0)
-{
-    // cogemos la parte de la url que hay despues del interrogante
-    var id = loc.split('=')[1];
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
+    {
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var cultivo = urlParams .get('cultivo');
 
         var nameR = document.getElementById('nameR').value;
         var nameC = document.getElementById('nameC').value;
@@ -285,12 +310,10 @@ if(loc.indexOf('?')>0)
             if (user) {
               message(user)
               var email = user.email;
-              var id_user = email;
-              var id_cultivo = id;
     
             var parametros = new FormData($("#c_update")[0]);
-            parametros.append("id_user", id_user);
-            parametros.append("id_cultivo", id_cultivo);
+            parametros.append("id_user", email);
+            parametros.append("id_cultivo", cultivo);
 
             $.ajax({
               data: parametros,
@@ -305,7 +328,11 @@ if(loc.indexOf('?')>0)
               success: function(response)
               {
                   $('#message').html(response).fadeIn("slow");
-                  setTimeout(function(){window.location.replace("../cultivos");}, 5000);
+
+                  if (response.indexOf("El formato de la imagen no es valida.")=='-1'){
+                    setTimeout(function(){window.location.replace("../cultivos");}, 5000);
+                  }
+                  
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           

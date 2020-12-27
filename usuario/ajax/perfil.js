@@ -61,7 +61,7 @@ if(url.split('/').reverse()[0] == ""){
 }
 
 /* Consulta para actualizar */
-if(url.split('/').reverse()[0] == "actualizar.html"){   
+if(url.split('/').reverse()[0] == "actualizar.php"){   
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       message(user)
@@ -197,7 +197,7 @@ $("#p_update").submit(function(e){
       }else if(isNaN(telefono) ) {
         telefono_error.innerHTML = 'Este campo debe contener solo numeros.'
         $('.telefono_color').addClass('border-danger')
-      }else if( telefono.length < 10) {
+      }else if( telefono.length < 10 | telefono.length > 10) {
         telefono_error.innerHTML = 'El telefono debe tener 10 digitos.'
         $('.telefono_color').addClass('border-danger')
       }else{

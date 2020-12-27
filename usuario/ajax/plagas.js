@@ -6,12 +6,14 @@ if(url.split('/').reverse()[0] == ""){
   /* Consultar plaga */
   function plagas() {
 
-    var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
     {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var cultivo = urlParams .get('cultivo');
     
     
       firebase.auth().onAuthStateChanged(function(user) {
@@ -20,14 +22,41 @@ if(url.split('/').reverse()[0] == ""){
           message(user)
           var email = user.email;
     
+
+          /* Ubicar nombre cultivo */
+          var cultivo_name = 
+          {
+            "idUsuCultivo":email,
+            "id_cultivo":cultivo
+          };
+      
+          $.ajax({
+            data: cultivo_name,
+            url: 'cultivo.php',
+            type: 'POST',
+            
+            success: function(data)
+            {      
+
+            var objeto = JSON.parse(data);
+            nameRegional = objeto.nameRegional;
+              
+            var plag_name = document.getElementById('planta_name')
+            plag_name.innerHTML = nameRegional 
+              
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+          });
+
+          /* Mostrar plagas del cultivo */
           var parametro = 
           {
             "idUsuCultivo":email,
-            "id_cultivo":id
+            "id_cultivo":cultivo
           };
 
-
-          /* Mostrar plagas del cultivo */
           $.ajax({
             data: parametro,
             url: 'consult.php',
@@ -38,33 +67,12 @@ if(url.split('/').reverse()[0] == ""){
             },
             success: function(response)
             {
-              $('#result').html(response);   
-            },
-            error: function (err) {
-              alert("Disculpe, ocurrio un error");           
-            }
-          });
-          
-          /* Ubicar nombre cultivo */
-          var cultivo = 
-          {
-            "idUsuCultivo":email,
-            "id_cultivo":id
-          };
-      
-          $.ajax({
-            data: cultivo,
-            url: 'cultivo.php',
-            type: 'POST',
-            
-            success: function(data)
-            {      
-            var objeto = JSON.parse(data);
-            nameRegional = objeto.nameRegional;
-            
-            var plag_name = document.getElementById('planta_name')
-            plag_name.innerHTML = nameRegional 
-            
+              if (response=='invalid_user')  {
+                window.location.replace('../cultivos');
+              }else{
+              $('#result').html(response); 
+              }  
+
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -115,7 +123,10 @@ if(url.split('/').reverse()[0] == ""){
             success: function(response)
             {
               $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
+
+              if (response.indexOf("La plaga seleccionada no puede ser eliminada debido a que esta cuenta con uno o mas tratamientos registrados.")=='-1'){
+                setTimeout(function(){window.location.reload();}, 3000);
+              }
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -228,12 +239,9 @@ if(url.split('/').reverse()[0] == ""){
 
     if (tipoPlaga != "" & nameT != ""  & nameC != "" & descrip != "" & photoA != "" & photoB != "" & photoC != "" & photoD != ""){
 
-      var loc = document.location.href;
-      // si existe el interrogante
-      if(loc.indexOf('?')>0)
-      {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+        var loc = window.location.search;
+        const urlParams  = new URLSearchParams(loc);
+        var cultivo = urlParams .get('cultivo');
 
         firebase.auth().onAuthStateChanged(function(user) {
         
@@ -242,7 +250,7 @@ if(url.split('/').reverse()[0] == ""){
           var email = user.email;
 
           var parametros = new FormData($("#p_register")[0]);
-          parametros.append("id_cultivo", id);
+          parametros.append("id_cultivo", cultivo);
           parametros.append("idUsuCultivo", email);
 
           $.ajax({
@@ -258,9 +266,12 @@ if(url.split('/').reverse()[0] == ""){
               success: function(response)
               {    
                 $("#message").html(response).fadeIn("slow");
-                document.getElementById("p_register").reset(); 
+
+                if (response.indexOf("El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).")=='-1'){
+                  document.getElementById("p_register").reset();
+                  setTimeout(function(){window.location.reload();}, 3000);
+                }
                 
-                setTimeout(function(){window.location.reload();}, 3000);
                 
               },
               error: function (err) {
@@ -270,20 +281,22 @@ if(url.split('/').reverse()[0] == ""){
         }
       });
       }  
-    }
   });   
 }
 
 
 /* Consulta para actualizar plagas */
-if(url.split('/').reverse()[0] == "actualizar.html"){ 
+if(url.split('/').reverse()[0] == "actualizar.php"){ 
 
-  var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
     {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var plaga = urlParams .get('plaga');
+        var cultivo = urlParams .get('cultivo');
 
         firebase.auth().onAuthStateChanged(function(user) {
         
@@ -293,7 +306,8 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
           
             var parametro = 
             {
-              "id_plagas":id,
+              "id_plagas":plaga,
+              "id_cultivo":cultivo,
               "idUsuCultivo":email
             };
           
@@ -307,40 +321,47 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
               },
               success: function(data)
               {
-                var objeto = JSON.parse(data);
+
+                if (data.indexOf("invalid_user")=='-1'){
+                  var objeto = JSON.parse(data);
       
-                id_cultivo = objeto.id_cultivo; 
-                tp_plaga = objeto.tp_plaga; 
-                nombreT_plagas = objeto.nombreT_plagas; 
-                nombreC_plagas = objeto.nombreC_plagas; 
-                Descp_plagas = objeto.Descp_plagas; 
-                imagen_u = objeto.imagen_u; 
-                imagen_d = objeto.imagen_d; 
-                imagen_t = objeto.imagen_t; 
-                imagen_c = objeto.imagen_c; 
+                  id_cultivo = objeto.id_cultivo; 
+                  tp_plaga = objeto.tp_plaga; 
+                  nombreT_plagas = objeto.nombreT_plagas; 
+                  nombreC_plagas = objeto.nombreC_plagas; 
+                  Descp_plagas = objeto.Descp_plagas; 
+                  imagen_u = objeto.imagen_u; 
+                  imagen_d = objeto.imagen_d; 
+                  imagen_t = objeto.imagen_t; 
+                  imagen_c = objeto.imagen_c; 
+  
+                  document.update.tipoPlaga.value = tp_plaga;
+                  document.update.nameT.value = nombreT_plagas;
+                  document.update.nameC.value = nombreC_plagas;
+                  document.update.descrip.value = Descp_plagas;
+  
+                  var btn_back = document.getElementById('btn-back')
+                  btn_back.innerHTML = '<a href="../plagas/?cultivo='+id_cultivo+'" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+  
+                  var btn_update = document.getElementById('btn-update')
+                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
+                  
+                  var plag_img1 = document.getElementById('plag-img1')
+                  plag_img1.innerHTML = '<img src="plagas_img/'+imagen_u+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+  
+                  var plag_img2 = document.getElementById('plag-img2')
+                  plag_img2.innerHTML = '<img src="plagas_img/'+imagen_d+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+  
+                  var plag_img3 = document.getElementById('plag-img3')
+                  plag_img3.innerHTML = '<img src="plagas_img/'+imagen_t+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+  
+                  var plag_img4 = document.getElementById('plag-img4')
+                  plag_img4.innerHTML = '<img src="plagas_img/'+imagen_c+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+                }else{
+                  window.location.replace('../cultivos');
+                }
 
-                document.update.tipoPlaga.value = tp_plaga;
-                document.update.nameT.value = nombreT_plagas;
-                document.update.nameC.value = nombreC_plagas;
-                document.update.descrip.value = Descp_plagas;
-
-                var btn_back = document.getElementById('btn-back')
-                btn_back.innerHTML = '<a href="../plagas/?cultivo='+id_cultivo+'" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
-
-                var btn_update = document.getElementById('btn-update')
-                btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;" onclick="update_action('+id_cultivo+')">Actualizar</button>'
-                
-                var plag_img1 = document.getElementById('plag-img1')
-                plag_img1.innerHTML = '<img src="plagas_img/'+imagen_u+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
-
-                var plag_img2 = document.getElementById('plag-img2')
-                plag_img2.innerHTML = '<img src="plagas_img/'+imagen_d+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
-
-                var plag_img3 = document.getElementById('plag-img3')
-                plag_img3.innerHTML = '<img src="plagas_img/'+imagen_t+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
-
-                var plag_img4 = document.getElementById('plag-img4')
-                plag_img4.innerHTML = '<img src="plagas_img/'+imagen_c+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+               
           
               },
               error: function (err) {
@@ -353,7 +374,7 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
         });
 
     }else{
-      window.location.replace("../estudios");
+      window.location.replace("../cultivos");
     }
 }
 
@@ -361,12 +382,9 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
 $("#p_update").submit(function(e){
   e.preventDefault();
   
-  var loc = document.location.href;
-// si existe el interrogante
-  if(loc.indexOf('?')>0)
-  {
-      // cogemos la parte de la url que hay despues del interrogante
-      var id = loc.split('=')[1];
+      var loc = window.location.search;
+      const urlParams  = new URLSearchParams(loc);
+      var plaga = urlParams .get('plaga');
 
       var tipoPlaga = document.getElementById('tipoPlaga').value;
       var nameT = document.getElementById('nameT').value;
@@ -433,7 +451,7 @@ $("#p_update").submit(function(e){
       if (tipoPlaga != "" & nameT != ""  & nameC != "" & descrip != ""){
       
               var parametros = new FormData($("#p_update")[0]);
-              parametros.append("id_plagas", id);
+              parametros.append("id_plagas", plaga);
 
               $.ajax({
                 data: parametros,
@@ -448,7 +466,10 @@ $("#p_update").submit(function(e){
                 success: function(response)
                 {
                     $('#message').html(response).fadeIn("slow");
-                    setTimeout(function(){window.location.replace('../plagas/?cultivo='+id_cultivo+'');}, 5000);
+
+                    if (response.indexOf("El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).")=='-1'){
+                      setTimeout(function(){window.location.replace('../plagas/?cultivo='+id_cultivo+'');}, 5000);
+                    }
                 },
                 error: function (err) {
                   alert("Disculpe, ocurrio un error");           
@@ -456,11 +477,6 @@ $("#p_update").submit(function(e){
               });
     
       }
-      
-
-  }else{
-    window.location.replace("../cultivos");
-  }
 
 });
 

@@ -2,26 +2,19 @@
 
     include("../../connect.php");
 
+    $id_cultivo = $_POST['id_cultivo'];
+    $id_plagas = $_POST['id_plagas'];
     $idTratamiento = $_POST['idTratamiento'];
     $idUsuCultivo = $_POST['idUsuCultivo'];
 
-    $review="SELECT * FROM tratamiento WHERE idTratamiento='$idTratamiento'";  
-    $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+    $review="SELECT * FROM cultivo c, plagas p, tratamiento t WHERE 
+    t.idTratamiento='$idTratamiento' AND t.id_plaga='$id_plagas' AND p.id_plagas='$id_plagas' AND
+    c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND c.idUsuCultivo='$idUsuCultivo'";  
 
-    $review=mysqli_fetch_row($review);
-    $id_plaga = $review[1]; 
-
-    $review="SELECT * FROM plagas p,tratamiento t WHERE t.id_plaga='$id_plaga' AND p.id_plagas='$id_plaga'";  
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-    
-    $review=mysqli_fetch_row($review);
-    $cultivo = $review[1]; 
-            
-    $review="SELECT * FROM cultivo c, plagas p WHERE p.id_cultivo='$cultivo' AND c.idCultivo='$cultivo' AND c.idUsuCultivo='$idUsuCultivo'";  
-    $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-    $review=mysqli_fetch_row($review);
+    $check=mysqli_fetch_row($review);
 
-    if (!$review){        
+    if (!$check){        
                             
         echo 'invalid_user';
 

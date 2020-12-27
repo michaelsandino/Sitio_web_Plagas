@@ -5,6 +5,8 @@
     $nameR = $_POST['nameR'];
     $nameC = $_POST['nameC'];
     $descrip = $_POST['descrip'];
+    /* Permite realizar el registro de la información de textos largos */
+    $descrip= mysqli_real_escape_string($connect,$descrip);
     $photo = $_FILES['photo'];
     $id_user = $_POST['id_user'];
 
@@ -22,14 +24,11 @@
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
             Información enviada con exito - Se actualizara dentro un momento el listado de cultivos. 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
             </div>';
         }
     }else{
         echo '<div class="alert alert-danger text-center mt-3" role="alert">
-        El formato de la imagen no es valida
+        El formato de la imagen no es valida.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>

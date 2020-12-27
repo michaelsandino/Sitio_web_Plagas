@@ -9,10 +9,10 @@
     <meta name="title" content="Plagas APP">
     <meta name="description" content="Aplicación para la detección de plagas en cultivos, Desarrollado por SENNOVA.">
 
-    <meta name="og:title" content="Actualizar | Plagas APP">
+    <meta name="og:title" content="Usuario | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/actualizar">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/inicio">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Actualizar | Plagas APP</title>
+    <title>Usuario | Plagas APP</title>
 
 </head>
 <body>
@@ -35,33 +35,10 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Actualizar | Plagas APP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <hr class="menu-divider">
-                        <a class="nav-link active" href="../inicio"><img src="../../icons/casa.svg" class="pr-2"  alt="icono_casa" height="20px">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../perfil"><img src="../../icons/usuario.svg" class="pr-2"  alt="icono_usuario" height="20px">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../estudios"><img src="../../icons/estudio.svg" class="pr-2"  alt="icono_estudio" height="20px">Formación Académica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../cultivos"><img src="../../icons/ecologico.svg" class="pr-2"  alt="icono_cultivo" height="20px">Cultivos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../../"><img src="../../icons/flecha.svg" class="pl-1"  alt="icono_flecha" height="20px" style="transform: rotate(180deg);">Salir</a>
-                    </li>
-                    <li class="nav-item" id="exit">
-                        
-                    </li>
-                </ul>
-            </div>
+                Usuario | Plagas APP</a>
+            <?php
+            include '../menu.php';
+            ?>
         </nav>
     </header>
 
@@ -71,51 +48,15 @@
         <section class="row">
             
             <div class="col-12">
-                <h1 class="text-center h4 title">Actualizar</h1>
+                <h1 class="text-center h4 title">Bienvenido</h1>
                 <div id="success-message"></div>
-            </div>
-
-            <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-
-                <div id="progress"></div>
-                
-                <form name="update" id="c_update">
-                    <div class="form-group">
-                        <label for="nameR">Nombre tradicional o regional</label>
-                        <input type="text" class="form-control nameR_color" id="nameR" name="nameR">
-                        <small class="form-text text-danger" id="nameR_error"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="nameC">Nombre científicio</label>
-                        <input type="text" class="form-control nameC_color" id="nameC" name="nameC">
-                        <small class="form-text text-danger" id="nameC_error"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="descrip">Descripción</label>
-                        <textarea class="form-control descrip_color" id="descrip" rows="4" name="descrip"></textarea>
-                        <small class="form-text text-danger" id="descrip_error"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="descrip">Imagen Cultivo</label>
-                        <div id="plant-img" class="border bg-light">
-                        </div>  
-                    </div>
-                    <div class="form-group">
-                        <label for="photo">Cambiar Imagen</label><br>
-                        <input type="file" name="photo" id="photo" class="photo_color">
-                        <small class="form-text text-danger" id="photo_error"></small>
-                    </div>
-    
-                    <a href="../cultivos/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>
-                    <button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>
-                </form>
-
-                <div id="message"></div>
+                <img src="../../img/welcome.svg" alt="" class="pt-4 w-50 center-img">
             </div>
 
         </section>
 
     </div>
+
 
 
      <!-- FOOTER - PIE DE PAGINA -->
@@ -180,7 +121,8 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/cultivos.js"></script>
+    <script src="../ajax/user.js"></script>
+    
 
 </body>
 </html>

@@ -2,26 +2,24 @@
 
 include("../../connect.php");
 
-$id_plagas = $_POST['id_plagas'];
-$idUsuCultivo = $_POST['idUsuCultivo'];
+    $id_plagas = $_POST['id_plagas'];
+    $id_cultivo = $_POST['id_cultivo'];
+    $idUsuCultivo = $_POST['idUsuCultivo'];
 
-$consult="SELECT * FROM plagas WHERE id_plagas='$id_plagas'";  
-$result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+    $consult="SELECT * FROM cultivo c, plagas p WHERE c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo'";  
+    $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
-while ($a = mysqli_fetch_assoc($result)) {
-
-    $id_cultivo = $a['id_cultivo'];
-    $cons="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";  
-    $cons = mysqli_query($connect,$cons) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-
-    while ($view = mysqli_fetch_assoc($cons)) {
-        if ($view['nameRegional']) {
-            $json=$a;
-        }
+    while ($a = mysqli_fetch_assoc($result)) {
+        $json=$a;
+    }
+    if (!$json) {
+        echo 'invalid_user';
+    }else{
+        echo json_encode($json);
     }
 
-}
-echo json_encode($json);
+    
+
 
 include("../../disconnect.php");
 

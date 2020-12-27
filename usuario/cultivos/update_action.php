@@ -7,14 +7,17 @@
     $nameR = $_POST['nameR'];
     $nameC = $_POST['nameC'];
     $descrip = $_POST['descrip'];
+    /* Permite realizar el registro de la información de textos largos */
+    $descrip= mysqli_real_escape_string($connect,$descrip);
     $photo = $_FILES['photo'];
+
 
     if ($photo["type"] == "") {
 
         $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip'
         WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";
         
-        $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error - Revisar que el cultivo seleccionado no tenga asignado una o más plagas.</div>');
+        $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
     
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
@@ -28,12 +31,12 @@
 
             /* ELIMINAR FOTO */
             $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo'";  
-            $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+            $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
            
-            while($view = mysqli_fetch_array($consult))
-            {
-                unlink('cultivos_img/'.$view['imagenC']); 
-            }
+            $namePhoto=mysqli_fetch_row($consult);
+            $namePhoto = $namePhoto[5];
+            unlink('cultivos_img/'.$namePhoto); 
+            
 
             /* Actualizar foto */
        
@@ -44,7 +47,7 @@
             $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip',imagenC='$name_encrip'
             WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";
             
-            $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error - Revisar que el cultivo seleccionado no tenga asignado una o más plagas.</div>');
+            $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
         
             if($result){
                 echo '<div class="alert alert-success text-center mt-3" role="alert">
@@ -55,7 +58,7 @@
     
         }else{
             echo '<div class="alert alert-danger text-center mt-3" role="alert">
-            El formato de la imagen no es valida
+            El formato de la imagen no es valida.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

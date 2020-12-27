@@ -32,10 +32,9 @@
             $consult="SELECT * FROM formacionapp WHERE idFormacion='$idFormacion'";  
             $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
            
-            while($view = mysqli_fetch_array($consult))
-            {
-                unlink('estudios_pdf/'.$view['soporte']); 
-            }
+            $nameFile=mysqli_fetch_row($consult);
+            $nameFile = $nameFile[6];
+            unlink('estudios_pdf/'.$nameFile); 
 
             /* Actualizar foto */
        

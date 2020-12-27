@@ -7,18 +7,16 @@
     $tipoPlaga = $_POST['tipoPlaga'];
 	$nameT = $_POST['nameT'];
 	$nameC = $_POST['nameC'];
-	$descrip = $_POST['descrip'];
+    $descrip = $_POST['descrip'];
+    /* Permite realizar el registro de la información de textos largos */
+    $descrip= mysqli_real_escape_string($connect,$descrip);
 	$photoA = $_FILES['photoA'];
 	$photoB = $_FILES['photoB'];
 	$photoC = $_FILES['photoC'];
     $photoD = $_FILES['photoD'];
 
-    $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";
+    $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo'";
     $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
-
-    while($view = mysqli_fetch_array($consult))
-        {
-            if ($view['nameRegional']) {
                 
                 if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg")&($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg")&($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg")&($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg")) {
        
@@ -52,24 +50,16 @@
                     if($result){
                         echo '<div class="alert alert-success text-center mt-3" role="alert">
                         Información enviada con exito - Se actualizara dentro un momento el listado de plagas.  
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
                         </div>';
                     }
                 }else{
                     echo '<div class="alert alert-danger text-center mt-3" role="alert">
-                    El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg)
+                    El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                     </div>';
                 }            
-
-            }
-            
-        }
-
 
     include("../../disconnect.php");
     

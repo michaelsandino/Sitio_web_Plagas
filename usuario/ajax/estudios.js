@@ -162,9 +162,12 @@ if(url.split('/').reverse()[0] == ""){
               success: function(response)
               {    
                 $("#message").html(response).fadeIn("slow");
-                document.getElementById("e_register").reset();   
                 
-                setTimeout(function(){window.location.reload();}, 3000);
+                if (response.indexOf("El formato del archivo no es valida.")=='-1') {
+                  document.getElementById("e_register").reset();  
+                  setTimeout(function(){window.location.reload();}, 3000);
+                }
+                
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           
@@ -177,13 +180,17 @@ if(url.split('/').reverse()[0] == ""){
 }
 
 /* Consulta para actualizar estudios */
-if(url.split('/').reverse()[0] == "actualizar.html"){  
-  var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
-    {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+if(url.split('/').reverse()[0] == "actualizar.php"){  
+
+
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+  if(loc)
+  {
+      /* Buscar en los valores el nombre del campo y obtener su valor*/
+      const urlParams  = new URLSearchParams(loc);
+      var id = urlParams .get('estudio');
 
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
@@ -206,22 +213,33 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
               },
               success: function(data)
               {
-                var objeto = JSON.parse(data);
+                if (data.indexOf("invalid_user")=='-1'){
+                  var objeto = JSON.parse(data);
       
-                nivelFormativo = objeto.nivelFormativo; 
-                tituloFormacion = objeto.tituloFormacion; 
-                entidadEducativa = objeto.entidadEducativa; 
-                fechaGrado = objeto.fechaGrado; 
-                soporte = objeto.soporte; 
+                  nivelFormativo = objeto.nivelFormativo; 
+                  tituloFormacion = objeto.tituloFormacion; 
+                  entidadEducativa = objeto.entidadEducativa; 
+                  fechaGrado = objeto.fechaGrado; 
+                  soporte = objeto.soporte; 
+    
+                  document.update.nvformativo.value = nivelFormativo;
+                  document.update.titulo.value = tituloFormacion;
+                  document.update.entidadEdu.value = entidadEducativa;
+                  document.update.fechGrado.value = fechaGrado;
   
-                document.update.nvformativo.value = nivelFormativo;
-                document.update.titulo.value = tituloFormacion;
-                document.update.entidadEdu.value = entidadEducativa;
-                document.update.fechGrado.value = fechaGrado;
+                  var file_pdf = document.getElementById('file_pdf')
+                  file_pdf.innerHTML = '<a href="http://localhost/PROYECTOS/SENA/Sitio_Web_Plagas/usuario/estudios/estudios_pdf/'+soporte+'">'+soporte+'</a>'
+  
+                  var btn_back = document.getElementById('btn-back')
+                  btn_back.innerHTML = '<a href="../estudios/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+    
+                  var btn_update = document.getElementById('btn-update')
+                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
+                }else{
+                  window.location.replace('../estudios');
+                }
 
-                var file_pdf = document.getElementById('file_pdf')
-                file_pdf.innerHTML = '<a href="http://localhost/PROYECTOS/SENA/Sitio_Web_Plagas/usuario/estudios/estudios_pdf/'+soporte+'">'+soporte+'</a>'
-          
+
               },
               error: function (err) {
                 alert("Disculpe, ocurrio un error");           
@@ -239,12 +257,15 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
 /* Actualizar estudios */
 $("#e_update").submit(function(e){
   e.preventDefault();
-  var loc = document.location.href;
-// si existe el interrogante
-if(loc.indexOf('?')>0)
-{
-    // cogemos la parte de la url que hay despues del interrogante
-    var id = loc.split('=')[1];
+
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
+    {
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var estudio = urlParams .get('estudio');
 
         var nvformativo = document.getElementById('nvformativo').value;
         var titulo = document.getElementById('titulo').value;
@@ -304,7 +325,7 @@ if(loc.indexOf('?')>0)
               
               var parametros = new FormData($("#e_update")[0]);
               parametros.append("id_usu", email);
-              parametros.append("idFormacion", id);
+              parametros.append("idFormacion", estudio);
 
               $.ajax({
                 data: parametros,
@@ -318,8 +339,13 @@ if(loc.indexOf('?')>0)
                 },
                 success: function(response)
                 {
-                    $('#message').html(response).fadeIn("slow");
-                    setTimeout(function(){window.location.replace("../estudios");}, 5000);
+                $('#message').html(response).fadeIn("slow");
+
+                if (response.indexOf("El formato del archivo no es valida")=='-1'){
+                  setTimeout(function(){window.location.replace("../estudios");}, 5000);
+                }
+                   
+                    
                 },
                 error: function (err) {
                   alert("Disculpe, ocurrio un error");           

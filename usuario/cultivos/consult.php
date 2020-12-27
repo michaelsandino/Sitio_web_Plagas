@@ -34,7 +34,7 @@ while($view = mysqli_fetch_array($result))
             Opciones
         </button>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="actualizar.html?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
+            <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
             <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
             <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_borrar" class="pr-2" height="20px">Plagas</a>
         </div>

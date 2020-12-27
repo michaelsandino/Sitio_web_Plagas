@@ -11,7 +11,13 @@
     while ($a = mysqli_fetch_assoc($result)) {
         $json=$a;
     }
-    echo json_encode($json);
+    if (!$json) {
+        echo "invalid_user";
+    }else{
+        echo json_encode($json);
+    }
+
+    
     
     include("../../disconnect.php");
 

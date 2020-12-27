@@ -12,7 +12,7 @@
     <meta name="og:title" content="Usuario | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/estudios">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/cultivos">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Estudios | Plagas APP</title>
+    <title>Cultivos | Plagas APP</title>
 
 </head>
 <body>
@@ -35,33 +35,10 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Estudios | Plagas APP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <hr class="menu-divider">
-                        <a class="nav-link active" href="../inicio"><img src="../../icons/casa.svg" class="pr-2"  alt="icono_casa" height="20px">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../perfil"><img src="../../icons/usuario.svg" class="pr-2"  alt="icono_usuario" height="20px">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href=""><img src="../../icons/estudio.svg" class="pr-2"  alt="icono_estudio" height="20px">Formación Académica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../cultivos"><img src="../../icons/ecologico.svg" class="pr-2"  alt="icono_cultivo" height="20px">Cultivos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../../"><img src="../../icons/flecha.svg" class="pl-1"  alt="icono_flecha" height="20px" style="transform: rotate(180deg);">Salir</a>
-                    </li>
-                    <li class="nav-item" id="exit">
-                        
-                    </li>
-                </ul>
-            </div>
+                Cultivos | Plagas APP</a>
+            <?php
+            include '../menu.php';
+            ?>
         </nav>
     </header>
 
@@ -71,13 +48,13 @@
         <section class="row">
             
             <div class="col-12">
-                <h1 class="text-center h4 title">Estudios</h1>
+                <h1 class="text-center h4 title">Cultivos</h1>
                 <div id="success-message"></div>
                 <div id="progress"></div>
             </div>
 
             <div class="col-12 border rounded py-2 px-3 bg-white shadow-sm" style="position: -webkit-sticky; position: sticky; top: 61px; z-index: 1;"> 
-                <img src="../../icons/estudio.svg" alt="icono_estudios" height="35px" class="pt-1 pr-2">
+                <img src="../../icons/ecologico.svg" alt="icono_estudios" height="35px" class="pt-1 pr-2">
                 <button class="btn btn-secondary float-right"  data-toggle="modal" data-target="#modal"><img src="../../icons/suma-blanco.svg" alt="icono_mas" height="15px" class="pb-1 px-1"></button>
                 <div id="eliminado"></div>
             </div>
@@ -87,40 +64,35 @@
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title title pt-0 w-100 text-center" id="exampleModalLabel">registrar Estudios</h5>
+                    <h5 class="modal-title title pt-0 w-100 text-center" id="exampleModalLabel">registrar Cultivos</h5>
                     <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close" style="right: 20px;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
                     <div class="modal-body">
-                        <form name="register" id="e_register" method="post" enctype="multipart/form-data">
+                        <form name="register" id="c_register" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="nvformativo">Nivel Formativo</label>
-                                <input type="text" class="form-control nvformativo_color" id="nvformativo" name="nvformativo">
-                                <small class="form-text text-danger" id="nvformativo_error"></small>
+                                <label for="nameR">Nombre tradicional o regional</label>
+                                <input type="text" class="form-control nameR_color" id="nameR" name="nameR">
+                                <small class="form-text text-danger" id="nameR_error"></small>
                             </div>
                             <div class="form-group">
-                                <label for="titulo">Titulo Obtenido</label>
-                                <input type="text" class="form-control titulo_color" id="titulo" name="titulo">
-                                <small class="form-text text-danger" id="titulo_error"></small>
+                                <label for="nameC">Nombre científicio</label>
+                                <input type="text" class="form-control nameC_color" id="nameC" name="nameC">
+                                <small class="form-text text-danger" id="nameC_error"></small>
                             </div>
                             <div class="form-group">
-                                <label for="entidadEdu">Nombre de la institución</label>
-                                <input type="text" class="form-control entidadEdu_color" id="entidadEdu" name="entidadEdu">
-                                <small class="form-text text-danger" id="entidadEdu_error"></small>
+                                <label for="descrip">Descripción</label>
+                                <textarea class="form-control descrip_color" id="descrip" rows="4" name="descrip"></textarea>
+                                <small class="form-text text-danger" id="descrip_error"></small>
                             </div>
                             <div class="form-group">
-                                <label for="fechGrado">Fecha de grado</label>
-                                <input type="date" class="form-control fechGrado_color" id="fechGrado" name="fechGrado">
-                                <small class="form-text text-danger" id="fechGrado_error"></small>
+                                <label for="photo">Cargar Imagen</label><br>
+                                <input type="file" name="photo" id="photo" class="photo_color">
+                                <small class="form-text text-danger" id="photo_error"></small>
                             </div>
-                            <div class="form-group">
-                                <label for="pdf">Cargar certificado (PDF)</label><br>
-                                <input type="file" name="pdf" id="pdf" class="pdf_color">
-                                <small class="form-text text-danger" id="pdf_error"></small>
-                            </div>
-            
-                            <button type="submit" class="btn btn-success btn-block mt-4">Guardar</button>
+
+                            <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4">Guardar</button>
                             <div id="message"></div>
                             </form>
                     </div>
@@ -129,7 +101,7 @@
             </div>
 
             <section id="result" class="w-100">
-
+            
 
             </section>
 
@@ -200,7 +172,8 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/estudios.js"></script>
+    <script src="../ajax/cultivos.js"></script>
+    
     
 </body>
 </html>

@@ -6,12 +6,15 @@ if(url.split('/').reverse()[0] == ""){
   /* Consultar tratamientos */
   function tratamientos() {
 
-    var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
+/* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
     {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var plaga = urlParams .get('plaga');
+        var cultivo = urlParams .get('cultivo');
     
     
       firebase.auth().onAuthStateChanged(function(user) {
@@ -20,14 +23,42 @@ if(url.split('/').reverse()[0] == ""){
           message(user)
           var email = user.email;
     
+          /* Ubicar nombre plaga */
+          var plaga_name = 
+          {
+            "id_plagas":plaga,
+            "id_cultivo":cultivo,
+            "idUsuCultivo":email
+          };
+
+          $.ajax({
+            data: plaga_name,
+            url: 'plaga.php',
+            type: 'POST',
+            
+            success: function(data)
+            {      
+            var objeto = JSON.parse(data);
+            nombreT_plagas = objeto.nombreT_plagas;
+            
+            var plaga_name = document.getElementById('plaga_name')
+            plaga_name.innerHTML = nombreT_plagas 
+            
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+          });
+
+           /* Mostrar tratamientos del cultivo */
+
           var parametro = 
           {
             "idUsuCultivo":email,
-            "id_plaga":id
+            "id_plaga":plaga,
+            "id_cultivo":cultivo
           };
 
-
-          /* Mostrar tratamientos del cultivo */
           $.ajax({
             data: parametro,
             url: 'consult.php',
@@ -50,31 +81,7 @@ if(url.split('/').reverse()[0] == ""){
               alert("Disculpe, ocurrio un error");           
             }
           });
-          
-          /* Ubicar nombre plaga */
-          var plaga = 
-          {
-            "id_plagas":id,
-          };
-
-          $.ajax({
-            data: plaga,
-            url: 'plaga.php',
-            type: 'POST',
-            
-            success: function(data)
-            {      
-            var objeto = JSON.parse(data);
-            nombreT_plagas = objeto.nombreT_plagas;
-            
-            var plaga_name = document.getElementById('plaga_name')
-            plaga_name.innerHTML = nombreT_plagas 
-            
-            },
-            error: function (err) {
-              alert("Disculpe, ocurrio un error");           
-            }
-          });
+      
 
         }
       });
@@ -164,12 +171,13 @@ $("#t_register").submit(function(e){
 
   if (TpTratamiento != "" & NaTratamiento != ""  & DesTratamiento != "") {
 
-    var loc = document.location.href;
-    var id = loc.split('=')[1];
+    var loc = window.location.search;
+    const urlParams  = new URLSearchParams(loc);
+    var plaga = urlParams .get('plaga');
 
     var parametro = 
     {
-      "IdPlagas":id,
+      "IdPlagas":plaga,
       "TpTratamiento":TpTratamiento,
       "NaTratamiento":NaTratamiento,
       "DesTratamiento":DesTratamiento,
@@ -199,14 +207,18 @@ $("#t_register").submit(function(e){
 
 
 /* Consulta para actualizar tratamientos */
-if(url.split('/').reverse()[0] == "actualizar.html"){ 
+if(url.split('/').reverse()[0] == "actualizar.php"){ 
 
-  var loc = document.location.href;
-    // si existe el interrogante
-    if(loc.indexOf('?')>0)
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
     {
-        // cogemos la parte de la url que hay despues del interrogante
-        var id = loc.split('=')[1];
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var tratamiento = urlParams .get('tratamiento');
+        var plaga = urlParams .get('plaga');
+        var cultivo = urlParams .get('cultivo');
 
         firebase.auth().onAuthStateChanged(function(user) {
         
@@ -216,7 +228,9 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
           
             var parametro = 
             {
-              "idTratamiento":id,
+              "idTratamiento":tratamiento,
+              "id_plagas":plaga,
+              "id_cultivo":cultivo,
               "idUsuCultivo":email
             };
           
@@ -230,7 +244,6 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
               },
               success: function(data)
               {
-
                 if (data=='invalid_user') {
 
                   window.location.replace('../cultivos');
@@ -247,12 +260,12 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
                   document.update.TpTratamiento.value = tipoTratamiento;
                   document.update.NaTratamiento.value = nameTrata;
                   document.update.DesTratamiento.value = pasosTratamiento;
-  
+
                   var btn_back = document.getElementById('btn-back')
-                  btn_back.innerHTML = '<a href="../tratamientos/?plaga='+id_plaga+'" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+                  btn_back.innerHTML = '<a href="../tratamientos/?plaga='+plaga+'&cultivo='+cultivo+'" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
   
                   var btn_update = document.getElementById('btn-update')
-                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;" onclick="update_action('+id_plaga+')">Actualizar</button>'
+                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
 
                 }
 
@@ -275,12 +288,10 @@ if(url.split('/').reverse()[0] == "actualizar.html"){
 $("#t_update").submit(function(e){
   e.preventDefault();
   
-  var loc = document.location.href;
-// si existe el interrogante
-  if(loc.indexOf('?')>0)
-  {
-      // cogemos la parte de la url que hay despues del interrogante
-      var id = loc.split('=')[1];
+      const urlParams  = new URLSearchParams(loc);
+      var tratamiento = urlParams .get('tratamiento');
+      var plaga = urlParams .get('plaga');
+      var cultivo = urlParams .get('cultivo');
 
       var TpTratamiento = document.getElementById('TpTratamiento').value;
       var NaTratamiento = document.getElementById('NaTratamiento').value;
@@ -324,7 +335,7 @@ $("#t_update").submit(function(e){
       
               var parametro = 
               {
-                "idTratamiento":id,
+                "idTratamiento":tratamiento,
                 "TpTratamiento":TpTratamiento,
                 "NaTratamiento":NaTratamiento,
                 "DesTratamiento":DesTratamiento
@@ -341,7 +352,7 @@ $("#t_update").submit(function(e){
                 success: function(response)
                 {
                     $('#message').html(response).fadeIn("slow");
-                    setTimeout(function(){window.location.replace('../tratamientos/?plaga='+id_plaga+'');}, 5000);
+                    setTimeout(function(){window.location.replace('../tratamientos/?plaga='+plaga+'&cultivo='+cultivo);}, 5000);
                 },
                 error: function (err) {
                   alert("Disculpe, ocurrio un error");           
@@ -349,10 +360,7 @@ $("#t_update").submit(function(e){
               });
     
       }
-      
-
-  }else{
-    window.location.replace("../cultivos");
-  }
 
 });
+
+

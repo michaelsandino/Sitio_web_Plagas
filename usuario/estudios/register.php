@@ -28,9 +28,6 @@
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
             Información enviada con exito - Se actualizara dentro un momento el listado de estudios.  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
             </div>';
         }
     }else{
@@ -47,5 +44,3 @@
     include("../../disconnect.php");
     
 ?>
-
-
