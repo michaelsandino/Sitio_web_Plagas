@@ -40,7 +40,7 @@ if(url.split('/').reverse()[0] == ""){
   /* Eliminar cultivos */
   function eliminar(id_cultivo){
 
-    if (confirm("Esta seguro que desea eliminar este cultivo?"))
+    if (confirm("¿Esta seguro que desea eliminar este cultivo?"))
     {
 
       firebase.auth().onAuthStateChanged(function(user) {
@@ -80,7 +80,92 @@ if(url.split('/').reverse()[0] == ""){
         }
       });
     }
-    
+  }
+
+  /* Solicitar aval */
+  function aval(idCultivo){
+
+    if (confirm("¿Esta seguro que desea solicitar el aval?"))
+    {
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          message(user)
+          var email = user.email;
+  
+          var parametro = 
+          {
+            "idCultivo":idCultivo,
+            "idUsuCultivo":email,
+          };
+        
+          $.ajax({
+            data: parametro,
+            url: 'aval.php',
+            type:'POST',
+
+            beforeSend:function (objeto) {
+              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+              console.log(response)
+
+              $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
+
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+        
+          });
+        }
+      });
+    }
+  }
+
+  /* Solicitar nuevamente aval */
+  function repeat_aval(idCultivo){
+
+    if (confirm("¿Esta seguro que desea solicitar nuevamente el aval?"))
+    {
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          message(user)
+          var email = user.email;
+  
+          var parametro = 
+          {
+            "idCultivo":idCultivo,
+            "idUsuCultivo":email,
+          };
+        
+          $.ajax({
+            data: parametro,
+            url: 'repeat_aval.php',
+            type:'POST',
+
+            beforeSend:function (objeto) {
+              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+              console.log(response)
+
+              $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
+
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+        
+          });
+        }
+      });
+    }
   }
   
 
@@ -198,7 +283,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
       
             var parametro = 
             {
-              "id_user":email,
+              "idUsuCultivo":email,
               "id_cultivo":id
             };
           

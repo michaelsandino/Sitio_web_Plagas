@@ -3,9 +3,9 @@
     include("../../connect.php");
 
     $id_cultivo = $_POST['id_cultivo'];
-    $id_user = $_POST['id_user'];
+    $idUsuCultivo = $_POST['idUsuCultivo'];
 
-    $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";  
+    $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo' AND (stado_c='Rechazado' OR stado_c='Pendiente')";  
     $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
     while ($a = mysqli_fetch_assoc($result)) {

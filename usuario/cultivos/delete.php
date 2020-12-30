@@ -11,7 +11,9 @@
     $delete = "DELETE FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";
     $result = mysqli_query($connect,$delete) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">El cultivo seleccionado no puede ser eliminado debido a que esta cuenta con una o más plagas registradas.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
   
-    if ($result) {
+    $check = $connect->affected_rows;
+
+    if ($check) {
 
         $namePhoto=mysqli_fetch_row($consult);
         $namePhoto = $namePhoto[5]; 
@@ -21,6 +23,10 @@
         Cultivo eliminado con Exito - Se actualizara dentro un momento el listado de cultivos.
         </div>';
         
+    }else{
+        echo '<div class="alert alert-danger text-center mt-3" role="alert">
+        invalid_user
+        </div>';
     }
 
    

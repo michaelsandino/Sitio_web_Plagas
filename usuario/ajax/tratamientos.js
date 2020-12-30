@@ -98,31 +98,152 @@ if(url.split('/').reverse()[0] == ""){
 
     if (confirm("Esta seguro que desea eliminar este tratamiento?"))
     {
-      var parametro = 
-      {
-        "idTratamiento":idTratamiento,            
-      };
-        
-      $.ajax({
-        data: parametro,
-        url: 'delete.php',
-        type:'POST',
 
-        beforeSend:function (objeto) {
-          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-          $('#eliminado').html(response).fadeIn("slow");
-          setTimeout(function(){window.location.reload();}, 3000);
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
+      /* obtener los valores enviamos por GET */
+      const urlParams  = new URLSearchParams(loc);
+      /* Buscar en los valores el nombre del campo y obtener su valor*/
+      var plaga = urlParams .get('plaga');
+      var cultivo = urlParams .get('cultivo');
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          message(user)
+          var email = user.email;
+
+          var parametro = 
+          {
+            "idTratamiento":idTratamiento,
+            "id_plaga":plaga,
+            "id_cultivo":cultivo,
+            "idUsuCultivo":email
+          };
+            
+          $.ajax({
+            data: parametro,
+            url: 'delete.php',
+            type:'POST',
+
+            beforeSend:function (objeto) {
+              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+              $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
+            
+          });    
+
         }
-        
-      });     
+      });
+       
     }   
   }
+
+  /* Solicitar aval */
+    function aval(idTratamiento){
+
+      if (confirm("¿Esta seguro que desea solicitar el aval?"))
+      {
+          /* obtener los valores enviamos por GET */
+          var loc = window.location.search;
+          /* Buscar en los valores el nombre del campo y obtener su valor*/
+          const urlParams  = new URLSearchParams(loc);
+          var cultivo = urlParams .get('cultivo');
+          var plaga = urlParams .get('plaga');
+  
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            message(user)
+            var email = user.email;
+    
+            var parametro = 
+            {
+              "idTratamiento":idTratamiento,
+              "id_plagas":plaga,
+              "id_cultivo":cultivo,
+              "idUsuCultivo":email,
+            };
+          
+            $.ajax({
+              data: parametro,
+              url: 'aval.php',
+              type:'POST',
+  
+              beforeSend:function (objeto) {
+                $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              },
+              success: function(response)
+              {
+                console.log(response)
+  
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+  
+              },
+              error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+              }
+          
+            });
+          }
+        });
+      }
+    }
+  
+    /* Solicitar nuevamente aval */
+    function repeat_aval(idTratamiento){
+  
+      if (confirm("¿Esta seguro que desea solicitar nuevamente el aval?"))
+      {
+        /* obtener los valores enviamos por GET */
+        var loc = window.location.search;
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var cultivo = urlParams .get('cultivo');
+        var plaga = urlParams .get('plaga');
+  
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            message(user)
+            var email = user.email;
+    
+            var parametro = 
+            {
+              "idTratamiento":idTratamiento,
+              "id_plagas":plaga,
+              "id_cultivo":cultivo,
+              "idUsuCultivo":email,
+            };
+          
+            $.ajax({
+              data: parametro,
+              url: 'repeat_aval.php',
+              type:'POST',
+  
+              beforeSend:function (objeto) {
+                $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              },
+              success: function(response)
+              {
+                console.log(response)
+  
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+  
+              },
+              error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+              }
+          
+            });
+          }
+        });
+      }
+    }
 
 }
 

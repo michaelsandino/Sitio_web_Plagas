@@ -138,6 +138,104 @@ if(url.split('/').reverse()[0] == ""){
     }
     
   }
+
+    /* Solicitar aval */
+    function aval(id_plagas){
+
+      if (confirm("¿Esta seguro que desea solicitar el aval?"))
+      {
+          /* obtener los valores enviamos por GET */
+          var loc = window.location.search;
+          /* Buscar en los valores el nombre del campo y obtener su valor*/
+          const urlParams  = new URLSearchParams(loc);
+          var cultivo = urlParams .get('cultivo');
+  
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            message(user)
+            var email = user.email;
+    
+            var parametro = 
+            {
+              "id_plagas":id_plagas,
+              "id_cultivo":cultivo,
+              "idUsuCultivo":email,
+            };
+          
+            $.ajax({
+              data: parametro,
+              url: 'aval.php',
+              type:'POST',
+  
+              beforeSend:function (objeto) {
+                $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              },
+              success: function(response)
+              {
+                console.log(response)
+  
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+  
+              },
+              error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+              }
+          
+            });
+          }
+        });
+      }
+    }
+  
+    /* Solicitar nuevamente aval */
+    function repeat_aval(id_plagas){
+  
+      if (confirm("¿Esta seguro que desea solicitar nuevamente el aval?"))
+      {
+        /* obtener los valores enviamos por GET */
+        var loc = window.location.search;
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var cultivo = urlParams .get('cultivo');
+  
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            message(user)
+            var email = user.email;
+    
+            var parametro = 
+            {
+              "id_plagas":id_plagas,
+              "id_cultivo":cultivo,
+              "idUsuCultivo":email,
+            };
+          
+            $.ajax({
+              data: parametro,
+              url: 'repeat_aval.php',
+              type:'POST',
+  
+              beforeSend:function (objeto) {
+                $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              },
+              success: function(response)
+              {
+                console.log(response)
+  
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+  
+              },
+              error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+              }
+          
+            });
+          }
+        });
+      }
+    }
   
 
 /* Registar plaga */
@@ -321,7 +419,6 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
               },
               success: function(data)
               {
-
                 if (data.indexOf("invalid_user")=='-1'){
                   var objeto = JSON.parse(data);
       
