@@ -48,33 +48,16 @@ include("../../connect.php");
 
                         /* Estado por defecto */
                 if('Pendiente'==$view['stado_t']) {
-        
-                    /* Consulta para saber si el tratamiento tiene la plaga activa*/
-                    $review="SELECT * FROM plagas p WHERE p.id_plagas='$id_plaga' AND stado_p='Activo'";
-                    $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-                    $check=mysqli_fetch_row($review);
-                    
-                    if (!$check){        
 
-                        echo
-                        '<br> <a class="dropdown-item" href="actualizar.php?tratamiento='.$view['idTratamiento'].'&plaga='.$id_plaga.'&cultivo='.$id_cultivo.'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
-                        <button class="dropdown-item" onclick="eliminar('.$view['idTratamiento'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-                        </div>
-                        </div>
+                    echo
+                    '<br> <button class="dropdown-item" onclick="aval('.$view['idTratamiento'].');"><img src="../../icons/aval.svg" alt="icono_aval" class="pr-2" height="20px">Solicitar Aval</button>
+                    <a class="dropdown-item" href="actualizar.php?tratamiento='.$view['idTratamiento'].'&plaga='.$id_plaga.'&cultivo='.$id_cultivo.'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
+                    <button class="dropdown-item" onclick="eliminar('.$view['idTratamiento'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
+                    </div>
+                    </div>
                 
-                    </div>';
-        
-                    }else{
-        
-                        echo
-                        '<br> <button class="dropdown-item" onclick="aval('.$view['idTratamiento'].');"><img src="../../icons/aval.svg" alt="icono_aval" class="pr-2" height="20px">Solicitar Aval</button>
-                        <a class="dropdown-item" href="actualizar.php?tratamiento='.$view['idTratamiento'].'&plaga='.$id_plaga.'&cultivo='.$id_cultivo.'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
-                        <button class="dropdown-item" onclick="eliminar('.$view['idTratamiento'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-                        </div>
-                        </div>
-                
-                    </div>';
-                    }
+                 </div>';
+                    
                     
                 /* Estado al momento de socitar aval */
                 }else if('En espera'==$view['stado_t']){

@@ -61,7 +61,7 @@ include("../../connect.php");
                 if('Pendiente'==$view['stado_p']) {
         
                     /* Consulta para saber si la plaga tiene el cultivo activo*/
-                    $review="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo' AND stado_c='Activo'";
+                    $review="SELECT * FROM tratamiento WHERE id_plaga='$view[id_plagas]'";
                     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
                     $check=mysqli_fetch_row($review);
                     

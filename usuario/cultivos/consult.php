@@ -39,51 +39,60 @@ while($view = mysqli_fetch_array($result))
         if('Pendiente'==$view['stado_c']) {
 
             /* Consulta para saber si el cultivo cuanta con almenos 1 plaga y 1 tratamiento */
-            $review="SELECT * FROM cultivo c, plagas p, tratamiento t WHERE p.id_cultivo='$view[idCultivo]' AND c.idCultivo='$view[idCultivo]' AND c.idUsuCultivo='$idUsuCultivo'";
+            $review="SELECT id_plagas FROM cultivo c, plagas p WHERE p.id_cultivo='$view[idCultivo]' AND c.idCultivo='$view[idCultivo]' AND c.idUsuCultivo='$idUsuCultivo'";
             $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-            $id_plaga=mysqli_fetch_row($review);
+            $plagas= $connect->affected_rows;
 
-            if ($id_plaga) {
-                $id_plaga = $id_plaga[8];
-                $review="SELECT * FROM tratamiento WHERE id_plaga='$id_plaga'"; 
-                $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-                $check=mysqli_fetch_row($review);
-            
-                if (!$check){        
-                                    
-                    echo 
-                    '<br> <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
-                    <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-                    <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
-                    </div>
-                    </div>
-            
-                </div>';
+            echo '<br> <a class="dropdown-item">'.$plagas.'</a>';
 
-                }else{
+            if ($plagas>0) {
 
-                    echo 
-                    '<br> <button class="dropdown-item" onclick="aval('.$view['idCultivo'].');"><img src="../../icons/aval.svg" alt="icono_aval" class="pr-2" height="20px">Solicitar Aval</button>
-                    <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
-                    <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-                    <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
-                    </div>
-                    </div>
-            
-                </div>';
+                for ($i=1; $i <= $plagas; $i++) { 
+
+                    $plaga=mysqli_fetch_row($review);
+                    $plaga = $plaga[0];
+
+                    $review_two="SELECT * FROM tratamiento WHERE id_plaga='$plaga'"; 
+                    $review_two = mysqli_query($connect,$review_two) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+
+                    $check=mysqli_fetch_row($review_two);
+
+                    if ($check) {
+
+                        $i = $plagas;
+
+                        echo 
+                        '<br> <button class="dropdown-item" onclick="aval('.$view['idCultivo'].');"><img src="../../icons/aval.svg" alt="icono_aval" class="pr-2" height="20px">Solicitar Aval</button>
+                        <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
+                        <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
+                        <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
+                        </div>
+                        </div>
+                
+                    </div>';
+                    }
+                    else if ($i == $plagas){
+                        echo 
+                        '<br> <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
+                        <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
+                        <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
+                        </div>
+                        </div>
+                
+                    </div>';
+                    }
+
                 }
             }else{
-               
                 echo 
-                    '<br> <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
-                    <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
-                    <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
-                    </div>
-                    </div>
-            
-                </div>';
+                '<br> <a class="dropdown-item" href="actualizar.php?cultivo='.$view['idCultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_actualizar" class="pr-2" height="20px">Actualizar</a>
+                <button class="dropdown-item" onclick="eliminar('.$view['idCultivo'].');"><img src="../../icons/borrar.svg" alt="icono_borrar" class="pr-1" height="20px"> Eliminar</button>
+                <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
+                </div>
+                </div>
+                
+            </div>';
             }
-            
 
         /* Estado al momento de socitar aval */
         }else if('En espera'==$view['stado_c']){
