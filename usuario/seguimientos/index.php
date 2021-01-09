@@ -9,10 +9,10 @@
     <meta name="title" content="Plagas APP">
     <meta name="description" content="Aplicación para la detección de plagas en cultivos, Desarrollado por SENNOVA.">
 
-    <meta name="og:title" content="Perfil | Plagas APP">
+    <meta name="og:title" content="Usuario | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/perfil">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/inicio">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Perfil | Plagas APP</title>
+    <title>Seguimientos | Plagas APP</title>
 
 </head>
 <body>
@@ -35,7 +35,7 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Perfil | Plagas APP</a>
+                Plagas APP</a>
             <?php
             include '../menu.php';
             ?>
@@ -46,35 +46,50 @@
     <div class="container">
 
         <section class="row">
+            
             <div class="col-12">
-                <h1 class="text-center h4 title">Perfil</h1>  
+                <h1 class="text-center h4 title">Seguimientos</h1>
                 <div id="success-message"></div>
-            </div>
-        </section>
-
-        <section class="row">
-            <div class="col-10 col-md-6 col-lg-4 mx-auto">
                 <div id="progress"></div>
             </div>
-        </section>
 
-        <section class="row">
-            <div class="col-auto mx-auto">
- 
-                <div id="img"></div>
+            <div class="col-12">
+            
+                <div id="seguimientos">
 
-                <div class="form-group">
-                    <p class="d-inline w-100"><img src="../../icons/correo.svg" class="mr-3" alt="icono_correo" width="25px"><div id="text_email" class="d-inline"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/perfil.svg" class="mr-3" alt="icono_perfil" width="25px"><div id="text_perfil" style="display: inline;"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/identificacion.svg" class="mr-3" alt="icono_identificacion" width="25"><div id="text_identificacion" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/calendario-naranja.svg" class="mr-3" alt="icono_fecha" width="25"><div id="text_fecha" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/celular.svg" class="mr-3" alt="icono_celular" width="25"><div id="text_telefono" class="d-inline"></div></p> 
+                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                        <label class="btn btn-warning font-weight-bold active">
+                            <input type="radio" name="options" id="option1" data-toggle="collapse" data-target="#solicitudes" aria-expanded="true" aria-controls="collapseOne" checked> Solicitudes
+                        </label>
+                        <label class="btn btn-warning font-weight-bold">
+                            <input type="radio" name="options" id="option2" data-toggle="collapse" data-target="#misseguimientos" aria-expanded="false" aria-controls="collapseTwo"> Mis seguimientos
+                        </label>
+                    </div>
+                    
+                    <!-- <br>
+                    <button type="button" data-toggle="collapse" data-target="#solicitudes" aria-expanded="true" aria-controls="collapseOne" class="btn btn-warning mt-2" style="width: 49%;">Solicitudes</button>
+                    <button type="button" data-toggle="collapse" data-target="#misseguimientos" aria-expanded="false" aria-controls="collapseTwo" class="btn btn-warning mt-2 float-right" style="width: 49%;">Mis seguimientos</button> -->
+
+                    <div class="collapse show" id="solicitudes" data-parent="#seguimientos">
+                        <div class="card card-body p-0" id="result_solicitudes">
+                           
+                        </div>
+                    </div>
+                    
+                    <div class="collapse" id="misseguimientos" data-parent="#seguimientos">
+                        <div class="card card-body p-0" id="result_misseguimientos">
+                       
+                        </div>
+                    </div>
+
                 </div>
-                <a class="btn btn-info btn-block mt-4" href="actualizar.php">Editar</a>
+                            
             </div>
+
         </section>
 
     </div>
+
 
 
      <!-- FOOTER - PIE DE PAGINA -->
@@ -117,11 +132,6 @@
         </div>
     </footer>
 
-
-    
-
-
-
     <!-- <a href="#" class="go-up"> <img src="../icons/flecha-boton.svg" alt="flecha_boton" class="arrow white-icon"> </a> -->
 
     <script src="../../js/jquery-3.5.1.slim.min.js"></script>
@@ -144,7 +154,8 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/perfil.js"></script>
+    <script src="../ajax/seguimientos.js"></script>
+    
 
 </body>
 </html>

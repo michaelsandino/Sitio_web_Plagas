@@ -25,13 +25,10 @@ function observer (){
 function message(user){
     var user = user;
     var contenido = document.getElementById('success-message')
-    var exit = document.getElementById('exit')
     if(user.emailVerified){
       contenido.innerHTML = '';
-      exit.innerHTML = '<hr class="menu-divider"> <button class="nav-link active btn btn-link" onclick="exit()"><img src="../../icons/salida.svg" class="pr-2"  alt="icono_salir" height="20px">Cerrar Sesión</button>';
     }else{
       contenido.innerHTML = '<div class="mt-4 alert alert-danger text-center" role="alert">Recuerda: Tu correo no esta verificado</div>';
-      exit.innerHTML = '<hr class="menu-divider"> <button class="nav-link active btn btn-link" onclick="exit()"><img src="../../icons/salida.svg" class="pr-2"  alt="icono_salir" height="20px">Cerrar Sesión</button>';
     }
 }
 

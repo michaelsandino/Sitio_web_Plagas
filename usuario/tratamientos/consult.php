@@ -84,7 +84,7 @@ include("../../connect.php");
                         <a class="dropdown-item" href="actualizar.php?tratamiento='.$view['idTratamiento'].'&plaga='.$id_plaga.'&cultivo='.$id_cultivo.'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
                         <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_T.'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_T).'</p>
                         </div>
                         </div>
         
@@ -97,7 +97,7 @@ include("../../connect.php");
                         echo 
                         '<br> <button class="dropdown-item disabled"><img src="../../icons/verificado.svg" alt="icono_aval" class="pr-2" height="20px">Verificado</button> <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_T.'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_T).'</p>
                         </div>
                         </div>
         

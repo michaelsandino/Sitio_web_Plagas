@@ -9,10 +9,10 @@
     <meta name="title" content="Plagas APP">
     <meta name="description" content="Aplicación para la detección de plagas en cultivos, Desarrollado por SENNOVA.">
 
-    <meta name="og:title" content="Perfil | Plagas APP">
+    <meta name="og:title" content="Usuario | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/perfil">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/inicio">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,13 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Perfil | Plagas APP</title>
+    <style>
+        .text-orange{
+            color: #d88b09;
+        }
+    </style>
+
+    <title>Jurado | Plagas APP</title>
 
 </head>
 <body>
@@ -35,7 +41,7 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Perfil | Plagas APP</a>
+                Jurado | Plagas APP</a>
             <?php
             include '../menu.php';
             ?>
@@ -46,35 +52,21 @@
     <div class="container">
 
         <section class="row">
-            <div class="col-12">
-                <h1 class="text-center h4 title">Perfil</h1>  
-                <div id="success-message"></div>
+            
+            <div class="col-12 pb-3">
+                <h1 class="text-center h4 title">Jurado</h1>
+                <div id="success-message"></div>              
+                <div id="progress"></div>                
             </div>
-        </section>
 
-        <section class="row">
-            <div class="col-10 col-md-6 col-lg-4 mx-auto">
-                <div id="progress"></div>
+            <div class="col-12 col-lg-6 mx-auto" id="result">
+                
             </div>
-        </section>
 
-        <section class="row">
-            <div class="col-auto mx-auto">
- 
-                <div id="img"></div>
-
-                <div class="form-group">
-                    <p class="d-inline w-100"><img src="../../icons/correo.svg" class="mr-3" alt="icono_correo" width="25px"><div id="text_email" class="d-inline"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/perfil.svg" class="mr-3" alt="icono_perfil" width="25px"><div id="text_perfil" style="display: inline;"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/identificacion.svg" class="mr-3" alt="icono_identificacion" width="25"><div id="text_identificacion" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/calendario-naranja.svg" class="mr-3" alt="icono_fecha" width="25"><div id="text_fecha" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/celular.svg" class="mr-3" alt="icono_celular" width="25"><div id="text_telefono" class="d-inline"></div></p> 
-                </div>
-                <a class="btn btn-info btn-block mt-4" href="actualizar.php">Editar</a>
-            </div>
         </section>
 
     </div>
+
 
 
      <!-- FOOTER - PIE DE PAGINA -->
@@ -117,11 +109,6 @@
         </div>
     </footer>
 
-
-    
-
-
-
     <!-- <a href="#" class="go-up"> <img src="../icons/flecha-boton.svg" alt="flecha_boton" class="arrow white-icon"> </a> -->
 
     <script src="../../js/jquery-3.5.1.slim.min.js"></script>
@@ -144,7 +131,8 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/perfil.js"></script>
+    <script src="../ajax/jurado.js"></script>
+    
 
 </body>
 </html>

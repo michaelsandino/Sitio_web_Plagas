@@ -28,7 +28,7 @@ include("../../connect.php");
         
                     <div class="col-12">
                         <p class="text text-left mx-3"><strong>Tipo:</strong> '.$view['tp_plaga'].' <br> 
-                        <strong>Nombre científico:</strong> '.$view['nombreC_plagas'].'</p>
+                        <strong>Nombre científico:</strong> <em>'.$view['nombreC_plagas'].'</em></p>
                     </div>
         
                     <div class="col-12">
@@ -116,7 +116,7 @@ include("../../connect.php");
                         <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
                         <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_sp.'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
                         </div>
                         </div>
         
@@ -131,7 +131,7 @@ include("../../connect.php");
                         <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
                         <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_sp.'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
                         </div>
                         </div>
         

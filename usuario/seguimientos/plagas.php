@@ -9,10 +9,10 @@
     <meta name="title" content="Plagas APP">
     <meta name="description" content="Aplicación para la detección de plagas en cultivos, Desarrollado por SENNOVA.">
 
-    <meta name="og:title" content="Perfil | Plagas APP">
+    <meta name="og:title" content="Usuario | Plagas APP">
     <meta name="og:description" content="Panel de control de usuarios logueados">
     <meta name="og:type" content="website">
-    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/perfil">
+    <meta name="og:url" content="https://plagas-app.netlify.app/usuario/cultivos">
     <meta name="og:image" content="../../img/logo.jpg">
     <meta name="og:site_name" content="Plagas APP - Detector de plagas">
    
@@ -26,7 +26,41 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Perfil | Plagas APP</title>
+    <style>
+        @media screen and (min-width:0px){
+            .plag_image{
+                width: 100%;
+                padding-top: 15px;
+            }
+        }
+
+        @media screen and (min-width:576px){
+            .plag_image{
+                width: 49%;
+                padding-top: 15px;
+            }
+        }
+
+        @media screen and (min-width:992px){
+            .plag_image{
+                width: 24.5%;
+                padding-top: 15px;
+            }
+
+        }
+        .center_container{
+            text-align: center;
+            justify-content: center;
+        }
+
+        .boton{
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <title>Plagas | Plagas APP</title>
 
 </head>
 <body>
@@ -35,7 +69,7 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Perfil | Plagas APP</a>
+                Plagas APP</a>
             <?php
             include '../menu.php';
             ?>
@@ -46,32 +80,21 @@
     <div class="container">
 
         <section class="row">
+            
             <div class="col-12">
-                <h1 class="text-center h4 title">Perfil</h1>  
+                <h1 class="text-center h4 title">Validar Plaga</h1>
                 <div id="success-message"></div>
-            </div>
-        </section>
-
-        <section class="row">
-            <div class="col-10 col-md-6 col-lg-4 mx-auto">
                 <div id="progress"></div>
             </div>
-        </section>
 
-        <section class="row">
-            <div class="col-auto mx-auto">
- 
-                <div id="img"></div>
+            <section class="w-100">
 
-                <div class="form-group">
-                    <p class="d-inline w-100"><img src="../../icons/correo.svg" class="mr-3" alt="icono_correo" width="25px"><div id="text_email" class="d-inline"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/perfil.svg" class="mr-3" alt="icono_perfil" width="25px"><div id="text_perfil" style="display: inline;"></div></p>
-                    <p class="d-inline w-100"><img src="../../icons/identificacion.svg" class="mr-3" alt="icono_identificacion" width="25"><div id="text_identificacion" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/calendario-naranja.svg" class="mr-3" alt="icono_fecha" width="25"><div id="text_fecha" class="d-inline"></div></p> 
-                    <p class="d-inline w-100"><img src="../../icons/celular.svg" class="mr-3" alt="icono_celular" width="25"><div id="text_telefono" class="d-inline"></div></p> 
-                </div>
-                <a class="btn btn-info btn-block mt-4" href="actualizar.php">Editar</a>
+            <div class="col-12 border rounded pt-0 pb-2 pl-0 pr-0" id="panel">
+          
             </div>
+
+            </section>
+
         </section>
 
     </div>
@@ -117,11 +140,6 @@
         </div>
     </footer>
 
-
-    
-
-
-
     <!-- <a href="#" class="go-up"> <img src="../icons/flecha-boton.svg" alt="flecha_boton" class="arrow white-icon"> </a> -->
 
     <script src="../../js/jquery-3.5.1.slim.min.js"></script>
@@ -144,7 +162,8 @@
 
     <!-- AJAX -->
     <script src="../ajax/jquery-3.5.1.min.js"></script>
-    <script src="../ajax/perfil.js"></script>
-
+    <script src="../ajax/seguimientos.js"></script>
+    
+    
 </body>
 </html>

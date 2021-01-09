@@ -297,6 +297,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
               },
               success: function(data)
               {
+
                 if (data.indexOf("invalid_user")=='-1'){
                   var objeto = JSON.parse(data);
         

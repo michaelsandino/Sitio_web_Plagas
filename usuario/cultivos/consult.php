@@ -15,12 +15,12 @@ while($view = mysqli_fetch_array($result))
         <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">'.$view['nameRegional'].'</p>
 
         <div class="row">
-            <div class="col-5 col-lg-4 pr-0">
-                <img src="cultivos_img/'.$view['imagenC'].'" class="w-100 ml-3" alt="imagen_cultivo">
+            <div class="col-11 col-md-5 col-lg-4 pr-0">
+                <img src="cultivos_img/'.$view['imagenC'].'" class="w-100 mx-3 mb-2" alt="imagen_cultivo">
             </div>
 
-            <div class="col-6 col-lg-7">
-                <p class="text text-left mx-3"><strong>Nombre científico:</strong> <br>'.$view['nameCientifico'].'</p>
+            <div class="col-12 col-md-6 col-lg-7">
+                <p class="text text-left mx-3"><strong>Nombre científico: </strong> <em>'.$view['nameCientifico'].'</em> </p>
             </div>
 
             <div class="col-12">
@@ -42,8 +42,6 @@ while($view = mysqli_fetch_array($result))
             $review="SELECT id_plagas FROM cultivo c, plagas p WHERE p.id_cultivo='$view[idCultivo]' AND c.idCultivo='$view[idCultivo]' AND c.idUsuCultivo='$idUsuCultivo'";
             $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
             $plagas= $connect->affected_rows;
-
-            echo '<br> <a class="dropdown-item">'.$plagas.'</a>';
 
             if ($plagas>0) {
 
@@ -121,7 +119,7 @@ while($view = mysqli_fetch_array($result))
                 <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
                 <div class="dropdown-divider"></div>
                 <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_sp.'</p>
+                <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
                 </div>
                 </div>
 
@@ -136,7 +134,7 @@ while($view = mysqli_fetch_array($result))
                 <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
                 <div class="dropdown-divider"></div>
                 <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.$nota_sp.'</p>
+                <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
                 </div>
                 </div>
 
