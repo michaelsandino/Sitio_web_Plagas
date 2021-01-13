@@ -106,7 +106,7 @@
                             <a class="nav-link active" href="../perfil"><img src="../../icons/usuario.svg" class="pr-2"  alt="icono_usuario" height="20px">Perfil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../jurado"><img src="../../icons/jurado.svg" class="pr-2"  alt="icono_cultivo" height="20px">Validar Solicitudes</a>
+                            <a class="nav-link active" href="../solicitudes"><img src="../../icons/jurado.svg" class="pr-2"  alt="icono_cultivo" height="20px">Validar Solicitudes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="../../"><img src="../../icons/flecha.svg" class="pl-1"  alt="icono_flecha" height="20px" style="transform: rotate(180deg);">Salir</a>

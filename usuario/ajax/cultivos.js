@@ -24,7 +24,12 @@ if(url.split('/').reverse()[0] == ""){
             },
             success: function(response)
             {
-              $('#result').html(response);
+              if (response!='invalid_user'){
+                $('#result').html(response);
+              }else{
+                window.location.replace('../inicio');
+              }
+              
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           

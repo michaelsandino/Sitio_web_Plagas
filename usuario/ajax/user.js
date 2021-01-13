@@ -19,7 +19,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         },
         success: function(data)
         {
-          console.log(data)
             if (!data) {
                 window.location.replace("../registro");
             }     

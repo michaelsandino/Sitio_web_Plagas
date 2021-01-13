@@ -20,9 +20,13 @@ if(url.split('/').reverse()[1] == "jurado"){
             beforeSend:function (objeto) {
               $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
             },
-            success: function(data)
+            success: function(response)
             {
-                $('#result').html(data);     
+                if (response!='invalid_user'){
+                    $('#result').html(response);
+                }else{
+                    window.location.replace('../inicio');
+                }
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
