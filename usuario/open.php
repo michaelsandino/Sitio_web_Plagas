@@ -1,6 +1,6 @@
 <?php
 
-    include("../../connect.php");
+    include("../connect.php");
 
     $email = $_POST['email'];
 
@@ -30,6 +30,6 @@
         echo $user;
     } */
 
-    include("../../disconnect.php");
+    include("../disconnect.php");
 
 ?>

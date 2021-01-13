@@ -148,11 +148,7 @@ function observer (){
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      console.log("ingresando...")
-      window.location.replace("../usuario/inicio");
-    } else {
-      /* Borrar mensajes al cerrar sesión */
-      console.log("Sesión cerrada...")
+      setTimeout(function(){window.location.replace("../usuario/inicio");}, 3000);
     }
   });
 }
@@ -179,7 +175,38 @@ function google() {
   })
 
   .then(result => {
-    console.log("Ingresando con Google...")
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var email = user.email;
+
+        var parametro = 
+        {
+            "email":email,
+        };
+        $.ajax({
+          url: '../usuario/open.php',
+          type: 'POST',
+          data:parametro,
+          
+          success: function(response)
+          { 
+            if(!response){
+              window.location.replace("../registro");
+            }else{
+              window.location.replace("../usuario/inicio");
+            }   
+            
+          },
+          error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+  
+      });
+
+      }
+    });
+      
     aut_error.innerHTML = '';  
   })
 
@@ -217,7 +244,38 @@ function facebook() {
   })
 
   .then(result => {
-    console.log("Ingresando con facebook...")
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var email = user.email;
+
+        var parametro = 
+        {
+            "email":email,
+        };
+        $.ajax({
+          url: '../usuario/open.php',
+          type: 'POST',
+          data:parametro,
+          
+          success: function(response)
+          { 
+            if(!response){
+              window.location.replace("../usuario/registro");
+            }else{
+              window.location.replace("../usuario/inicio");
+            }   
+            
+          },
+          error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+  
+      });
+
+      }
+    });
+
     aut_error.innerHTML = ''; 
   })
 

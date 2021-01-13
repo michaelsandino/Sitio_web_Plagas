@@ -11,11 +11,10 @@ function observer (){
         var uid = user.uid;
         var providerData = user.providerData;
       } else {
-        console.log('NO existe usuario activo')
         /* Borrar mensajes al cerrar sesión */
         var contenido = document.getElementById('success-message')
         contenido.innerHTML = '';
-        window.location.replace("../../ingresar");
+        setTimeout(function(){window.location.replace('../../ingresar');}, 3000);
       }
     });
   }
@@ -34,15 +33,30 @@ function message(user){
 
 /* Funcion de cerrar Sesión */
 function exit(){
-    firebase.auth().signOut()
-    .then(function(){
-      console.log('Saliendo...')
-      window.location.replace("../../ingresar");
-    })
-    .catch(function(error){
-      console.log(error)
-    })
+  firebase.auth().signOut()
+  .then(function(){
+    
+    $.ajax({
+      url: '../close.php',
+      type: 'POST',
+      
+      success: function(response)
+      { 
+        console.log(response)
+        window.location.replace("../../ingresar");
+      },
+      error: function (err) {
+        alert("Disculpe, ocurrio un error");           
+      }
+    });
+    
+  })
+  .catch(function(error){
+    console.log(error)
+  })
 }
+
+
 
 
 

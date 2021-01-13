@@ -53,14 +53,20 @@
                 ';
             }
             if ($stado_s=="Admitido") {
+                $Nota_s = $check[3];
                 echo'
                 <p class="subtitle h5 text-center text-orange">Felicitaciones su cuenta fue validada con éxito</p>
                 <p class="text text-center ">Ahora haces parte de nuestro equipo de jurados.</p>
                 <hr>
                 <p class="subtitle text-orange">Recuerda:</p>
-                <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Para iniciar el proceso de verificación de información de los investigadores deben ir a la opción "Seguimientos" la cual hace parte del menú.</p>
+                <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Para iniciar el proceso de verificación de información de los investigadores deben ir a la opción "Seguimientos" la cual hace parte del menú. 
+                <br> <strong>En caso de no visualizar la opción de seguimientos en el menu, cierre sesión e ingrese nuevamente.</strong></p>
                 <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Solo se puede realizar un seguimiento por investigación al tiempo.</p>
                 <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Recuerda que la información que valides podra ser vista por todos los usuarios que tengan instalada la App y que tu eres el representante del aval, mas no la app.</p>
+                
+                <p class="subtitle text-orange">Nota:</p>
+                <p class="text">'.nl2br($Nota_s).'</p>
+            
                 <hr>
                 <p class="text text-center"> <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pr-2"> Gracias por confiar en nosotros <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pl-2"></p>
                 ';
