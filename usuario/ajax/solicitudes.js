@@ -89,11 +89,9 @@ if(url.split('/').reverse()[0] == "info.php"){
 
         /* Mensaje de error */
         var cumplimiento_error = document.getElementById('cumplimiento_error')
-        var nota_error = document.getElementById('nota_error')
 
         /* Color de alerta */
         var cumplimiento_color = document.getElementsByClassName("cumplimiento_color");
-        var nota_color = document.getElementsByClassName("nota_color");
 
         if (!option1 & !option2) {
         cumplimiento_error.innerHTML = 'Elija alguna de las opciones.'
@@ -103,15 +101,7 @@ if(url.split('/').reverse()[0] == "info.php"){
         $('.cumplimiento_color').removeClass('text-danger')
         }
 
-        if (!nota) {
-        nota_error.innerHTML = 'Campo obligatorio.'
-        $('.nota_color').addClass('border-danger')
-        }else{
-        nota_error.innerHTML = ''
-        $('.nota_color').removeClass('border-danger')
-        }
-
-        if ((option1 != "" | option2 != "")  & nota != ""){
+        if (option1 != "" | option2 != ""){
 
 
         if(option1) {

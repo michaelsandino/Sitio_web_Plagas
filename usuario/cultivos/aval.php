@@ -2,8 +2,12 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $idUsuCultivo = $_SESSION['user'];
+
     $idCultivo = $_POST['idCultivo'];
-    $idUsuCultivo = $_POST['idUsuCultivo'];
     $fechaActual = date('d-m-Y');
 
     $update = "UPDATE cultivo SET stado_c='En espera' WHERE idCultivo='$idCultivo' AND idUsuCultivo='$idUsuCultivo'";
@@ -19,7 +23,7 @@
     
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Solicitud de aval con exito - Se actualizara dentro un momento el listado de cultivos. 
+            Solicitud de aval con éxito - Se actualizara dentro un momento el listado de cultivos. 
             </div>';
         }
     }else{

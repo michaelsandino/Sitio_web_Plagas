@@ -2,8 +2,11 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $idUsuCultivo = $_SESSION['user'];
     $id_cultivo = $_POST['id_cultivo'];
-    $idUsuCultivo = $_POST['idUsuCultivo'];
 
     $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";  
     $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
@@ -20,7 +23,7 @@
         unlink('cultivos_img/'.$namePhoto); 
     
         echo '<div class="alert alert-success text-center mt-3" role="alert">
-        Cultivo eliminado con Exito - Se actualizara dentro un momento el listado de cultivos.
+        Cultivo eliminado con éxito - Se actualizara dentro un momento el listado de cultivos.
         </div>';
         
     }else{

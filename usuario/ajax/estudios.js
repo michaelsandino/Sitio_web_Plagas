@@ -3,39 +3,28 @@ url = window.location.pathname;
 if(url.split('/').reverse()[0] == ""){   
   /* Consultar estudios */
   function estudios() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        message(user)
-        var email = user.email;
 
-        var parametro = 
-        {
-          "id_usu":email
-        };
-    
-        $.ajax({
-          data: parametro,
-          url: 'consult.php',
-          type: 'POST',
-          
-          beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-          },
-          success: function(response)
-          {
-            if (response!='invalid_user'){
-            $('#result').html(response);
-            }else{
-              window.location.replace('../inicio');
-            }
-          },
-          error: function (err) {
-            alert("Disculpe, ocurrio un error");           
-          }
-
-        });
+    $.ajax({
+      url: 'consult.php',
+      type: 'POST',
+      
+      beforeSend:function (objeto) {
+        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+      },
+      success: function(response)
+      {
+        if (response!='invalid_user'){
+        $('#result').html(response);
+        }else{
+          window.location.replace('../inicio');
+        }
+      },
+      error: function (err) {
+        alert("Disculpe, ocurrio un error");           
       }
+
     });
+      
   }
     estudios();
 
@@ -44,38 +33,32 @@ if(url.split('/').reverse()[0] == ""){
 
     if (confirm("Esta seguro que desea eliminar este estudio?"))
     {
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          message(user)
-          var email = user.email;
 
-          var parametro = 
-          {
-            "idFormacion":idFormacion,
-            "id_usu":email,
-          };
-        
-          $.ajax({
-            data: parametro,
-            url: 'delete.php',
-            type:'POST',
+      var parametro = 
+      {
+        "idFormacion":idFormacion,
+      };
+    
+      $.ajax({
+        data: parametro,
+        url: 'delete.php',
+        type:'POST',
 
-            beforeSend:function (objeto) {
-              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-            },
-            success: function(response)
-            {
-              console.log(response)
-              $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
-            },
-            error: function (err) {
-              alert("Disculpe, ocurrio un error");           
-            }
-        
-          });
+        beforeSend:function (objeto) {
+          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        },
+        success: function(response)
+        {
+          console.log(response)
+          $('#eliminado').html(response).fadeIn("slow");
+          setTimeout(function(){window.location.reload();}, 3000);
+        },
+        error: function (err) {
+          alert("Disculpe, ocurrio un error");           
         }
+    
       });
+        
     }
     
   }
@@ -145,40 +128,34 @@ if(url.split('/').reverse()[0] == ""){
     }
 
     if (nvformativo != "" & titulo != ""  & entidadEdu != "" & fechGrado != "" & pdf != "") {
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          message(user)
-          var email = user.email;
 
-          var parametros = new FormData($("#e_register")[0]);
-          parametros.append("id_user", email);
+      var parametros = new FormData($("#e_register")[0]);
 
-          $.ajax({
-              data:parametros,
-              url:'register.php',
-              type:'POST',
-              contentType: false,
-              processData: false,
+      $.ajax({
+          data:parametros,
+          url:'register.php',
+          type:'POST',
+          contentType: false,
+          processData: false,
 
-              beforeSend:function (objeto) {
-                $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-            },
-              success: function(response)
-              {    
-                $("#message").html(response).fadeIn("slow");
-                
-                if (response.indexOf("El formato del archivo no es valida.")=='-1') {
-                  document.getElementById("e_register").reset();  
-                  setTimeout(function(){window.location.reload();}, 3000);
-                }
-                
-              },
-              error: function (err) {
-                alert("Disculpe, ocurrio un error");           
+          beforeSend:function (objeto) {
+            $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        },
+          success: function(response)
+          {    
+            $("#message").html(response).fadeIn("slow");
+            
+            if (response.indexOf("El formato del archivo no es valida.")=='-1') {
+              document.getElementById("e_register").reset();  
+              setTimeout(function(){window.location.reload();}, 3000);
             }
-          });
+            
+          },
+          error: function (err) {
+            alert("Disculpe, ocurrio un error");           
         }
       });
+        
     }
   });   
 }
@@ -196,62 +173,54 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
       const urlParams  = new URLSearchParams(loc);
       var id = urlParams .get('estudio');
 
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            message(user)
-          var email = user.email;
-      
-            var parametro = 
-            {
-              "ideUsu":email,
-              "id":id
-            };
-          
-            $.ajax({
-              data: parametro,
-              url: 'update.php',
-              type:'POST',
-          
-              beforeSend:function (objeto) {
-                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-              },
-              success: function(data)
-              {
-                if (data.indexOf("invalid_user")=='-1'){
-                  var objeto = JSON.parse(data);
-      
-                  nivelFormativo = objeto.nivelFormativo; 
-                  tituloFormacion = objeto.tituloFormacion; 
-                  entidadEducativa = objeto.entidadEducativa; 
-                  fechaGrado = objeto.fechaGrado; 
-                  soporte = objeto.soporte; 
+      var parametro = 
+      {
+        "id":id
+      };
     
-                  document.update.nvformativo.value = nivelFormativo;
-                  document.update.titulo.value = tituloFormacion;
-                  document.update.entidadEdu.value = entidadEducativa;
-                  document.update.fechGrado.value = fechaGrado;
-  
-                  var file_pdf = document.getElementById('file_pdf')
-                  file_pdf.innerHTML = '<a href="http://localhost/PROYECTOS/SENA/Sitio_Web_Plagas/usuario/estudios/estudios_pdf/'+soporte+'">'+soporte+'</a>'
-  
-                  var btn_back = document.getElementById('btn-back')
-                  btn_back.innerHTML = '<a href="../estudios/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+      $.ajax({
+        data: parametro,
+        url: 'update.php',
+        type:'POST',
     
-                  var btn_update = document.getElementById('btn-update')
-                  btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
-                }else{
-                  window.location.replace('../estudios');
-                }
+        beforeSend:function (objeto) {
+          $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        },
+        success: function(data)
+        {
+          if (data.indexOf("invalid_user")=='-1'){
+            var objeto = JSON.parse(data);
 
+            nivelFormativo = objeto.nivelFormativo; 
+            tituloFormacion = objeto.tituloFormacion; 
+            entidadEducativa = objeto.entidadEducativa; 
+            fechaGrado = objeto.fechaGrado; 
+            soporte = objeto.soporte; 
 
-              },
-              error: function (err) {
-                alert("Disculpe, ocurrio un error");           
-              }
-        
-            });
+            document.update.nvformativo.value = nivelFormativo;
+            document.update.titulo.value = tituloFormacion;
+            document.update.entidadEdu.value = entidadEducativa;
+            document.update.fechGrado.value = fechaGrado;
+
+            var file_pdf = document.getElementById('file_pdf')
+            file_pdf.innerHTML = '<a href="http://localhost/PROYECTOS/SENA/Sitio_Web_Plagas/usuario/estudios/estudios_pdf/'+soporte+'">'+soporte+'</a>'
+
+            var btn_back = document.getElementById('btn-back')
+            btn_back.innerHTML = '<a href="../estudios/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'
+
+            var btn_update = document.getElementById('btn-update')
+            btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
+          }else{
+            window.location.replace('../estudios');
           }
-        });
+
+
+        },
+        error: function (err) {
+          alert("Disculpe, ocurrio un error");           
+        }
+  
+      });
 
     }else{
       window.location.replace("../estudios");
@@ -321,45 +290,36 @@ $("#e_update").submit(function(e){
         }
 
         if (nvformativo != "" & titulo != ""  & entidadEdu != "" & fechGrado != "") {
+ 
+          var parametros = new FormData($("#e_update")[0]);
+          parametros.append("idFormacion", estudio);
 
-          firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              message(user)
-              var email = user.email;
-              
-              var parametros = new FormData($("#e_update")[0]);
-              parametros.append("id_usu", email);
-              parametros.append("idFormacion", estudio);
+          $.ajax({
+            data: parametros,
+            url: 'update_action.php',
+            type:'POST',
+            contentType: false,
+            processData: false,
+        
+            beforeSend:function (objeto) {
+              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+            $('#message').html(response).fadeIn("slow");
 
-              $.ajax({
-                data: parametros,
-                url: 'update_action.php',
-                type:'POST',
-                contentType: false,
-                processData: false,
-            
-                beforeSend:function (objeto) {
-                  $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-                },
-                success: function(response)
-                {
-                $('#message').html(response).fadeIn("slow");
-
-                if (response.indexOf("El formato del archivo no es valida")=='-1'){
-                  setTimeout(function(){window.location.replace("../estudios");}, 5000);
-                }
-                   
-                    
-                },
-                error: function (err) {
-                  alert("Disculpe, ocurrio un error");           
-                }
-          
-              });
+            if (response.indexOf("El formato del archivo no es valida")=='-1'){
+              setTimeout(function(){window.location.replace("../estudios");}, 5000);
             }
-          });
-        }
+                
+                
+            },
+            error: function (err) {
+              alert("Disculpe, ocurrio un error");           
+            }
       
+          });
+        }  
 
 }else{
   window.location.replace("../estudios");

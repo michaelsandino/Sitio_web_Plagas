@@ -1,7 +1,11 @@
 <?php
     include("../../connect.php");
 
-    $id_usu = $_POST['id_usu'];
+    session_start();
+    ob_start();
+
+    $id_usu = $_SESSION['user'];
+
     $idFormacion = $_POST['idFormacion'];
 
     $nvformativo = $_POST['nvformativo'];
@@ -20,7 +24,7 @@
     
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información actualizada con exito - Sera redireccionado en un momento.
+            Información actualizada con éxito - Sera redireccionado en un momento.
             </div>';
         }  
         
@@ -49,7 +53,7 @@
         
             if($result){
                 echo '<div class="alert alert-success text-center mt-3" role="alert">
-                Información actualizada con exito - Sera redireccionado en un momento.
+                Información actualizada con éxito - Sera redireccionado en un momento.
                 </div>';
             }  
     

@@ -1,7 +1,11 @@
 <?php
     include("../../connect.php");
 
-    $email = $_POST['email'];
+    session_start();
+    ob_start();
+
+    $email = $_SESSION['user'];
+    
     $name = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $tp_id = $_POST['ti'];

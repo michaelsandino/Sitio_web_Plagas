@@ -148,7 +148,7 @@ function observer (){
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      setTimeout(function(){window.location.replace("../usuario/inicio");}, 3000);
+      setTimeout(function(){window.location.replace("../usuario/inicio");}, 1000);
     }
   });
 }
@@ -192,10 +192,10 @@ function google() {
           success: function(response)
           { 
             if(!response){
-              window.location.replace("../registro");
+              window.location.replace("../usuario/registro");
             }else{
               window.location.replace("../usuario/inicio");
-            }   
+            }     
             
           },
           error: function (err) {

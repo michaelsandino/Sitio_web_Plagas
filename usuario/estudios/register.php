@@ -3,12 +3,16 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $id_usu = $_SESSION['user'];
+
     $nivelForm = $_POST['nvformativo'];
     $tituloForm = $_POST['titulo'];
     $entidad = $_POST['entidadEdu'];
     $fechagrado = $_POST['fechGrado'];
     $pdf = $_FILES['pdf'];
-    $id_user = $_POST['id_user'];
 
     if ($pdf["type"] == "application/pdf") {
        
@@ -22,12 +26,12 @@
         $location = "https://plagas-app.emprendegrm.com/usuario/estudios/estudios_pdf/".$name_encrip;
         /* PRESTAR ATENCIÓN EN LA PARTE DE LOCATION, TALVES SE DEBE COLOCAR AL FINAL .".pdf" */
 
-        $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_user','$name_encrip')";
+        $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_usu','$name_encrip')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
         
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información enviada con exito - Se actualizara dentro un momento el listado de estudios.  
+            Información enviada con éxito - Se actualizara dentro un momento el listado de estudios.  
             </div>';
         }
     }else{
@@ -38,8 +42,6 @@
         </button>
         </div>';
     }
-
-
 
     include("../../disconnect.php");
     

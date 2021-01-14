@@ -2,13 +2,17 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $id_user = $_SESSION['user'];
+
     $nameR = $_POST['nameR'];
     $nameC = $_POST['nameC'];
     $descrip = $_POST['descrip'];
     /* Permite realizar el registro de la información de textos largos */
     $descrip= mysqli_real_escape_string($connect,$descrip);
     $photo = $_FILES['photo'];
-    $id_user = $_POST['id_user'];
 
     if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
        
@@ -23,7 +27,7 @@
     
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información enviada con exito - Se actualizara dentro un momento el listado de cultivos. 
+            Información enviada con éxito - Se actualizara dentro un momento el listado de cultivos. 
             </div>';
         }
     }else{

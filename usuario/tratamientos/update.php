@@ -2,14 +2,18 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $idUsuCultivo = $_SESSION['user'];
+
     $id_cultivo = $_POST['id_cultivo'];
-    $id_plagas = $_POST['id_plagas'];
+    $id_plaga = $_POST['id_plaga'];
     $idTratamiento = $_POST['idTratamiento'];
-    $idUsuCultivo = $_POST['idUsuCultivo'];
 
     $review="SELECT * FROM cultivo c, plagas p, tratamiento t WHERE 
-    t.idTratamiento='$idTratamiento' AND t.id_plaga='$id_plagas' AND (t.stado_t='Pendiente' OR t.stado_t='Rechazado') 
-    AND p.id_plagas='$id_plagas' AND c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND c.idUsuCultivo='$idUsuCultivo'";  
+    t.idTratamiento='$idTratamiento' AND t.id_plaga='$id_plaga' AND (t.stado_t='Pendiente' OR t.stado_t='Rechazado') 
+    AND p.id_plagas='$id_plaga' AND c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND c.idUsuCultivo='$idUsuCultivo'";  
 
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
     $check=mysqli_fetch_row($review);

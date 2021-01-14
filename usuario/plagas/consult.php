@@ -2,8 +2,12 @@
 
 include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $idUsuCultivo = $_SESSION['user'];
+
     $id_cultivo = $_POST['id_cultivo'];
-    $idUsuCultivo = $_POST['idUsuCultivo'];
 
     $review="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');

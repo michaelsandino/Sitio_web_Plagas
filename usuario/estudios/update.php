@@ -2,7 +2,11 @@
 
     include("../../connect.php");
 
-    $id_usu = $_POST['ideUsu'];
+    session_start();
+    ob_start();
+
+    $id_usu = $_SESSION['user'];
+
     $idFormacion = $_POST['id'];
 
     $consult="SELECT * FROM formacionapp WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";  

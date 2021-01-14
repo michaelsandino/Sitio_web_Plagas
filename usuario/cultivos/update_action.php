@@ -1,8 +1,13 @@
 <?php
     include("../../connect.php");
 
+
+    session_start();
+    ob_start();
+
+    $id_user = $_SESSION['user'];
+
     $id_cultivo = $_POST['id_cultivo'];
-    $id_user = $_POST['id_user'];
 
     $nameR = $_POST['nameR'];
     $nameC = $_POST['nameC'];
@@ -21,7 +26,7 @@
     
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información actualizada con exito - Sera redireccionado en un momento.
+            Información actualizada con éxito - Sera redireccionado en un momento.
             </div>';
         }  
         
@@ -51,7 +56,7 @@
         
             if($result){
                 echo '<div class="alert alert-success text-center mt-3" role="alert">
-                Información actualizada con exito - Sera redireccionado en un momento.
+                Información actualizada con éxito - Sera redireccionado en un momento.
                 </div>';
             }  
     

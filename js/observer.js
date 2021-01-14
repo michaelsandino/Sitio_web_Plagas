@@ -3,18 +3,11 @@ function observer (){
       if (user) {
         /* Crear mensaje de bienvenida */
         message(user)
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
       } else {
         /* Borrar mensajes al cerrar sesión */
         var contenido = document.getElementById('success-message')
         contenido.innerHTML = '';
-        setTimeout(function(){window.location.replace('../../ingresar');}, 3000);
+        setTimeout(function(){window.location.replace('../../ingresar');}, 1000);
       }
     });
   }

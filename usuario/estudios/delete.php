@@ -2,8 +2,12 @@
 
     include("../../connect.php");
 
+    session_start();
+    ob_start();
+
+    $id_usu = $_SESSION['user'];
+
     $idFormacion = $_POST['idFormacion'];
-    $id_usu = $_POST['id_usu'];
    
     $consult="SELECT * FROM formacionapp WHERE idFormacion='$idFormacion' AND id_usu='$id_usu'";
     $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
@@ -18,7 +22,7 @@
 
     if ($result){
         echo '<div class="alert alert-success text-center mt-3" role="alert">
-        Estudio eliminado con Exito - Se actualizara dentro un momento el listado de estudios.
+        Estudio eliminado con éxito - Se actualizara dentro un momento el listado de estudios.
         </div>';
     } 
 

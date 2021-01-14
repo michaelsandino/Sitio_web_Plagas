@@ -6,7 +6,7 @@ session_start();
 ob_start();
 
 $user_rol = $_SESSION['rol']; 
-$idUsuCultivo = $_POST['idUsuCultivo'];
+$idUsuCultivo = $_SESSION['user'];
 
 if ($user_rol=='Admi' OR $user_rol=='usuario'){
 

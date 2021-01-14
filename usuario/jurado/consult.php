@@ -5,8 +5,8 @@
     session_start();
     ob_start();
 
+    $email = $_SESSION['user'];
     $user_rol = $_SESSION['rol'];
-    $email = $_POST['email'];
 
     if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
@@ -60,16 +60,25 @@
                 <hr>
                 <p class="subtitle text-orange">Recuerda:</p>
                 <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Para iniciar el proceso de verificación de información de los investigadores deben ir a la opción "Seguimientos" la cual hace parte del menú. 
-                <br> <strong>En caso de no visualizar la opción de seguimientos en el menu, cierre sesión e ingrese nuevamente.</strong></p>
+                <br> <strong>En caso de no visualizar la opción de seguimientos en el menú, cierre sesión e ingrese nuevamente.</strong></p>
                 <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Solo se puede realizar un seguimiento por investigación al tiempo.</p>
                 <p class="text"><img src="../../icons/verificacion.svg" height="20px" alt="icono_verificado" class="pr-2">Recuerda que la información que valides podra ser vista por todos los usuarios que tengan instalada la App y que tu eres el representante del aval, mas no la app.</p>
-                
-                <p class="subtitle text-orange">Nota:</p>
-                <p class="text">'.nl2br($Nota_s).'</p>
-            
-                <hr>
-                <p class="text text-center"> <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pr-2"> Gracias por confiar en nosotros <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pl-2"></p>
                 ';
+                if ($Nota_s==NULL) {
+                    echo'                
+                    <hr>
+                    <p class="text text-center"> <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pr-2"> Gracias por confiar en nosotros <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pl-2"></p>
+                    ';
+                }else{
+                    echo'
+                    <p class="subtitle text-orange">Nota:</p>
+                    <p class="text">'.nl2br($Nota_s).'</p>
+                
+                    <hr>
+                    <p class="text text-center"> <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pr-2"> Gracias por confiar en nosotros <img src="../../icons/felicitaciones.svg" height="20px" alt="icono_verificado" class="pl-2"></p>
+                    ';
+                }
+                
             }
         }
     }else{

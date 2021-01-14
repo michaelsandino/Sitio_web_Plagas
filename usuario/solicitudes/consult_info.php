@@ -94,8 +94,7 @@
                             
                             <div class="form-group">
                                 <label for="nota">Nota</label>
-                                <textarea class="form-control nota_color" id="nota" rows="3" name="nota"></textarea>
-                                <small class="form-text text-danger" id="nota_error"></small>
+                                <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
                             </div>
 
                             
