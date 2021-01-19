@@ -26,7 +26,22 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../img/logo.svg">
 
-    <title>Plagas | Plagas APP</title>
+    <style>
+        .R_A{
+            position: absolute;
+            top: 0;
+            right: 20px;
+            color:#eb9a12;  
+            z-index: 1;
+        }
+        .R_A:hover{
+            color:#eb9a12; 
+        }
+
+        
+    </style>
+
+    <title>Tratamientos | Plagas APP</title>
 
 </head>
 
@@ -50,7 +65,7 @@
                     <a class="nav-link" href="../#preguntas_frecuentes">Preguntas Frecuentes</a>
 
                     <a class="nav-link" href="../novedades">Novedades</a>
-                    <a class="nav-link active" href="#">Plagas</a>
+                    <a class="nav-link" href="../cultivos">Cultivos</a>
                     <a class="nav-link" href="../contacto">Contacto</a>
                     <a class="nav-link" href="../ingresar">Ingresar</a>
                 </div>
@@ -65,17 +80,17 @@
             
             <!-- Titulo y subtitulo -->
             <div class="col-12">
-                <h1 class="text-center h4 title pb-4">Plagas</h1>
+                <h1 class="text-center h4 title pb-4">Tratamientos</h1>
             </div>
             <!-- Mensaje -->
             <div class="col-12 col-lg-6 pb-2">
                 <h2 class="h5 subtitle">Consultar</h2>
-                <p class="text mb-0">Mediante letras o palabras podrás realizar la búsqueda del <strong>cultivo</strong> de su interés, en caso que no obtengas resultados lo más seguro es que no contemos en el momento una solución para ti.</p>
+                <p class="text mb-0">Mediante letras o palabras podrás realizar la búsqueda de los <strong>tratamientos</strong> con referencia a la presente plaga, en caso que no obtengas resultados lo más seguro es que no contemos en el momento una solución para ti.</p>
             </div>
             <!-- Buscardor -->
             <div class="col-12 col-lg-6">
                 <h2 class="h5 subtitle pb-2">Buscador</h2>
-                <input class="form-control mr-sm-2 w-100" type="text" name="filtro" id="filtro" placeholder="Nombre del cultivo">
+                <input class="form-control mr-sm-2 w-100" type="text" name="filtro" id="filtro" placeholder="Nombre del tratamiento">
             </div>
 
          
@@ -92,6 +107,8 @@
             <div class="col-12 pb-4">
                 <div id="success-message"></div>
                 <div id="progress mt-5"></div>
+                <div id="plaga" class="text-center h5 subtitle mt-3 mb-0"></div>
+
             </div>
 
             <section id="result" class="w-100">
@@ -99,15 +116,6 @@
 
             </section>
             
-        </section>
-
-        <!-- PAGINACIÓN -->
-        <section class="row">
-            <div class="col-auto mx-auto pt-5">
-
-            
-
-            </div>
         </section>
 
     </div>
@@ -161,7 +169,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- Ajax -->
     <script src="../usuario/ajax/jquery-3.5.1.min.js"></script>
-    <script src="../js/cultivos.js"></script>
+    <script src="../js/consultas.js"></script>
 </body>
     
 </html>

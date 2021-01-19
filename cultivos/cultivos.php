@@ -35,22 +35,22 @@ include("../connect.php");
     '<div class="col-12 border rounded pt-0 pl-0 pr-0">
 
         <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">'.$view['nameRegional'].'</p>
-        <a href="'.$view['UrlCultivo_ra'].'" target="_blank" class="btn position-absolute" style="color:#eb9a12; right:0;">R/A <img src="../icons/realidad-aumentada.svg" height="30px" class="pl-2" alt="icono_plaga"></a>
+        
 
         <div class="row">
             <div class="col-11 col-md-5 col-lg-4 pr-0">
                 <img src="../usuario/cultivos/cultivos_img/'.$view['imagenC'].'" class="w-100 mx-3 mb-2" alt="imagen_cultivo">
             </div>
 
-            <div class="col-12 col-md-6 col-lg-7">
-                <p class="text text-left mx-3"><strong>Nombre científico: </strong> <em>'.$view['nameCientifico'].'</em> </p>
+            <div class="col-12 col-md-7 col-lg-8">
+                <p class="text text-left mx-3"><strong>Nombre científico: </strong> <em>'.$view['nameCientifico'].'</em> <a href="'.$view['UrlCultivo_ra'].'" target="_blank" class="btn R_A">R/A <img src="../icons/realidad-aumentada.svg" height="30px" class="pl-2" alt="icono_plaga"></a></p>
             </div>
 
             <button class="btn btn-light btn-block mx-3 mt-2" type="button" data-toggle="collapse" data-target="#ver_detalles_'.$view['idCultivo'].'" aria-expanded="false" aria-controls="ver_detalles_'.$view['idCultivo'].'">Ver Detalles<img src="../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></button>
 
             <div class="col-12 collapse " id="ver_detalles_'.$view['idCultivo'].'">
                 <p class="text mt-3 mx-3">'.nl2br($view['descripCultivo']).'</p>
-                <a href="plagas.php?cultivo='.$view['idCultivo'].'" class=" btn btn-light btn-block font-weight-bold">Plagas y enfermedades<img src="../icons/plaga-2.svg" height="25px" class="pl-2" alt="icono_plaga"></a> 
+                <a href="plagas.html?cultivo='.$view['idCultivo'].'&pagina=1" class=" btn btn-light btn-block font-weight-bold">Plagas y enfermedades<img src="../icons/plaga-2.svg" height="25px" class="pl-2" alt="icono_plaga"></a> 
             </div>
             
 
