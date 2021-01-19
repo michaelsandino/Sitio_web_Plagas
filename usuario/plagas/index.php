@@ -30,21 +30,38 @@
         @media screen and (min-width:0px){
             .plag_image{
                 width: 100%;
-                padding-top: 15px;
+                padding-top: 15px; 
             }
         }
 
         @media screen and (min-width:576px){
             .plag_image{
-                width: 49%;
-                padding-top: 15px;
+                height: 250px;
+                width: 250px;
+                object-fit: cover;
+            }
+        }
+        @media screen and (min-width:768px){
+            .plag_image{
+                height: 335px;
+                width: 335px;
+                object-fit: cover;
             }
         }
 
         @media screen and (min-width:992px){
             .plag_image{
-                width: 24.5%;
-                padding-top: 15px;
+                height: 228px;
+                width: 228px;
+                object-fit: cover;
+            }
+        }
+
+        @media screen and (min-width:1200px){
+            .plag_image{
+                height: 272px;
+                width: 272px;
+                object-fit: cover;
             }
 
         }

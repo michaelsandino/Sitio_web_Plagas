@@ -14,7 +14,7 @@
 
     if($result){
         echo '<div class="alert alert-success text-center mt-3" role="alert">
-        Información actualizada con exito - Sera redireccionado en un momento.
+        Información actualizada con éxito - Sera redireccionado en un momento.
         </div>';
     }
 

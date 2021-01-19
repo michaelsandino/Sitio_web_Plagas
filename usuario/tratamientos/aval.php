@@ -31,7 +31,7 @@
         
         if($result){
             echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Solicitud de aval con exito - Se actualizara dentro un momento el listado de Tratamientos. 
+            Solicitud de aval con éxito - Se actualizara dentro un momento el listado de Tratamientos. 
             </div>';
          }
   

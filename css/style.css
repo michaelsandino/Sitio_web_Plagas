@@ -332,6 +332,10 @@ font-size: 40px;
     background-color: var(--primary_color);
 }
 
+.text-orange{
+    color: var(--primary_color);
+}
+
 /* puntos suspensivos en resultados de plagas */
 .plague-text{
     height: 200px;

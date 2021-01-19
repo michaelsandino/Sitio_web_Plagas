@@ -57,15 +57,20 @@
             
                 <div id="seguimientos">
 
-                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                        <label class="btn btn-warning font-weight-bold active">
-                            <input type="radio" name="options" id="option1" data-toggle="collapse" data-target="#solicitudes" aria-expanded="true" aria-controls="collapseOne" checked> Solicitudes
-                        </label>
-                        <label class="btn btn-warning font-weight-bold">
-                            <input type="radio" name="options" id="option2" data-toggle="collapse" data-target="#misseguimientos" aria-expanded="false" aria-controls="collapseTwo"> Mis seguimientos
-                        </label>
+                    <div class="bg-white shadow-sm" style="position: -webkit-sticky; position: sticky; top: 61px; z-index: 1;">
+                        <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                            <label class="btn btn-warning font-weight-bold active">
+                                <input type="radio" name="options" id="option1" data-toggle="collapse" data-target="#solicitudes" aria-expanded="true" aria-controls="collapseOne" checked> Solicitudes
+                            </label>
+                            <label class="btn btn-warning font-weight-bold">
+                                <input type="radio" name="options" id="option2" data-toggle="collapse" data-target="#misseguimientos" aria-expanded="false" aria-controls="collapseTwo"> Mis seguimientos
+                            </label>
+                        </div>
+                        
+                        <div class="col-12" id="message"></div>
                     </div>
                     
+
                     <!-- <br>
                     <button type="button" data-toggle="collapse" data-target="#solicitudes" aria-expanded="true" aria-controls="collapseOne" class="btn btn-warning mt-2" style="width: 49%;">Solicitudes</button>
                     <button type="button" data-toggle="collapse" data-target="#misseguimientos" aria-expanded="false" aria-controls="collapseTwo" class="btn btn-warning mt-2 float-right" style="width: 49%;">Mis seguimientos</button> -->

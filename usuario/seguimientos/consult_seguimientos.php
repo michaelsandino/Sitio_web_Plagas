@@ -12,7 +12,7 @@ include("../../connect.php");
         
         /* Consulta en Cultivos */
 
-        $consult1="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_sp IS NULL";  
+        $consult1="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_sp IS NULL ORDER BY s.fech_ini ASC";  
         $result1 = mysqli_query($connect,$consult1) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view1 = mysqli_fetch_array($result1))
@@ -32,7 +32,7 @@ include("../../connect.php");
 
         /* Consulta en plagas */
 
-        $consult2="SELECT * FROM solicitud_plaga s, plagas p, cultivo c, usuarioapp u WHERE s.id_plagaSolict = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_plag IS NULL";  
+        $consult2="SELECT * FROM solicitud_plaga s, plagas p, cultivo c, usuarioapp u WHERE s.id_plagaSolict = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_plag IS NULL ORDER BY s.fech_iniPlag ASC";  
         $result2 = mysqli_query($connect,$consult2) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view2 = mysqli_fetch_array($result2))
@@ -41,7 +41,7 @@ include("../../connect.php");
             <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view2['fech_iniPlag'].'</strong></p>
 
             <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view2['nameUsu'].' '.$view2['apellidoUsu'].'
-            <br><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view2['nombreT_plagas'].'</br></p> 
+            <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view2['nameRegional'].'</br></p> 
             <hr>
             <p class="subtitle px-3 mb-2">Tipo de solicitud:</p> 
             <p class="text px-3"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px">Plaga</p> 
@@ -52,7 +52,7 @@ include("../../connect.php");
 
         /* Consulta en tratamientos */
 
-        $consult3="SELECT * FROM solicitud_tratamiento s, tratamiento t, plagas p, cultivo c, usuarioapp u WHERE s.id_tatamientos = t.idTratamiento AND t.id_plaga = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_T IS NULL";  
+        $consult3="SELECT * FROM solicitud_tratamiento s, tratamiento t, plagas p, cultivo c, usuarioapp u WHERE s.id_tatamientos = t.idTratamiento AND t.id_plaga = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND c.idUsuCultivo!='$user_email' AND s.evaluador_T IS NULL ORDER BY s.fech_iniT ASC";  
         $result3 = mysqli_query($connect,$consult3) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view3 = mysqli_fetch_array($result3))
@@ -61,7 +61,7 @@ include("../../connect.php");
             <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view3['fech_iniT'].'</strong></p>
 
             <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view3['nameUsu'].' '.$view3['apellidoUsu'].'
-            <br><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view3['nameTrata'].'</br></p> 
+            <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view3['nameRegional'].'</br></p> 
             <hr>
             <p class="subtitle px-3 mb-2">Tipo de solicitud:</p> 
             <p class="text px-3"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px">Tratamiento</p> 

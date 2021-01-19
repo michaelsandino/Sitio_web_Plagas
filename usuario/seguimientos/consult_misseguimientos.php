@@ -12,7 +12,7 @@ include("../../connect.php");
 
         /* Consulta en Cultivos */
 
-        $consult1="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND s.evaluador_sp = '$user_email'";
+        $consult1="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND s.evaluador_sp = '$user_email' ORDER BY s.fech_ini ASC";
         $result1 = mysqli_query($connect,$consult1) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view1 = mysqli_fetch_array($result1))
@@ -32,7 +32,7 @@ include("../../connect.php");
 
         /* Consulta en plagas */
 
-        $consult2="SELECT * FROM solicitud_plaga s, plagas p, cultivo c, usuarioapp u WHERE s.id_plagaSolict = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND s.evaluador_plag = '$user_email'"; 
+        $consult2="SELECT * FROM solicitud_plaga s, plagas p, cultivo c, usuarioapp u WHERE s.id_plagaSolict = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND s.evaluador_plag = '$user_email' ORDER BY s.fech_iniPlag ASC"; 
         $result2 = mysqli_query($connect,$consult2) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view2 = mysqli_fetch_array($result2))
@@ -51,7 +51,7 @@ include("../../connect.php");
 
     /* Consulta en tratamientos */
 
-        $consult3="SELECT * FROM solicitud_tratamiento s, tratamiento t, plagas p, cultivo c, usuarioapp u WHERE s.id_tatamientos = t.idTratamiento AND t.id_plaga = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND evaluador_T = '$user_email'";  
+        $consult3="SELECT * FROM solicitud_tratamiento s, tratamiento t, plagas p, cultivo c, usuarioapp u WHERE s.id_tatamientos = t.idTratamiento AND t.id_plaga = p.id_plagas AND p.id_cultivo=c.idCultivo AND c.idUsuCultivo=u.email AND evaluador_T = '$user_email' ORDER BY s.fech_iniT ASC";  
         $result3 = mysqli_query($connect,$consult3) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view3 = mysqli_fetch_array($result3))

@@ -23,7 +23,7 @@
 
             if ($result){
                 echo '<div class="alert alert-success text-center mt-3" role="alert">
-                Tratamiento eliminado con Exito - Se actualizara dentro un momento el listado de Tratamientos.
+                Tratamiento eliminado con éxito - Se actualizara dentro un momento el listado de Tratamientos.
                 </div>';
             } 
         }else{

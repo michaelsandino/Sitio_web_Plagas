@@ -15,7 +15,7 @@ $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger
 
     if($result){
         echo '<div class="alert alert-success text-center mt-3" role="alert">
-            Información enviada con exito - Se actualizara dentro un momento el listado de tratamientos.  
+            Información enviada con éxito - Se actualizara dentro un momento el listado de tratamientos.  
             </div>';
     }
 

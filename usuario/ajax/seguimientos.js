@@ -55,7 +55,7 @@ if(url.split('/').reverse()[0] == ""){
 
   /* añadir solicitud de cultivo a lista */
   function añadir_c(solicitud){
-    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos?"))
+    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos? holaaa"))
     {     
 
       var parametro = 
@@ -73,7 +73,13 @@ if(url.split('/').reverse()[0] == ""){
         },
         success: function(response)
         {
-           window.location.reload();
+          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
+            /* window.location.reload(); */
+            console.log(response)
+          }else{
+            $("#message").html(response).fadeIn("slow");
+          }
+           
         },
         error: function (err) {
           alert("Disculpe, ocurrio un error");           
@@ -102,7 +108,12 @@ if(url.split('/').reverse()[0] == ""){
         },
         success: function(response)
         {
-           window.location.reload();
+          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
+            /* window.location.reload(); */
+            console.log(response)
+          }else{
+            $("#message").html(response).fadeIn("slow");
+          }
         },
         error: function (err) {
           alert("Disculpe, ocurrio un error");           
@@ -132,7 +143,12 @@ if(url.split('/').reverse()[0] == ""){
         },
         success: function(response)
         {
-           window.location.reload();
+          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
+            /* window.location.reload(); */
+            console.log(response)
+          }else{
+            $("#message").html(response).fadeIn("slow");
+          }
         },
         error: function (err) {
           alert("Disculpe, ocurrio un error");           
@@ -201,11 +217,9 @@ if(url.split('/').reverse()[0] == "cultivos.php"){
 
     /* Mensaje de error */
     var cumplimiento_error = document.getElementById('cumplimiento_error')
-    var nota_error = document.getElementById('nota_error')
 
     /* Color de alerta */
     var cumplimiento_color = document.getElementsByClassName("cumplimiento_color");
-    var nota_color = document.getElementsByClassName("nota_color");
 
     if (!option1 & !option2) {
       cumplimiento_error.innerHTML = 'Elija alguna de las opciones.'
@@ -215,15 +229,7 @@ if(url.split('/').reverse()[0] == "cultivos.php"){
       $('.cumplimiento_color').removeClass('text-danger')
     }
 
-    if (!nota) {
-      nota_error.innerHTML = 'Campo obligatorio.'
-      $('.nota_color').addClass('border-danger')
-    }else{
-      nota_error.innerHTML = ''
-      $('.nota_color').removeClass('border-danger')
-    }
-
-    if ((option1 != "" | option2 != "")  & nota != ""){
+    if (option1 != "" | option2 != ""){
 
 
       if(option1) {
@@ -320,11 +326,9 @@ if(url.split('/').reverse()[0] == "plagas.php"){
 
     /* Mensaje de error */
     var cumplimiento_error = document.getElementById('cumplimiento_error')
-    var nota_error = document.getElementById('nota_error')
 
     /* Color de alerta */
     var cumplimiento_color = document.getElementsByClassName("cumplimiento_color");
-    var nota_color = document.getElementsByClassName("nota_color");
 
     if (!option1 & !option2) {
       cumplimiento_error.innerHTML = 'Elija alguna de las opciones.'
@@ -334,15 +338,7 @@ if(url.split('/').reverse()[0] == "plagas.php"){
       $('.cumplimiento_color').removeClass('text-danger')
     }
 
-    if (!nota) {
-      nota_error.innerHTML = 'Campo obligatorio.'
-      $('.nota_color').addClass('border-danger')
-    }else{
-      nota_error.innerHTML = ''
-      $('.nota_color').removeClass('border-danger')
-    }
-
-    if ((option1 != "" | option2 != "")  & nota != ""){
+    if (option1 != "" | option2 != ""){
 
 
       if(option1) {
@@ -435,15 +431,12 @@ if(url.split('/').reverse()[0] == "tratamientos.php"){
 
     var option1 = document.getElementById('option1').checked;
     var option2 = document.getElementById('option2').checked;
-    var nota = document.getElementById('nota').value; 
 
     /* Mensaje de error */
     var cumplimiento_error = document.getElementById('cumplimiento_error')
-    var nota_error = document.getElementById('nota_error')
 
     /* Color de alerta */
     var cumplimiento_color = document.getElementsByClassName("cumplimiento_color");
-    var nota_color = document.getElementsByClassName("nota_color");
 
     if (!option1 & !option2) {
       cumplimiento_error.innerHTML = 'Elija alguna de las opciones.'
@@ -453,15 +446,7 @@ if(url.split('/').reverse()[0] == "tratamientos.php"){
       $('.cumplimiento_color').removeClass('text-danger')
     }
 
-    if (!nota) {
-      nota_error.innerHTML = 'Campo obligatorio.'
-      $('.nota_color').addClass('border-danger')
-    }else{
-      nota_error.innerHTML = ''
-      $('.nota_color').removeClass('border-danger')
-    }
-
-    if ((option1 != "" | option2 != "")  & nota != ""){
+    if (option1 != "" | option2 != ""){
 
 
       if(option1) {

@@ -72,8 +72,7 @@
                                 <small class="form-text text-danger" id="cumplimiento_error"></small>
                                 <br>
                                 <label class="font-weight-bold" for="nota">Nota</label>
-                                <textarea class="form-control nota_color" id="nota" rows="3" name="nota"></textarea>
-                                <small class="form-text text-danger" id="nota_error"></small>
+                                <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
 
                                 <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_plaga();">Guardar</button>
                                 
