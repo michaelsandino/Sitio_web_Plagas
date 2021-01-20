@@ -40,7 +40,7 @@ include("../connect.php");
             <div class="row">
 
                 <div class="col-12">
-                    <p class="text text-left mx-3"><strong>Tipo de tratamiento</strong>: <br>'.$view['tipoTratamiento'].' <a href="" target="_blank" class="btn R_A">R/A <img src="../icons/realidad-aumentada.svg" height="30px" class="pl-2" alt="icono_plaga"></a></p>
+                    <p class="text text-left mx-3"><strong>Tipo de tratamiento</strong>: <br>'.$view['tipoTratamiento'].'</p>
                 </div>
 
                 <div class="col-12">
@@ -61,7 +61,7 @@ include("../connect.php");
                 if ($pagina!=1) {
                     echo 
                     '<li class="page-item">
-                        <a class="page-link" href="cultivo.html?pagina='.($pagina-1).'">Anterior</a>
+                        <a class="page-link" href="tratamientos.html?plaga='.$plaga.'&pagina='.($pagina-1).'">Anterior</a>
                     </li>';
                 }else{
                     echo 
@@ -75,16 +75,16 @@ include("../connect.php");
 
             for ($i=1; $i <= $npage ; $i++) { 
                 if ($pagina!=$i) {
-                    echo'<li class="page-item"><a class="page-link" href="cultivo.html?pagina='.$i.'">'.$i.'</a></li>';
+                    echo'<li class="page-item"><a class="page-link" href="tratamientos.html?plaga='.$plaga.'&pagina='.$i.'">'.$i.'</a></li>';
                 }else{
-                    echo'<li class="page-item"><a class="page-link bg-orange text-white" href="cultivo.html?pagina='.$i.'">'.$i.'</a></li>';
+                    echo'<li class="page-item"><a class="page-link bg-orange text-white" href="tratamientos.html?plaga='.$plaga.'&pagina='.$i.'">'.$i.'</a></li>';
                 }
             }
 
             if ($pagina!=$npage) {
                 echo 
                 '<li class="page-item">
-                    <a class="page-link" href="cultivo.html?pagina='.($pagina+1).'">Siguiente</a>
+                    <a class="page-link" href="tratamientos.html?plaga='.$plaga.'&pagina='.($pagina+1).'">Siguiente</a>
                 </li>';
             }else{
                 echo 

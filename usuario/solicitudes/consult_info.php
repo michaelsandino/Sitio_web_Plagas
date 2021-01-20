@@ -10,7 +10,7 @@
 
     if ($user_rol=='Administrador') {
 
-        $consult="SELECT * FROM usuarioapp u,solicitud_cuenta s WHERE u.email='$email' AND u.tpUsuario='usuario' AND s.stado_s='Revisión'";  
+        $consult="SELECT * FROM usuarioapp u,solicitud_cuenta s WHERE u.email='$email' AND s.idSolicitante='$email' AND u.tpUsuario='usuario' AND s.stado_s='Revisión'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         /* Permite saber la cantidad de filas afectas por la ultima consulta, delete o update. */

@@ -40,7 +40,7 @@ include("../connect.php");
         <div class="row">
 
             <div class="col-12">
-                <p class="text text-left mx-3"><strong>Tipo:</strong> '.$view['tp_plaga'].' <br> <a href="'.$view['UrlPlagas'].'" target="_blank" class="btn R_A">R/A <img src="../icons/realidad-aumentada.svg" height="30px" class="pl-2" alt="icono_plaga"></a>
+                <p class="text text-left mx-3"><strong>Tipo:</strong> '.$view['tp_plaga'].' <br>
                 <strong>Nombre científico:</strong> <em>'.$view['nombreC_plagas'].'</em></p>
             </div>
 
@@ -76,7 +76,7 @@ include("../connect.php");
                 if ($pagina!=1) {
                     echo 
                     '<li class="page-item">
-                        <a class="page-link" href="cultivo.html?pagina='.($pagina-1).'">Anterior</a>
+                        <a class="page-link" href="plagas.html?cultivo='.$cultivo.'&pagina='.($pagina-1).'">Anterior</a>
                     </li>';
                 }else{
                     echo 
@@ -90,16 +90,16 @@ include("../connect.php");
 
             for ($i=1; $i <= $npage ; $i++) { 
                 if ($pagina!=$i) {
-                    echo'<li class="page-item"><a class="page-link" href="cultivo.html?pagina='.$i.'">'.$i.'</a></li>';
+                    echo'<li class="page-item"><a class="page-link" href="plagas.html?cultivo='.$cultivo.'&pagina='.$i.'">'.$i.'</a></li>';
                 }else{
-                    echo'<li class="page-item"><a class="page-link bg-orange text-white" href="cultivo.html?pagina='.$i.'">'.$i.'</a></li>';
+                    echo'<li class="page-item"><a class="page-link bg-orange text-white" href="plagas.html?cultivo='.$cultivo.'&pagina='.$i.'">'.$i.'</a></li>';
                 }
             }
 
             if ($pagina!=$npage) {
                 echo 
                 '<li class="page-item">
-                    <a class="page-link" href="cultivo.html?pagina='.($pagina+1).'">Siguiente</a>
+                    <a class="page-link" href="plagas.html?cultivo='.$cultivo.'&pagina='.($pagina+1).'">Siguiente</a>
                 </li>';
             }else{
                 echo 

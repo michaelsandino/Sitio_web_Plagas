@@ -1,18 +1,18 @@
 url = window.location.pathname;
 
-/* Consultar */
+
+/* ------------ CULTIVOS ------------ */
+
 if(url.split('/').reverse()[0] == ""){   
 
 $(cultivos());
 
-  /* Consultar cultivos */
   function cultivos(filtro) {
 
     var loc = window.location.search;
     
     if(loc)
     {
-        /* Buscar en los valores el nombre del campo y obtener su valor*/
         const urlParams  = new URLSearchParams(loc);
         var pagina = urlParams .get('pagina');
 
@@ -57,6 +57,7 @@ $(cultivos());
     {
         var valorFiltro=$(this).val();
         if (valorFiltro!="") {
+            history.pushState(null, "", "?pagina=1");
             cultivos(valorFiltro);
         }else{
             cultivos();
@@ -67,76 +68,12 @@ $(cultivos());
 }
 
 
-/* Consulta para actualizar cultivos */
+/* ------------ PLAGAS ------------ */ 
+
 if(url.split('/').reverse()[0] == "plagas.html"){ 
 
-$(plagas());
-
-/* Consultar cultivos */
-function plagas(filtro) {
-
+    /* ------ nombre cultivo ------- */
     var loc = window.location.search;
-    
-    if(loc)
-    {
-        /* Buscar en los valores el nombre del campo y obtener su valor*/
-        const urlParams  = new URLSearchParams(loc);
-        var pagina = urlParams .get('pagina');
-        var cultivo = urlParams .get('cultivo');
-
-        var parametro = 
-        {
-            "filtro_c":filtro,      
-            "pagina":pagina,      
-            "cultivo":cultivo,      
-        };
-
-        $.ajax({
-        url: 'plagas.php',
-        type: 'POST',
-        dataType:'html',
-        data:parametro,
-
-        beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-            if (!response) {
-                $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
-            }else{
-                $('#result').html(response);
-            } 
-            
-        },
-        error: function (err) {
-            alert("Disculpe, ocurrio un error");           
-        }
-
-        });
-
-    }else{
-        window.location.replace('../cultivos');
-    }  
-        
-}
-
-    $(document).on('keyup', '#filtro', function()
-    {
-        var valorFiltro=$(this).val();
-        if (valorFiltro!="") {
-            plagas(valorFiltro);
-        }else{
-            plagas();
-        }
-
-    });
-
-
-    /* ------ NOMBRE DEL CULTIVO ------- */
-
-    var loc = window.location.search;
-    /* Buscar en los valores el nombre del campo y obtener su valor*/
     const urlParams  = new URLSearchParams(loc);
     var cultivo = urlParams .get('cultivo');
 
@@ -171,81 +108,79 @@ function plagas(filtro) {
         alert("Disculpe, ocurrio un error");           
     }
 
-    });     
-    
-}
+    });    
 
+    /* ------ Consulta plaga ------ */ 
+    $(plagas());
 
+    function plagas(filtro) {
 
-if(url.split('/').reverse()[0] == "tratamientos.html"){ 
-
-$(tratamientos());
-
-/* Consultar cultivos */
-function tratamientos(filtro) {
-
-    var loc = window.location.search;
-    
-    if(loc)
-    {
-        /* Buscar en los valores el nombre del campo y obtener su valor*/
-        const urlParams  = new URLSearchParams(loc);
-        var pagina = urlParams .get('pagina');
-        var plaga = urlParams .get('plaga');
-
-        var parametro = 
-        {
-            "filtro_c":filtro,      
-            "pagina":pagina,      
-            "plaga":plaga,      
-        };
-
-        $.ajax({
-        url: 'tratamientos.php',
-        type: 'POST',
-        dataType:'html',
-        data:parametro,
-
-        beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-            if (!response) {
-                $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
-            }else{
-                $('#result').html(response);
-            } 
-            
-        },
-        error: function (err) {
-            alert("Disculpe, ocurrio un error");           
-        }
-
-        });
-
-    }else{
-        window.location.replace('../cultivos');
-    }  
+        var loc = window.location.search;
         
-}
+        if(loc)
+        {
+            const urlParams  = new URLSearchParams(loc);
+            var pagina = urlParams .get('pagina');
+            var cultivo = urlParams .get('cultivo');
 
+            var parametro = 
+            {
+                "filtro_c":filtro,      
+                "pagina":pagina,      
+                "cultivo":cultivo,      
+            };
+
+            $.ajax({
+            url: 'plagas.php',
+            type: 'POST',
+            dataType:'html',
+            data:parametro,
+
+            beforeSend:function (objeto) {
+                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+                if (!response) {
+                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
+                }else{
+                    $('#result').html(response);
+                } 
+                
+            },
+            error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+            }
+
+            });
+
+        }else{
+            window.location.replace('../cultivos');
+        }  
+            
+    }
+
+    /* Filtro para consulta */
     $(document).on('keyup', '#filtro', function()
     {
         var valorFiltro=$(this).val();
         if (valorFiltro!="") {
-            tratamientos(valorFiltro);
+            history.pushState(null, "", '?cultivo='+cultivo+'&pagina=1');
+            plagas(valorFiltro);
         }else{
-            tratamientos();
+            plagas();
         }
 
-    });
+    }); 
+}
 
 
-    /* ------ NOMBRE DEL CULTIVO ------- */
+/* ------------ TRATAMIENTOS ------------ */
 
+if(url.split('/').reverse()[0] == "tratamientos.html"){ 
+
+    /* ------ nombre plaga ------- */
     var loc = window.location.search;
-    /* Buscar en los valores el nombre del campo y obtener su valor*/
     const urlParams  = new URLSearchParams(loc);
     var plaga = urlParams .get('plaga');
 
@@ -279,7 +214,69 @@ function tratamientos(filtro) {
         alert("Disculpe, ocurrio un error");           
     }
 
-    });     
+    });    
+
+    /* ------ Consulta tratamientos ------ */
+    $(tratamientos());
+
+    function tratamientos(filtro) {
+
+        var loc = window.location.search;
         
+        if(loc)
+        {
+            const urlParams  = new URLSearchParams(loc);
+            var pagina = urlParams .get('pagina');
+            var plaga = urlParams .get('plaga');
+
+            var parametro = 
+            {
+                "filtro_c":filtro,      
+                "pagina":pagina,      
+                "plaga":plaga,      
+            };
+
+            $.ajax({
+            url: 'tratamientos.php',
+            type: 'POST',
+            dataType:'html',
+            data:parametro,
+
+            beforeSend:function (objeto) {
+                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            },
+            success: function(response)
+            {
+                if (!response) {
+                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
+                }else{
+                    $('#result').html(response);
+                } 
+                
+            },
+            error: function (err) {
+                alert("Disculpe, ocurrio un error");           
+            }
+
+            });
+
+        }else{
+            window.location.replace('../cultivos');
+        }  
+            
+    }
+
+    /* Filtro para consulta */
+    $(document).on('keyup', '#filtro', function()
+    {
+        var valorFiltro=$(this).val();
+        if (valorFiltro!="") {
+            history.pushState(null, "", '?plaga='+plaga+'&pagina=1');
+            tratamientos(valorFiltro);
+        }else{
+            tratamientos();
+        }
+
+    });  
 
 }
