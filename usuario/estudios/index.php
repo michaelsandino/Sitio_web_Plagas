@@ -35,7 +35,7 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Estudios | Plagas APP</a>
+                Plagas APP</a>
             <?php
             include '../menu.php';
             ?>

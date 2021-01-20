@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Usuario | Plagas APP</title>
+    <title>Inicio | Plagas APP</title>
 
 </head>
 <body>
@@ -35,7 +35,7 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand subtitle" href="#">
                 <img src="../../img/logo.svg" height="35px" alt="logo" loading="lazy">
-                Usuario | Plagas APP</a>
+                Plagas APP</a>
             <?php
             include '../menu.php';
             ?>
