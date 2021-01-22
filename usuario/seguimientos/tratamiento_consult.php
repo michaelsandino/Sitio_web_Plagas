@@ -9,12 +9,10 @@
     $user_rol = $_SESSION['rol']; 
     $idTratamiento = $_POST['idTratamiento'];
 
-    $consult="SELECT * FROM solicitud_tratamiento s, tratamiento t WHERE s.evaluador_T='$user_email' AND s.id_tatamientos='$idTratamiento' AND t.idTratamiento='$idTratamiento'";  
-    $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+    if ($user_rol == 'Admi') {
 
-    $check = $connect->affected_rows;
-
-    if ($check AND $user_rol == 'Admi') {
+        $consult="SELECT * FROM solicitud_tratamiento s, tratamiento t WHERE s.id_tatamientos='$idTratamiento' AND t.idTratamiento='$idTratamiento'";  
+        $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view = mysqli_fetch_array($result)){
             
@@ -23,17 +21,18 @@
 
                     <div class="row">
 
-                    <div class="col-12">
-                        <p class="text text-left mx-3"><strong>Tipo de tratamiento</strong>: <br>'.$view['tipoTratamiento'].'</p>
-                    </div>
+                        <div class="col-12">
+                            <p class="text text-left mx-3"><strong>Tipo de tratamiento</strong>: <br>'.$view['tipoTratamiento'].'</p>
+                        </div>
 
-                    <div class="col-12">
-                        <p class="text mx-3"><strong>Pasos a seguir</strong>: <br>'.nl2br($view['pasosTratamiento']).'</p>
-                    </div>    
+                        <div class="col-12">
+                            <p class="text mx-3"><strong>Pasos a seguir</strong>: <br>'.nl2br($view['pasosTratamiento']).'</p>
+                        </div>  
+
                     </div>
             ';
 
-            if ($view['stado_t']=='En espera') {
+            if ($view['stado_t']=='En espera' AND $view['evaluador_T']==$user_email) {
                     
                 echo'
                 <p class="text bg-orange text-white pl-3" id="nameR" style="height: 31px; font-size:20px;">Validar información</p>
@@ -64,7 +63,20 @@
                             </div>
                 ';
 
-            }else{
+            
+            }else if($view['stado_t']=='En espera' AND $view['evaluador_T']!=$user_email AND $view['evaluador_T']!=null){
+
+                echo'
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en espera</p>
+        
+                        <div class="col-12">
+        
+                        <p class="text font-weight-bold">La solicitud se encuentra en revisión.</p>
+                        
+                        </div>
+                ';
+
+            }else if($view['stado_t']!='En espera'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Información Aval</p>
         
@@ -75,6 +87,17 @@
                         <br><strong>Evaluador: </strong>'.$view['evaluador_T'].'
                         <br><strong>Fecha: </strong>'.$view['fech_finT'].'
                         </p>
+                        </div>
+                ';
+                
+            }else{
+                echo'
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>
+        
+                        <div class="col-12">
+        
+                            <p class="text font-weight-bold">La solicitud aun no se encuentra en revisión.</p>
+
                         </div>
                 ';
             } 

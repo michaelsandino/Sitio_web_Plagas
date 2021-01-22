@@ -26,7 +26,7 @@
     <!-- Icono -->
     <link rel="icon" type="image/svg" href="../../img/logo.svg">
 
-    <title>Cultivos | Plagas APP</title>
+    <title>Cultivo | Plagas APP</title>
 
 </head>
 <body>

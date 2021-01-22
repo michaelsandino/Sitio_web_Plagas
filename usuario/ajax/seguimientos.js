@@ -2,7 +2,7 @@ url = window.location.pathname;
 
 if(url.split('/').reverse()[0] == ""){  
   
-  /* SOLICITUD */  
+  /* SOLICITUDES */  
   $.ajax({
     url: 'consult_seguimientos.php',
     type: 'POST',
@@ -29,7 +29,7 @@ if(url.split('/').reverse()[0] == ""){
 
   /* MIS SEGUIMIENTOS */
   $.ajax({
-    url: 'consult_misseguimientos.php',
+    url: 'consult_mi_lista.php',
     type: 'POST',
     
     beforeSend:function (objeto) {
@@ -53,19 +53,19 @@ if(url.split('/').reverse()[0] == ""){
 
 }
 
-  /* añadir solicitud de cultivo a lista */
-  function añadir_c(solicitud){
-    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos? holaaa"))
+  /* añadir solicitud a mi lista */
+  function añadir(idCultivo){
+    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos?"))
     {     
 
       var parametro = 
         {
-          "solicitud":solicitud,
+          "idCultivo":idCultivo,
         };
 
       $.ajax({
         data: parametro,
-        url: 'añadir_c.php',
+        url: 'añadir.php',
         type:'POST',
 
          beforeSend:function (objeto) {
@@ -73,11 +73,10 @@ if(url.split('/').reverse()[0] == ""){
         },
         success: function(response)
         {
-          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
-            /* window.location.reload(); */
-            console.log(response)
+          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con procesos de verificación pendientes.")=='-1'){
+            window.location.reload();
           }else{
-            $("#message").html(response).fadeIn("slow");
+            $("#message").html(response);
           }
            
         },
@@ -88,79 +87,10 @@ if(url.split('/').reverse()[0] == ""){
     }
   }
 
-  /* añadir solicitud de plaga a lista */
-  function añadir_p(solicitud){
-    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos?"))
-    {     
-
-      var parametro = 
-        {
-          "solicitud":solicitud,
-        };
-
-      $.ajax({
-        data: parametro,
-        url: 'añadir_p.php',
-        type:'POST',
-
-         beforeSend:function (objeto) {
-           $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
-            /* window.location.reload(); */
-            console.log(response)
-          }else{
-            $("#message").html(response).fadeIn("slow");
-          }
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
-        }
-      });
-    }
- 
-  }
-
-  /* añadir solicitud de tratamineto a lista */
-  function añadir_t(solicitud){
-    if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos?"))
-    {     
-
-      var parametro = 
-        {
-          "solicitud":solicitud,
-        };
-
-      $.ajax({
-        data: parametro,
-        url: 'añadir_t.php',
-        type:'POST',
-
-         beforeSend:function (objeto) {
-           $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
-        },
-        success: function(response)
-        {
-          if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con un proceso de verificación pendiente.")=='-1'){
-            /* window.location.reload(); */
-            console.log(response)
-          }else{
-            $("#message").html(response).fadeIn("slow");
-          }
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
-        }
-      });
-    }
- 
-  }
 
 /* ----------- Consultar información acerca de un cultivo ------------- */
 
-if(url.split('/').reverse()[0] == "cultivos.php"){ 
+if(url.split('/').reverse()[0] == "cultivo.php"){ 
 
   /* obtener los valores enviamos por GET */
   var loc = window.location.search;
@@ -266,10 +196,58 @@ if(url.split('/').reverse()[0] == "cultivos.php"){
   
 }
 
+/* ----------- Consultar información acerca de las plagas del cultivo ------------- */
+
+if(url.split('/').reverse()[0] == "solicitudes_plagas.php"){ 
+
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
+    {
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var id = urlParams .get('cultivo');
+          
+        var parametro = 
+        {
+          "id_cultivo":id
+        };
+          
+        $.ajax({
+          data: parametro,
+          url: 'solicitudes_plagas_consult.php',
+          type:'POST',
+          
+          beforeSend:function (objeto) {
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          },
+          success: function(response)
+          {            
+
+            if (!response){
+              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>'); 
+            }else if (response!='invalid_user') {
+              $('#result').html(response);
+            }else{
+              window.location.replace('../inicio');
+            }
+
+          },
+              error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+        
+        });
+    }else{
+      window.location.replace('../inicio');
+    } 
+  
+}
 
 /* ----------- Consultar información acerca de una plaga ------------- */
 
-if(url.split('/').reverse()[0] == "plagas.php"){ 
+if(url.split('/').reverse()[0] == "plaga.php"){ 
 
   /* obtener los valores enviamos por GET */
   var loc = window.location.search;
@@ -314,7 +292,7 @@ if(url.split('/').reverse()[0] == "plagas.php"){
       window.location.replace('../inicio');
     } 
 
-    /* Actualizar solicitud de cultivo */
+    /* Actualizar solicitud de plaga */
   function seguimiento_plaga(){
     
     const urlParams  = new URLSearchParams(loc);
@@ -375,10 +353,59 @@ if(url.split('/').reverse()[0] == "plagas.php"){
   
 }
 
+/* ----------- Consultar información acerca de las plagas del cultivo ------------- */
+
+if(url.split('/').reverse()[0] == "solicitudes_tratamientos.php"){ 
+
+  /* obtener los valores enviamos por GET */
+  var loc = window.location.search;
+    
+    if(loc)
+    {
+        /* Buscar en los valores el nombre del campo y obtener su valor*/
+        const urlParams  = new URLSearchParams(loc);
+        var id = urlParams .get('plaga');
+          
+        var parametro = 
+        {
+          "id_plaga":id
+        };
+          
+        $.ajax({
+          data: parametro,
+          url: 'solicitudes_tratamientos_consult.php',
+          type:'POST',
+          
+          beforeSend:function (objeto) {
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          },
+          success: function(response)
+          {            
+
+            if (!response){
+              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>'); 
+            }else if (response!='invalid_user') {
+              $('#result').html(response);
+            }else{
+              window.location.replace('../inicio');
+            }
+
+          },
+              error: function (err) {
+            alert("Disculpe, ocurrio un error");           
+          }
+        
+        });
+    }else{
+      window.location.replace('../inicio');
+    } 
+  
+}
+
 
 /* ----------- Consultar información acerca de un tratamiento ------------- */
 
-if(url.split('/').reverse()[0] == "tratamientos.php"){ 
+if(url.split('/').reverse()[0] == "tratamiento.php"){ 
 
   /* obtener los valores enviamos por GET */
   var loc = window.location.search;
@@ -404,7 +431,7 @@ if(url.split('/').reverse()[0] == "tratamientos.php"){
           },
           success: function(response)
           {            
-            
+            console.log(response)
             if (response!='invalid_user'){
 
               $('#panel').html(response);

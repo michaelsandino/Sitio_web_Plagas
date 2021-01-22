@@ -9,17 +9,16 @@
     $user_rol = $_SESSION['rol']; 
     $id_cultivo = $_POST['id_cultivo'];
 
-    $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.evaluador_sp='$user_email' AND s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo'";  
-    $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+    if ($user_rol == 'Admi') {
 
-    $check = $connect->affected_rows;
-
-    if ($check AND $user_rol == 'Admi') {
+        $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo'";  
+        $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view = mysqli_fetch_array($result)){
             
             echo'
             <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">'.$view['nameRegional'].'</p>
+            <a href="solicitudes_plagas.php?cultivo='.$view['idCultivo'].'" class="btn btn-secondary btn-sm edit position-absolute">Plagas <img src="../../icons/lupa.svg" height="18px" class="pl-2" alt="icono_lupa"></a>
 
                     <div class="row">
                         <div class="col-11 col-md-5 col-lg-4 pr-0">
@@ -37,7 +36,7 @@
                     </div>
             ';
 
-            if ($view['stado_c']=='En espera') {
+            if ($view['stado_c']=='En espera' AND $view['evaluador_sp']==$user_email) {
                     
                 echo'
                 <p class="text bg-orange text-white pl-3" id="nameR" style="height: 31px; font-size:20px;">Validar información</p>
@@ -68,7 +67,20 @@
                             </div>
                 ';
 
-            }else{
+            }else if($view['stado_c']=='En espera' AND $view['evaluador_sp']!=$user_email AND $view['evaluador_sp']!=null){
+
+                echo'
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en espera</p>
+        
+                        <div class="col-12">
+        
+                        <p class="text font-weight-bold">La solicitud se encuentra en revisión.</p>
+                        
+                        </div>
+                ';
+                
+            }else if($view['stado_c']!='En espera'){
+
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Información Aval</p>
         
@@ -79,6 +91,17 @@
                         <br><strong>Evaluador: </strong>'.$view['evaluador_sp'].'
                         <br><strong>Fecha: </strong>'.$view['fech_fin'].'
                         </p>
+                        </div>
+                ';
+                
+            }else{
+                echo'
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>
+        
+                        <div class="col-12">
+        
+                            <p class="text font-weight-bold">La solicitud aun no se encuentra en revisión.</p>
+
                         </div>
                 ';
             } 

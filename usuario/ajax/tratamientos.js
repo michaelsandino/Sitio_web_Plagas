@@ -153,11 +153,12 @@ if(url.split('/').reverse()[0] == ""){
             },
             success: function(response)
             {
-              console.log(response)
-
-              $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
-
+              if (response.indexOf("El cultivo que contiene la plaga a la que pertenece el tratamiento seleccionado requiere de tener una solicitud de aval.")=='-1'){
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+              }else{
+                $('#eliminado').html(response).fadeIn("slow");
+              }
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -196,10 +197,12 @@ if(url.split('/').reverse()[0] == ""){
           },
           success: function(response)
           {
-            console.log(response)
-
-            $('#eliminado').html(response).fadeIn("slow");
-            setTimeout(function(){window.location.reload();}, 3000);
+            if (response.indexOf("El cultivo que contiene la plaga a la que pertenece el tratamiento seleccionado requiere de tener una solicitud de aval.")=='-1'){
+              $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
+            }else{
+              $('#eliminado').html(response).fadeIn("slow");
+            }
 
           },
           error: function (err) {

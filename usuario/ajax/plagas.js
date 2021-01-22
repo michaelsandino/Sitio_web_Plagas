@@ -77,7 +77,7 @@ if(url.split('/').reverse()[0] == ""){
 
 
 
-  /* Eliminar cultivos */
+  /* Eliminar plaga */
   function eliminar(id_plagas){
 
     if (confirm("Esta seguro que desea eliminar esta plaga?"))
@@ -145,9 +145,14 @@ if(url.split('/').reverse()[0] == ""){
             },
             success: function(response)
             {
-              $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
 
+              if (response.indexOf("El cultivo al que pertenece la plaga seleccionada requiere de tener una solicitud de aval.")=='-1'){
+                $('#eliminado').html(response).fadeIn("slow");
+                setTimeout(function(){window.location.reload();}, 3000);
+              }else{
+                $('#eliminado').html(response).fadeIn("slow");
+              }
+              
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           
@@ -184,8 +189,13 @@ if(url.split('/').reverse()[0] == ""){
           },
           success: function(response)
           {
-            $('#eliminado').html(response).fadeIn("slow");
-            setTimeout(function(){window.location.reload();}, 3000);
+
+            if (response.indexOf("El cultivo al que pertenece la plaga seleccionada requiere de tener una solicitud de aval.")=='-1'){
+              $('#eliminado').html(response).fadeIn("slow");
+              setTimeout(function(){window.location.reload();}, 3000);
+            }else{
+              $('#eliminado').html(response).fadeIn("slow");
+            }
 
           },
           error: function (err) {
