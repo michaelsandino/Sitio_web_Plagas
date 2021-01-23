@@ -458,6 +458,7 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
 
     var option1 = document.getElementById('option1').checked;
     var option2 = document.getElementById('option2').checked;
+    var nota = document.getElementById('nota').value;
 
     /* Mensaje de error */
     var cumplimiento_error = document.getElementById('cumplimiento_error')

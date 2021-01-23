@@ -23,8 +23,8 @@ include("../../connect.php");
     }else{
 
         /* Consultamos el estado del cultivo para saber si la solicitud hace referencia al cultivo y posteriomenete actulizar la solicitud para ser agregada a la lista del jurado*/
-
-        $consult1="SELECT * FROM cultivo WHERE idCultivo='$idCultivo' and stado_c='$estado'";
+                
+        $consult1="SELECT * FROM cultivo c, solicitud_proyecto s WHERE c.idCultivo='$idCultivo' AND s.id_cultivofk='$idCultivo' AND s.evaluador_sp IS NULL AND c.stado_c='$estado'";
         $result1 = mysqli_query($connect,$consult1) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
         $check1=mysqli_fetch_row($result1);
@@ -39,7 +39,7 @@ include("../../connect.php");
 
         /* Consultamos el estado del la plaga para saber si la solicitud hace referencia al plaga y posteriomenete actulizar la solicitud para ser agregada a la lista del jurado */
 
-        $consult2="SELECT * FROM cultivo c, plagas p WHERE c.idCultivo=$id_cultivo AND p.id_cultivo=$id_cultivo and p.stado_p='$estado'";
+        $consult2="SELECT * FROM cultivo c, plagas p, solicitud_plaga s WHERE c.idCultivo='$idCultivo' AND p.id_cultivo='$idCultivo' AND p.id_plagas=s.id_plagaSolict AND s.evaluador_plag IS NULL AND p.stado_p='$estado'";
         $result2 = mysqli_query($connect,$consult2) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
         while($view2 = mysqli_fetch_array($result2)){
@@ -52,7 +52,7 @@ include("../../connect.php");
 
         /* Consultamos el estado del tratamiento para saber si la solicitud hace referencia al tratamiento y posteriomenete actulizar la solicitud para ser agregada a la lista del jurado */
         
-        $consult3="SELECT * FROM cultivo c, plagas p, tratamiento t WHERE c.idCultivo=$id_cultivo and p.id_cultivo=$id_cultivo and p.id_plagas=t.id_plaga and t.stado_t='$estado'";
+        $consult3="SELECT * FROM cultivo c, plagas p, tratamiento t, solicitud_tratamiento s WHERE c.idCultivo=p.id_cultivo AND c.idCultivo='$idCultivo' AND p.id_plagas=t.id_plaga  AND t.idTratamiento= s.id_tatamientos AND s.evaluador_T IS NULL AND t.stado_t='$estado'";
         $result3 = mysqli_query($connect,$consult3) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
         while($view3 = mysqli_fetch_array($result3)){

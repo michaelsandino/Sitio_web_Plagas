@@ -113,8 +113,12 @@ if ($user_rol=='Admi' OR $user_rol=='usuario'){
                 $nota="SELECT * FROM solicitud_proyecto WHERE id_cultivofk='$view[idCultivo]'";  
                 $nota = mysqli_query($connect,$nota) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
-                $nota_sp=mysqli_fetch_row($nota);
-                $nota_sp = $nota_sp[5]; 
+                $nota_plag=mysqli_fetch_row($nota);
+                $nota_plag = $nota_plag[5]; 
+
+                if (!$nota_plag) {
+                    $nota_plag = 'Sin Observaciones.';
+                }
 
                 /* Estado al ser rechazado */
                 if('Rechazado'==$view['stado_c']){
@@ -125,7 +129,7 @@ if ($user_rol=='Admi' OR $user_rol=='usuario'){
                     <a class="dropdown-item" href="../plagas/?cultivo='.$view['idCultivo'].'"><img src="../../icons/plaga-2.svg" alt="icono_plagasr" class="pr-2" height="20px">Plagas</a>
                     <div class="dropdown-divider"></div>
                     <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                    <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
+                    <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_plag).'</p>
                     </div>
                     </div>
 

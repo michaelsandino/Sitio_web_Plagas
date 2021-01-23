@@ -110,6 +110,10 @@ include("../../connect.php");
         
                     $nota_sp=mysqli_fetch_row($nota);
                     $nota_sp = $nota_sp[5]; 
+
+                    if (!$nota_sp) {
+                        $nota_sp = 'Sin Observaciones.';
+                    }
         
                     /* Estado al ser rechazado */
                     if('Rechazado'==$view['stado_p']){

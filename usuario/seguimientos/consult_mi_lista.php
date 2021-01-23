@@ -39,7 +39,7 @@ include("../../connect.php");
                     <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                     <hr>
                     <p class="subtitle px-3 mb-2">Estado:</p> 
-                    <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_sp'].'</p> 
+                    <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
                     <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                     ';
 
@@ -58,7 +58,7 @@ include("../../connect.php");
                         <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                         <hr>
                         <p class="subtitle px-3 mb-2">Estado:</p> 
-                        <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_sp'].'</p> 
+                        <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
                         <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                         ';
 
@@ -77,7 +77,7 @@ include("../../connect.php");
                             <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                             <hr>
                             <p class="subtitle px-3 mb-2">Estado:</p> 
-                            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_sp'].'</p> 
+                            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
                             <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                             ';
                         }
