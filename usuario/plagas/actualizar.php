@@ -120,11 +120,12 @@
                         <input type="file" name="photoD" id="photoD" class="photoD_color">
                         <small class="form-text text-danger" id="photoD_error"></small>
                     </div>
+                    <div id="message"></div>
                     <div id="btn-back" class="d-inline"></div>
                     <div id="btn-update" class="d-inline"></div>
                 </form>
 
-                <div id="message"></div>
+                
             </div>
 
         </section>

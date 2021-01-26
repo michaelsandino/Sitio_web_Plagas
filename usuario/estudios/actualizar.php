@@ -87,13 +87,13 @@
                         <input type="file" name="pdf" id="pdf" class="pdf_color">
                         <small class="form-text text-danger" id="pdf_error"></small>
                     </div>
-    
+                    <div id="message"></div>
                     <div id="btn-back" class="d-inline"></div>
                     <div id="btn-update" class="d-inline"></div>
   
                 </form>
 
-                <div id="message"></div>
+                
             </div>
 
         </section>

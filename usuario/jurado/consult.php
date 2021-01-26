@@ -25,7 +25,7 @@
             <hr>
             <p class="subtitle text-orange">Respuesta por parte de nuestro equipo:</p>
             <p class="text">Una vez verificada la información de su cuenta, esta pasara hacer de tipo administrativo y podras avalar la información de diversas investigaciones relacionadas a cultivos, plagas, enfermedades y tratamientos.</p>
-            <div id="#progress-jurado"></div>
+            <div id="progress-jurado"></div>
             <button type="submit" class="btn btn-success btn-block mt-4" onclick="jurado()"><img src="../../icons/jurado-blanco.svg" height="20px" class="pr-2" alt=""> QUIERO SER JURADO</button>
             ';
         }else{
@@ -48,7 +48,7 @@
                 <hr>
                 <p class="subtitle text-orange">Reporte:</p>
                 <p class="text">'.nl2br($Nota_s).'</p>
-                <div id="#progress-jurado"></div>
+                <div id="progress-jurado"></div>
                 <button type="submit" class="btn btn-success btn-block mt-4" onclick="repeat_jurado()"><img src="../../icons/jurado-blanco.svg" height="20px" class="pr-2" alt=""> QUIERO SER JURADO</button>
                 ';
             }

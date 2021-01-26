@@ -72,7 +72,7 @@
                                 <br>
                                 <label class="font-weight-bold" for="nota">Nota</label>
                                 <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
-
+                                <div id="message"></div>
                                 <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_plaga();">Guardar</button>
                                 
                             </div>

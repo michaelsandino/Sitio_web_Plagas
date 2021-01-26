@@ -51,6 +51,7 @@
                 <h1 class="text-center h4 title">Seguimientos</h1>
                 <div id="success-message"></div>
                 <div id="progress"></div>
+                <div id="progress-jurado"></div>
             </div>
 
             <div class="col-12">

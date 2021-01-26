@@ -8,17 +8,19 @@ if(url.split('/').reverse()[0] == ""){
       type: 'POST',
 
       beforeSend:function (objeto) {
-        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
       },
       
       success: function(response)
       { 
+        $("#progress").html('')
+
         if(response=='invalid_user'){
             window.location.replace('../inicio');
         }else if(!response) {
-            $('#result').html('<p class="subtitle text-center my-4">Actualmente no se encuentra solicitudes en espera.</p>');  
+            $('#result').html('<p class="subtitle text-center my-4">Actualmente no se encuentra solicitudes en espera.</p>').fadeIn("slow");  
         }else{
-            $('#result').html(response);
+            $('#result').html(response).fadeIn("slow");
           }
 
       },
@@ -52,18 +54,20 @@ if(url.split('/').reverse()[0] == "info.php"){
                 type: 'POST',
         
                 beforeSend:function (objeto) {
-                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
                 },
                 
                 success: function(response)
                 { 
+
+                $("#progress").html('')
 
                 if(response=='invalid_user'){
                     window.location.replace('../inicio');
                 }else if(response=='solicitud_invalida') {
                     window.location.replace('../solicitudes');
                 }else{
-                    $('#result').html(response);
+                    $('#result').html(response).fadeIn("slow");
                     }
         
                 },
@@ -123,7 +127,7 @@ if(url.split('/').reverse()[0] == "info.php"){
             data:parametro,
         
             beforeSend:function (objeto) {
-            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
             },
             success: function(response)
             { 

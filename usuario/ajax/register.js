@@ -116,12 +116,12 @@ $("#u_register").submit(function(e){
             data:parametro,
 
             beforeSend:function (objeto) {
-              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
           },
             success: function(response)
             {    
               $("#message").html(response).fadeIn("slow"); 
-              setTimeout(function(){window.location.replace("../inicio");}, 5000);
+              setTimeout(function(){window.location.replace("../inicio");}, 3000);
             },
             error: function (err) {
               alert("Disculpe, ocurrio un error");           

@@ -102,7 +102,6 @@
                 <h1 class="text-center h4 title">Plagas</h1>
                 <h1 class="text-center h5 subtitle" id="planta_name"></h1>
                 <div id="success-message"></div>
-                <div id="progress"></div>
             </div>
 
             <div class="col-12 border rounded py-2 px-3 bg-white shadow-sm" style="position: -webkit-sticky; position: sticky; top: 61px; z-index: 1;"> 
@@ -163,9 +162,9 @@
                                 <input type="file" name="photoD" id="photoD" class="photoD_color">
                                 <small class="form-text text-danger" id="photoD_error"></small>
                             </div>
-
-                            <button type="submit" class="btn btn-success btn-block mt-4">Guardar</button>
                             <div id="message"></div>
+                            <button type="submit" class="btn btn-success btn-block mt-4">Guardar</button>
+                            
                             </form>
                     </div>
                 </div>

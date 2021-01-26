@@ -55,8 +55,7 @@
             
             <div class="col-12 pb-3">
                 <h1 class="text-center h4 title">Jurado</h1>
-                <div id="success-message"></div>              
-                <div id="progress"></div>                
+                <div id="success-message"></div>                             
             </div>
 
             <div class="col-12 col-lg-6 mx-auto" id="result">

@@ -9,12 +9,12 @@ if(url.split('/').reverse()[0] == ""){
       type: 'POST',
       
       beforeSend:function (objeto) {
-        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        $("#result").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
       },
       success: function(response)
       {
         if (response!='invalid_user'){
-        $('#result').html(response);
+        $('#result').html(response).fadeIn("slow");
         }else{
           window.location.replace('../inicio');
         }
@@ -45,7 +45,7 @@ if(url.split('/').reverse()[0] == ""){
         type:'POST',
 
         beforeSend:function (objeto) {
-          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
@@ -139,7 +139,7 @@ if(url.split('/').reverse()[0] == ""){
           processData: false,
 
           beforeSend:function (objeto) {
-            $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
           success: function(response)
           {    
@@ -184,10 +184,12 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
         type:'POST',
     
         beforeSend:function (objeto) {
-          $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#progress").html('<div class="progress my-2"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(data)
         {
+          $("#progress").html('');
+
           if (data.indexOf("invalid_user")=='-1'){
             var objeto = JSON.parse(data);
 
@@ -302,7 +304,7 @@ $("#e_update").submit(function(e){
             processData: false,
         
             beforeSend:function (objeto) {
-              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
             },
             success: function(response)
             {

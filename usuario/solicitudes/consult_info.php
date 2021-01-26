@@ -96,10 +96,10 @@
                                 <label for="nota">Nota</label>
                                 <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
                             </div>
-
+                            <div id="message"></div>
                             
                             <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4" onclick="solicitud();">Guardar</button>
-                            <div id="message"></div>
+                            
                     </div>
                 </div>
                 </div>

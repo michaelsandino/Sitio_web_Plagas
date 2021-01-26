@@ -53,14 +53,14 @@ if(url.split('/').reverse()[0] == ""){
         type: 'POST',
         
         beforeSend:function (objeto) {
-          $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#result").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
           if (response=='invalid_user')  {
             window.location.replace('../cultivos');
           }else{
-          $('#result').html(response); 
+          $('#result').html(response).fadeIn("slow"); 
           }  
 
         },
@@ -99,11 +99,11 @@ if(url.split('/').reverse()[0] == ""){
         type:'POST',
 
         beforeSend:function (objeto) {
-          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
         },
         success: function(response)
         {
-          $('#eliminado').html(response).fadeIn("slow");
+          $('#eliminado').html(response).fadeIn("slow"); 
 
           if (response.indexOf("La plaga seleccionada no puede ser eliminada debido a que esta cuenta con uno o mas tratamientos registrados.")=='-1'){
             setTimeout(function(){window.location.reload();}, 3000);
@@ -141,7 +141,7 @@ if(url.split('/').reverse()[0] == ""){
             type:'POST',
 
             beforeSend:function (objeto) {
-              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+              $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
             },
             success: function(response)
             {
@@ -185,7 +185,7 @@ if(url.split('/').reverse()[0] == ""){
           type:'POST',
 
           beforeSend:function (objeto) {
-            $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
           },
           success: function(response)
           {
@@ -194,7 +194,7 @@ if(url.split('/').reverse()[0] == ""){
               $('#eliminado').html(response).fadeIn("slow");
               setTimeout(function(){window.location.reload();}, 3000);
             }else{
-              $('#eliminado').html(response).fadeIn("slow");
+              $('#eliminado').html(response).fadeIn("slow"); 
             }
 
           },
@@ -321,11 +321,11 @@ if(url.split('/').reverse()[0] == ""){
           processData: false,
 
           beforeSend:function (objeto) {
-            $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#message").html('<div class="progress mt-3"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
           },
           success: function(response)
           {    
-            $("#message").html(response).fadeIn("slow");
+            $("#message").html(response).fadeIn("slow"); 
 
             if (response.indexOf("El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).")=='-1'){
               document.getElementById("p_register").reset();
@@ -369,10 +369,12 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
           type:'POST',
       
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class=" my-2 progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
           },
           success: function(data)
           {
+            $("#progress").html('')
+
             if (data.indexOf("invalid_user")=='-1'){
               var objeto = JSON.parse(data);
   
@@ -509,11 +511,11 @@ $("#p_update").submit(function(e){
           processData: false,
       
           beforeSend:function (objeto) {
-            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
           },
           success: function(response)
           {
-              $('#message').html(response).fadeIn("slow");
+              $('#message').html(response).fadeIn("slow"); 
 
               if (response.indexOf("El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).")=='-1'){
                 setTimeout(function(){window.location.replace('../plagas/?cultivo='+id_cultivo+'');}, 5000);

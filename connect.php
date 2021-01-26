@@ -5,8 +5,8 @@
     $database = "emprende_plagas";
 
     /* $server = "190.8.176.241";
-    $user = "emprende_Admirantex";
-    $password = "123Admirantex";
+    $user = "emprende_Admi";
+    $password = "empreadmi500";
     $database = "emprende_plagas"; */
 
     /* error_reporting(0); -> No genera errores */

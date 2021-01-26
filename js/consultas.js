@@ -29,15 +29,16 @@ $(cultivos());
         data:parametro,
 
         beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
-            console.log(response)
+            $("#progress").html('')
+
             if (!response) {
-                $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
+                $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p').fadeIn("slow");
             }else{
-                $('#result').html(response);
+                $('#result').html(response).fadeIn("slow");
             } 
             
         },
@@ -88,13 +89,14 @@ if(url.split('/').reverse()[0] == "plagas.html"){
     data:parametro,
 
     beforeSend:function (objeto) {
-        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
     },
     success: function(response)
     {
-        console.log(response)
+        $("#progress").html('')
+
         if (!response) {
-            $('#cultivo').html('El cultivo no se encuentra avalado.');
+            $('#cultivo').html('El cultivo no se encuentra avalado.').fadeIn("slow");
         }else{
             var objeto = JSON.parse(response);
             nameRegional = objeto.nameRegional;
@@ -137,14 +139,16 @@ if(url.split('/').reverse()[0] == "plagas.html"){
             data:parametro,
 
             beforeSend:function (objeto) {
-                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
             },
             success: function(response)
             {
+                $("#progress").html('')
+
                 if (!response) {
-                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
+                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p').fadeIn("slow");
                 }else{
-                    $('#result').html(response);
+                    $('#result').html(response).fadeIn("slow");
                 } 
                 
             },
@@ -195,12 +199,14 @@ if(url.split('/').reverse()[0] == "tratamientos.html"){
     data:parametro,
 
     beforeSend:function (objeto) {
-        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
     },
     success: function(response)
     {
+        $("#progress").html('')
+
         if (!response) {
-            $('#plaga').html('La plaga no se encuentra avalado.');
+            $('#plaga').html('La plaga no se encuentra avalado.').fadeIn("slow");
         }else{
             var objeto = JSON.parse(response);
             nombreC_plagas = objeto.nombreT_plagas;
@@ -243,14 +249,16 @@ if(url.split('/').reverse()[0] == "tratamientos.html"){
             data:parametro,
 
             beforeSend:function (objeto) {
-                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+                $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
             },
             success: function(response)
             {
+                $("#progress").html('')
+
                 if (!response) {
-                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p');
+                    $('#result').html('<p class="subtitle text-center my-4">No se han encontrado resultados.</p').fadeIn("slow");
                 }else{
-                    $('#result').html(response);
+                    $('#result').html(response).fadeIn("slow");
                 } 
                 
             },

@@ -72,11 +72,12 @@
                         <textarea class="form-control DesTratamiento_color" id="DesTratamiento" rows="4" name="DesTratamiento"></textarea>
                         <small class="form-text text-danger" id="DesTratamiento_error"></small>
                     </div>
+                    <div id="message"></div>
                     <div id="btn-back" class="d-inline"></div>
                     <div id="btn-update" class="d-inline"></div>
                 </form>
 
-                <div id="message"></div>
+                
             </div>
 
         </section>

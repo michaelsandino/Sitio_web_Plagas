@@ -82,12 +82,10 @@
                         <input type="file" name="photo" id="photo" class="photo_color">
                         <small class="form-text text-danger" id="photo_error"></small>
                     </div>
-    
+                    <div id="message"></div>
                     <div id="btn-back" class="d-inline"></div>
                     <div id="btn-update" class="d-inline"></div>
                 </form>
-
-                <div id="message"></div>
             </div>
 
         </section>

@@ -6,12 +6,12 @@ if(url.split('/').reverse()[1] == "jurado"){
     type: 'POST',
     
     beforeSend:function (objeto) {
-        $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+        $("#result").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
     },
     success: function(response)
     {
         if (response!='invalid_user'){
-            $('#result').html(response);
+            $('#result').html(response).fadeIn("slow");
         }else{
             window.location.replace('../inicio');
         }
@@ -30,10 +30,11 @@ if(url.split('/').reverse()[1] == "jurado"){
                 type:'POST',
 
                 beforeSend:function (objeto) {
-                $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+                $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
                 },
                 success: function(response)
                 {
+                $("#progress-jurado").html('')
                 window.location.reload();
 
                 },
@@ -54,11 +55,11 @@ if(url.split('/').reverse()[1] == "jurado"){
                 type:'POST',
 
                 beforeSend:function (objeto) {
-                $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+                $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
                 },
                 success: function(response)
                 {
-
+                $("#progress-jurado").html('')
                 window.location.reload();
 
                 },

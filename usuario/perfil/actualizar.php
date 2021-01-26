@@ -94,13 +94,13 @@
                         <input type="text" class="form-control telefono_color" id="telefono" name="telefono">
                         <small class="form-text text-danger" id="telefono_error"></small>
                     </div>
-
+                    <div id="message"></div>
                     <a href="../perfil" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>
                     <button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>
   
                 </form>
 
-                <div id="message"></div>
+                
             </div>
 
         </section>

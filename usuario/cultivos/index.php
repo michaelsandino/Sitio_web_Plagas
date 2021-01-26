@@ -50,7 +50,6 @@
             <div class="col-12">
                 <h1 class="text-center h4 title">Cultivos</h1>
                 <div id="success-message"></div>
-                <div id="progress"></div>
             </div>
 
             <div class="col-12 border rounded py-2 px-3 bg-white shadow-sm" style="position: -webkit-sticky; position: sticky; top: 61px; z-index: 1;"> 
@@ -91,9 +90,9 @@
                                 <input type="file" name="photo" id="photo" class="photo_color">
                                 <small class="form-text text-danger" id="photo_error"></small>
                             </div>
-
-                            <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4">Guardar</button>
                             <div id="message"></div>
+                            <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4">Guardar</button>
+                            
                             </form>
                     </div>
                 </div>

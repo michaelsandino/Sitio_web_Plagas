@@ -8,16 +8,18 @@ if(url.split('/').reverse()[0] == ""){
     type: 'POST',
     
     beforeSend:function (objeto) {
-      $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+      $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
     },
     success: function(response)
     {
+      $("#progress").html('')
+
       if (response=='            ') {
-        $('#result_solicitudes').html('<p class="subtitle text-center my-4">Actualmente no se encuentra solicitudes en espera.</p>'); 
+        $('#result_solicitudes').html('<p class="subtitle text-center my-4">Actualmente no se encuentra solicitudes en espera.</p>').fadeIn("slow"); 
       }else if (response.indexOf("invalid_user")=='0') {
         window.location.replace('../inicio');
       }else{
-        $('#result_solicitudes').html(response); 
+        $('#result_solicitudes').html(response).fadeIn("slow"); 
       }
             
     },
@@ -33,16 +35,18 @@ if(url.split('/').reverse()[0] == ""){
     type: 'POST',
     
     beforeSend:function (objeto) {
-      $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+      $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
     },
     success: function(response)
     {
+      $("#progress").html('')
+
       if (response=='            ') {
-        $('#result_misseguimientos').html('<p class="subtitle text-center my-4">Actualmente no cuenta con seguimientos.</p>');    
+        $('#result_misseguimientos').html('<p class="subtitle text-center my-4">Actualmente no cuenta con seguimientos.</p>').fadeIn("slow");    
       }else if (response.indexOf("invalid_user")=='0'){
         window.location.replace('../inicio');
       }else{
-        $('#result_misseguimientos').html(response);     
+        $('#result_misseguimientos').html(response).fadeIn("slow");     
       }
     },
     error: function (err) {
@@ -69,14 +73,16 @@ if(url.split('/').reverse()[0] == ""){
         type:'POST',
 
          beforeSend:function (objeto) {
-           $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+           $("#progress-jurado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
+          $("#progress-jurado").html('')
+
           if (response.indexOf("La solicitud no ha sido añadida debido a que cuenta con procesos de verificación pendientes.")=='-1'){
             window.location.reload();
           }else{
-            $("#message").html(response);
+            $("#message").html(response).fadeIn("slow");
           }
            
         },
@@ -112,14 +118,15 @@ if(url.split('/').reverse()[0] == "cultivo.php"){
           type:'POST',
           
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
           },
           success: function(response)
-          {            
+          {
+            $("#progress").html('')            
             
             if (response!='invalid_user'){
 
-              $('#panel').html(response);
+              $('#panel').html(response).fadeIn("slow");
 
             }else{
               window.location.replace('../inicio');
@@ -181,7 +188,7 @@ if(url.split('/').reverse()[0] == "cultivo.php"){
         data:parametro,
     
         beforeSend:function (objeto) {
-          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
@@ -220,15 +227,16 @@ if(url.split('/').reverse()[0] == "solicitudes_plagas.php"){
           type:'POST',
           
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
           },
           success: function(response)
           {            
+            $("#progress").html('')
 
             if (!response){
-              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>'); 
+              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>').fadeIn("slow"); 
             }else if (response!='invalid_user') {
-              $('#result').html(response);
+              $('#result').html(response).fadeIn("slow");
             }else{
               window.location.replace('../inicio');
             }
@@ -269,14 +277,15 @@ if(url.split('/').reverse()[0] == "plaga.php"){
           type:'POST',
           
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
           },
           success: function(response)
-          {            
+          { 
+            $("#progress").html('')           
             
             if (response!='invalid_user'){
 
-              $('#panel').html(response);
+              $('#panel').html(response).fadeIn("slow");
 
             }else{
               window.location.replace('../inicio');
@@ -338,7 +347,7 @@ if(url.split('/').reverse()[0] == "plaga.php"){
         data:parametro,
     
         beforeSend:function (objeto) {
-          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {
@@ -377,15 +386,16 @@ if(url.split('/').reverse()[0] == "solicitudes_tratamientos.php"){
           type:'POST',
           
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
           },
           success: function(response)
           {            
+            $("#progress").html('')
 
             if (!response){
-              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>'); 
+              $('#result').html('<p class="subtitle text-center my-4">Actualmente no existe seguimientos.</p>').fadeIn("slow");
             }else if (response!='invalid_user') {
-              $('#result').html(response);
+              $('#result').html(response).fadeIn("slow");
             }else{
               window.location.replace('../inicio');
             }
@@ -427,14 +437,15 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
           type:'POST',
           
           beforeSend:function (objeto) {
-            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+            $("#progress").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
           },
           success: function(response)
-          {            
-            console.log(response)
+          {     
+            $("#progress").html('')
+            
             if (response!='invalid_user'){
 
-              $('#panel').html(response);
+              $('#panel').html(response).fadeIn("slow");
 
             }else{
               window.location.replace('../inicio');
@@ -496,7 +507,7 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
         data:parametro,
     
         beforeSend:function (objeto) {
-          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeOut("slow");
+          $("#message").html('<div class="progress"><div class="progress-bar mt-2 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
         },
         success: function(response)
         {

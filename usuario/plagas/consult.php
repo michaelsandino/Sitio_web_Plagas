@@ -108,11 +108,11 @@ include("../../connect.php");
                     $nota="SELECT * FROM solicitud_plaga WHERE id_plagaSolict='$view[id_plagas]'";  
                     $nota = mysqli_query($connect,$nota) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
         
-                    $nota_sp=mysqli_fetch_row($nota);
-                    $nota_sp = $nota_sp[5]; 
+                    $nota_plag=mysqli_fetch_row($nota);
+                    $nota_plag = $nota_plag[5]; 
 
-                    if (!$nota_sp) {
-                        $nota_sp = 'Sin Observaciones.';
+                    if (!$nota_plag) {
+                        $nota_plag = 'Sin Observaciones.';
                     }
         
                     /* Estado al ser rechazado */
@@ -124,7 +124,7 @@ include("../../connect.php");
                         <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
                         <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_plag).'</p>
                         </div>
                         </div>
         
@@ -139,7 +139,7 @@ include("../../connect.php");
                         <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
                         <div class="dropdown-divider"></div>
                         <p class="mx-4 my-2 font-weight-bold small">Obervaciones:</p>
-                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_sp).'</p>
+                        <p class="text-break text mx-4 mb-1 small" style="width:400px;"> '.nl2br($nota_plag).'</p>
                         </div>
                         </div>
         
