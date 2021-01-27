@@ -400,16 +400,16 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
               btn_update.innerHTML = '<button type="submit" class="btn btn-success mt-2 float-right" style="width: 49%;">Actualizar</button>'
               
               var plag_img1 = document.getElementById('plag-img1')
-              plag_img1.innerHTML = '<img src="plagas_img/'+imagen_u+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+              plag_img1.innerHTML = '<img src="'+imagen_u+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
 
               var plag_img2 = document.getElementById('plag-img2')
-              plag_img2.innerHTML = '<img src="plagas_img/'+imagen_d+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+              plag_img2.innerHTML = '<img src="'+imagen_d+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
 
               var plag_img3 = document.getElementById('plag-img3')
-              plag_img3.innerHTML = '<img src="plagas_img/'+imagen_t+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+              plag_img3.innerHTML = '<img src="'+imagen_t+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
 
               var plag_img4 = document.getElementById('plag-img4')
-              plag_img4.innerHTML = '<img src="plagas_img/'+imagen_c+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+              plag_img4.innerHTML = '<img src="'+imagen_c+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
             }else{
               window.location.replace('../cultivos');
             }

@@ -26,10 +26,10 @@
         $imagen_t = $namePhoto[16]; 
         $imagen_c = $namePhoto[17]; 
             
-        unlink('plagas_img/'.$imagen_u); 
-        unlink('plagas_img/'.$imagen_d); 
-        unlink('plagas_img/'.$imagen_t); 
-        unlink('plagas_img/'.$imagen_c); 
+        unlink($imagen_u); 
+        unlink($imagen_d); 
+        unlink($imagen_t); 
+        unlink($imagen_c); 
                  
         echo '<div class="alert alert-success text-center mt-3" role="alert">
         Plaga eliminada con éxito - Se actualizara dentro un momento el listado de plagas.

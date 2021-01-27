@@ -14,15 +14,27 @@
     $descrip= mysqli_real_escape_string($connect,$descrip);
     $photo = $_FILES['photo'];
 
-    if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
-       
-        $name_encrip = md5($photo['tmp_name']).".jpg";
-        $route = "cultivos_img/".$name_encrip;
-        move_uploaded_file($photo["tmp_name"],$route);
+    if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg" or $photo["type"] == "image/png") {
 
-        $location = "https://plagas-app.emprendegrm.com/usuario/cultivos/cultivos_img/".$name_encrip;
+        $number = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'emprende_plagas' AND TABLE_NAME = 'cultivo'";
+        $number = mysqli_query($connect,$number) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
+        $number=mysqli_fetch_row($number);
+        $number = $number[0]; 
 
-        $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$name_encrip','Pendiente','https://emprendegrm.com/Plagas/rasena.html')";
+        if ($photo["type"] == "image/png") {
+            
+            $name_photo = $number.".png";
+            $route = "cultivos_img/".$name_photo;
+            move_uploaded_file($photo["tmp_name"],$route);
+        }else{
+            $name_photo = $number.".jpg";
+            $route = "cultivos_img/".$name_photo;
+            move_uploaded_file($photo["tmp_name"],$route);
+        }
+
+        $location = 'cultivos_img/'.$name_photo;
+
+        $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$location','Pendiente','https://emprendegrm.com/Plagas/rasena.html')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
     
         if($result){

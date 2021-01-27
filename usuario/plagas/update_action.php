@@ -28,7 +28,7 @@
 
     }else{
         
-        if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "") and ($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg" or $photoB["type"] == "") and ($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg" or $photoC["type"] == "") and ($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg" or $photoD["type"] == "")) {
+        if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png" or $photoA["type"] == "") and ($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg" or $photoB["type"] == "image/png" or  $photoB["type"] == "") and ($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg" or $photoC["type"] == "image/png" or $photoC["type"] == "") and ($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg" or $photoD["type"] == "image/png" or $photoD["type"] == "")) {
 
             $photos = "";
             $consult="SELECT * FROM plagas WHERE id_plagas='$id_plagas'";  
@@ -39,51 +39,114 @@
             $imagen_t = $namePhoto[8]; 
             $imagen_c = $namePhoto[9]; 
                 
-                if ($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg") {
+                if ($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png") {
 
-                    unlink('plagas_img/'.$imagen_u); 
-                    
-                    $name_encripA = md5($photoA['tmp_name']).".jpg";
-                    $routeA = "plagas_img/".$name_encripA;
-                    move_uploaded_file($photoA["tmp_name"],$routeA);
+                    if ($photoA["type"] == "image/png") {
 
-                    $photos = $photos.",imagen_u='$name_encripA'";
-        
-                }
-            
-                if ($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg") {
-                    
-                    unlink('plagas_img/'.$imagen_d); 
-                    
-                    $name_encripB = md5($photoB['tmp_name']).".jpg";
-                    $routeB = "plagas_img/".$name_encripB;
-                    move_uploaded_file($photoB["tmp_name"],$routeB);
+                        unlink($imagen_u); 
+                        
+                        $name_photoA = "a".$id_plagas.".png";
+                        $routeA = "plagas_img/".$name_photoA;
+                        move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                    $photos = $photos.",imagen_d='$name_encripB'";
-                    
-                }
-            
-                if ($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg") {
+                        $locationA = "plagas_img/".$name_photoA;
+                        $photos = $photos.",imagen_u='$locationA'";
 
-                    unlink('plagas_img/'.$imagen_t); 
+                    }else{
 
-                    $name_encripC = md5($photoC['tmp_name']).".jpg";
-                    $routeC = "plagas_img/".$name_encripC;
-                    move_uploaded_file($photoC["tmp_name"],$routeC);    
-                    
-                    $photos = $photos.",imagen_t='$name_encripC'";
+                        unlink($imagen_u); 
+                        
+                        $name_photoA = "a".$id_plagas.".jpg";
+                        $routeA = "plagas_img/".$name_photoA;
+                        move_uploaded_file($photoA["tmp_name"],$routeA);
+
+                        $locationA = "plagas_img/".$name_photoA;
+                        $photos = $photos.",imagen_u='$locationA'";
+
+                    }
                     
                 }
             
-                if ($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg") {
+                if ($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg" or $photoB["type"] == "image/png") {
 
-                    unlink('plagas_img/'.$imagen_c); 
+                    if ($photoB["type"] == "image/png") {
+
+                        unlink($imagen_d); 
                     
-                    $name_encripD = md5($photoD['tmp_name']).".jpg";
-                    $routeD = "plagas_img/".$name_encripD;
-                    move_uploaded_file($photoD["tmp_name"],$routeD);        
+                        $name_photoB = "b".$id_plagas.".png";
+                        $routeB = "plagas_img/".$name_photoB;
+                        move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                    $photos = $photos.",imagen_c='$name_encripD'";
+                        $locationB = "plagas_img/".$name_photoB;
+                        $photos = $photos.",imagen_d='$locationB'";
+
+                    }else{
+
+                        unlink($imagen_d); 
+                    
+                        $name_photoB = "b".$id_plagas.".jpg";
+                        $routeB = "plagas_img/".$name_photoB;
+                        move_uploaded_file($photoB["tmp_name"],$routeB);
+
+                        $locationB = "plagas_img/".$name_photoB;
+                        $photos = $photos.",imagen_d='$locationB'";
+                    }
+                    
+                     
+                }
+            
+                if ($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg" or $photoC["type"] == "image/png") {
+
+                    if ($photoC["type"] == "image/png") {
+
+                        unlink($imagen_t); 
+
+                        $name_photoC = "c".$id_plagas.".png";
+                        $routeC = "plagas_img/".$name_photoC;
+                        move_uploaded_file($photoC["tmp_name"],$routeC);    
+                        
+                        $locationC = "plagas_img/".$name_photoC;
+                        $photos = $photos.",imagen_t='$locationC'";
+
+                    }else{
+
+                        unlink($imagen_t); 
+
+                        $name_photoC = "c".$id_plagas.".jpg";
+                        $routeC = "plagas_img/".$name_photoC;
+                        move_uploaded_file($photoC["tmp_name"],$routeC);    
+                        
+                        $locationC = "plagas_img/".$name_photoC;
+                        $photos = $photos.",imagen_t='$locationC'";
+
+                    }
+
+                }
+            
+                if ($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg" or $photoD["type"] == "image/png") {
+
+                    if ($photoD["type"] == "image/png") {
+                        
+                        unlink($imagen_c); 
+                    
+                        $name_photoD = "d".$id_plagas.".png";
+                        $routeD = "plagas_img/".$name_photoD;
+                        move_uploaded_file($photoD["tmp_name"],$routeD);        
+
+                        $locationD = "plagas_img/".$name_photoD;
+                        $photos = $photos.",imagen_c='$locationD'";
+
+                    }else{
+
+                        unlink($imagen_c); 
+                    
+                        $name_photoD = "d".$id_plagas.".jpg";
+                        $routeD = "plagas_img/".$name_photoD;
+                        move_uploaded_file($photoD["tmp_name"],$routeD);        
+
+                        $locationD = "plagas_img/".$name_photoD;
+                        $photos = $photos.",imagen_c='$locationD'";
+                    } 
 
                 }
  

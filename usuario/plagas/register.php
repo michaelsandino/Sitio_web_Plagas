@@ -14,33 +14,93 @@
 	$photoC = $_FILES['photoC'];
     $photoD = $_FILES['photoD'];
                 
-    if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg")&($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg")&($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg")&($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg")) {
+    if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png")&($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg" or $photoB["type"] == "image/png")&($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg" or $photoC["type"] == "image/png")&($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg" or $photoD["type"] == "image/png")) {
 
-        $name_encripA = md5($photoA['tmp_name']).".jpg";
-        $routeA = "plagas_img/".$name_encripA;
-        move_uploaded_file($photoA["tmp_name"],$routeA);
+        $number = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'emprende_plagas' AND TABLE_NAME = 'plagas'";
+        $number = mysqli_query($connect,$number) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
+        $number=mysqli_fetch_row($number);
+        $number = $number[0]; 
 
-        $locationA = "https://plagas-app.emprendegrm.com/usuario/plagas/plagas_img/".$name_encripA;
+        /* FOTO 1 */
 
-        $name_encripB = md5($photoB['tmp_name']).".jpg";
-        $routeB = "plagas_img/".$name_encripB;
-        move_uploaded_file($photoB["tmp_name"],$routeB);
+        if ($photoA["type"] == "image/png") {
 
-        $locationB = "https://plagas-app.emprendegrm.com/usuario/plagas/plagas_img/".$name_encripB;
+            $name_photoA = "a".$number.".png";
+            $routeA = "plagas_img/".$name_photoA;
+            move_uploaded_file($photoA["tmp_name"],$routeA);
 
-        $name_encripC = md5($photoC['tmp_name']).".jpg";
-        $routeC = "plagas_img/".$name_encripC;
-        move_uploaded_file($photoC["tmp_name"],$routeC);
+            $locationA = "plagas_img/".$name_photoA;
 
-        $locationC = "https://plagas-app.emprendegrm.com/usuario/plagas/plagas_img/".$name_encripC;
+        }else{
 
-        $name_encripD = md5($photoD['tmp_name']).".jpg";
-        $routeD = "plagas_img/".$name_encripD;
-        move_uploaded_file($photoD["tmp_name"],$routeD);
+            $name_photoA = "a".$number.".jpg";
+            $routeA = "plagas_img/".$name_photoA;
+            move_uploaded_file($photoA["tmp_name"],$routeA);
 
-        $locationD = "https://plagas-app.emprendegrm.com/usuario/plagas/plagas_img/".$name_encripD;
+            $locationA = "plagas_img/".$name_photoA;
 
-        $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$name_encripA','$name_encripB','$name_encripC','$name_encripD','Pendiente','https://emprendegrm.com/Plagas/rasenaPlaga1.html')";
+        }
+
+        /* FOTO 2 */
+
+        if ($photoB["type"] == "image/png") {
+
+            $name_photoB = "b".$number.".png";
+            $routeB = "plagas_img/".$name_photoB;
+            move_uploaded_file($photoB["tmp_name"],$routeB);
+
+            $locationB = "plagas_img/".$name_photoB;
+
+        }else{
+
+            $name_photoB = "b".$number.".jpg";
+            $routeB = "plagas_img/".$name_photoB;
+            move_uploaded_file($photoB["tmp_name"],$routeB);
+
+            $locationB = "plagas_img/".$name_photoB;
+
+        }
+
+        /* FOTO 3 */
+
+        if ($photoC["type"] == "image/png") {
+
+            $name_photoC = "c".$number.".png";
+            $routeC = "plagas_img/".$name_photoC;
+            move_uploaded_file($photoC["tmp_name"],$routeC);
+
+            $locationC = "plagas_img/".$name_photoC;
+
+        }else{
+
+            $name_photoC = "c".$number.".jpg";
+            $routeC = "plagas_img/".$name_photoC;
+            move_uploaded_file($photoC["tmp_name"],$routeC);
+
+            $locationC = "plagas_img/".$name_photoC;
+
+        }
+
+        /* FOTO 4 */
+
+        if ($photoD["type"] == "image/png") {
+
+            $name_photoD = "d".$number.".png";
+            $routeD = "plagas_img/".$name_photoD;
+            move_uploaded_file($photoD["tmp_name"],$routeD);
+
+            $locationD = "plagas_img/".$name_photoD;
+
+        }else{
+
+            $name_photoD = "d".$number.".jpg";
+            $routeD = "plagas_img/".$name_photoD;
+            move_uploaded_file($photoD["tmp_name"],$routeD);
+
+            $locationD = "plagas_img/".$name_photoD;
+        }
+
+        $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$locationA','$locationB','$locationC','$locationD','Pendiente','https://emprendegrm.com/Plagas/rasenaPlaga1.html')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
     
         if($result){
@@ -50,8 +110,7 @@
         }
     }else{
         echo '<div class="alert alert-danger text-center mt-3" role="alert">
-        El formato de alguna de las imagenes no es valida (Solo se acepta jpg o jpeg).
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        El formato de alguna de las imagenes no es valido.
         <span aria-hidden="true">&times;</span>
         </button>
         </div>';

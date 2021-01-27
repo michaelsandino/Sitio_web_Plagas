@@ -263,7 +263,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
             document.update.descrip.value = descripCultivo;
 
             var plant_img = document.getElementById('plant-img')
-            plant_img.innerHTML = '<img src="cultivos_img/'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
+            plant_img.innerHTML = '<img src="'+imagenC+'" alt="imagen_cultivo" class="img-thumbnail center-img w-75">'
 
             var btn_back = document.getElementById('btn-back')
             btn_back.innerHTML = '<a href="../cultivos/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'

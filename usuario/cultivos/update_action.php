@@ -32,7 +32,7 @@
         
     }else{
 
-        if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg") {
+        if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg" or $photo["type"] == "image/png") {
 
             /* ELIMINAR FOTO */
             $consult="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo'";  
@@ -40,16 +40,22 @@
            
             $namePhoto=mysqli_fetch_row($consult);
             $namePhoto = $namePhoto[5];
-            unlink('cultivos_img/'.$namePhoto); 
+            unlink($namePhoto); 
             
-
             /* Actualizar foto */
-       
-            $name_encrip = md5($photo['tmp_name']).".jpg";
-            $route = "cultivos_img/".$name_encrip;
-            move_uploaded_file($photo["tmp_name"],$route);
+            if ($photo["type"] == "image/png") {
+                $name_photo = $id_cultivo.".png";
+                $route = "cultivos_img/".$name_photo;
+                move_uploaded_file($photo["tmp_name"],$route);
+                $location = 'cultivos_img/'.$name_photo;
+            }else{
+                $name_photo = $id_cultivo.".jpg";
+                $route = "cultivos_img/".$name_photo;
+                move_uploaded_file($photo["tmp_name"],$route);
+                $location = 'cultivos_img/'.$name_photo;
+            }
             
-            $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip',imagenC='$name_encrip'
+            $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip',imagenC='$location'
             WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";
             
             $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');

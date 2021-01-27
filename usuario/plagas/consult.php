@@ -44,10 +44,10 @@ include("../../connect.php");
                         
                         <div class="collapse center_container" id="img'.$view['id_plagas'].'">
                 
-                        <img src="plagas_img/'.$view['imagen_u'].'" class="plag_image" alt="imagen_plaga">
-                        <img src="plagas_img/'.$view['imagen_d'].'" class="plag_image" alt="imagen_plaga">
-                        <img src="plagas_img/'.$view['imagen_t'].'" class="plag_image" alt="imagen_plaga">
-                        <img src="plagas_img/'.$view['imagen_c'].'" class="plag_image" alt="imagen_plaga">
+                        <img src="'.$view['imagen_u'].'" class="plag_image" alt="imagen_plaga">
+                        <img src="'.$view['imagen_d'].'" class="plag_image" alt="imagen_plaga">
+                        <img src="'.$view['imagen_t'].'" class="plag_image" alt="imagen_plaga">
+                        <img src="'.$view['imagen_c'].'" class="plag_image" alt="imagen_plaga">
                 
                         </div>
                     </div>
