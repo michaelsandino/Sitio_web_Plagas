@@ -16,7 +16,7 @@
     /* Eliminar el archivo */
     $nameFile=mysqli_fetch_row($consult);
     $nameFile = $nameFile[6];
-    unlink('estudios_pdf/'.$nameFile); 
+    unlink($nameFile); 
     
 
     $delete = "DELETE FROM formacionapp WHERE idFormacion='$idFormacion' AND id_usu='$id_usu'";

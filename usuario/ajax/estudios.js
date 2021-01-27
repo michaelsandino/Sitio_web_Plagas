@@ -197,6 +197,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
             tituloFormacion = objeto.tituloFormacion; 
             entidadEducativa = objeto.entidadEducativa; 
             fechaGrado = objeto.fechaGrado; 
+            fechaGrado = fechaGrado.split('-').reverse().join('-');
             soporte = objeto.soporte; 
 
             document.update.nvformativo.value = nivelFormativo;
@@ -205,7 +206,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
             document.update.fechGrado.value = fechaGrado;
 
             var file_pdf = document.getElementById('file_pdf')
-            file_pdf.innerHTML = '<a href="http://localhost/PROYECTOS/SENA/Sitio_Web_Plagas/usuario/estudios/estudios_pdf/'+soporte+'">'+soporte+'</a>'
+            file_pdf.innerHTML = '<a href="'+soporte+'">'+soporte+'</a>'
 
             var btn_back = document.getElementById('btn-back')
             btn_back.innerHTML = '<a href="../estudios/" class="btn btn-secondary mt-2" style="width: 49%;">cancelar</a>'

@@ -12,18 +12,25 @@
     $tituloForm = $_POST['titulo'];
     $entidad = $_POST['entidadEdu'];
     $fechagrado = $_POST['fechGrado'];
+    $fechagrado = date("d-m-Y", strtotime($fechagrado));
     $pdf = $_FILES['pdf'];
 
     /* Verificar que el formato del arvhi sea el correcto */
     if ($pdf["type"] == "application/pdf") {
-       
-        $name_encrip = md5($pdf['tmp_name']).".pdf";
-        $route = "estudios_pdf/".$name_encrip;
+
+        /* Consultar en que numero del auto_increment del id va en la table cultivos */
+        $number = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'emprende_plagas' AND TABLE_NAME = 'formacionapp'";
+        $number = mysqli_query($connect,$number) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
+        $number=mysqli_fetch_row($number);
+        $number = $number[0]; 
+        
+        $name_file = $number.".pdf";
+        $route = "estudios_pdf/".$name_file;
         move_uploaded_file($pdf["tmp_name"],$route);
         
-        $location = "https://plagas-app.emprendegrm.com/usuario/estudios/estudios_pdf/".$name_encrip;
+        $location = "estudios_pdf/".$name_file;
 
-        $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_usu','$name_encrip')";
+        $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_usu','$location')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
         
         if($result){

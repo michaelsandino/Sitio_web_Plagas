@@ -54,7 +54,7 @@
                 <strong>Institución:</strong> '.$view['entidadEducativa'].'<br>
                 <strong>Fecha de grado:</strong> '.$view['fechaGrado'].'
                 </p>
-                <a class="text-primary" href="../estudios/estudios_pdf/'.$view['soporte'].'">Soporte...<img src="../../icons/nube-carga.svg" alt="icono_soporte" class="pl-2" height="20px"></a>
+                <a class="text-primary" href="../estudios/'.$view['soporte'].'">Soporte...<img src="../../icons/nube-carga.svg" alt="icono_soporte" class="pl-2" height="20px"></a>
                 </div>
             
                 </div>

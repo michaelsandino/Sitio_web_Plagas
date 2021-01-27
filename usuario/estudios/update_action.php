@@ -12,6 +12,7 @@
     $titulo = $_POST['titulo'];
     $entidadEdu = $_POST['entidadEdu'];
     $fechGrado = $_POST['fechGrado'];
+    $fechGrado = date("d-m-Y", strtotime($fechGrado));
     $pdf = $_FILES['pdf'];
     
     /* Si no se coloco un nuevo archivo para actualizar */
@@ -39,16 +40,18 @@
            
             $nameFile=mysqli_fetch_row($consult);
             $nameFile = $nameFile[6];
-            unlink('estudios_pdf/'.$nameFile); 
+            unlink($nameFile); 
 
             /* Actualizar foto */
        
-            $name_encrip = md5($pdf['tmp_name']).".pdf";
-            $route = "estudios_pdf/".$name_encrip;
+            $name_file = $idFormacion.".pdf";
+            $route = "estudios_pdf/".$name_file;
             move_uploaded_file($pdf["tmp_name"],$route);
+
+            $location = "estudios_pdf/".$name_file;
             
             $update = "UPDATE formacionapp SET nivelformativo='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
-            fechaGrado='$fechGrado', soporte='$name_encrip' WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";
+            fechaGrado='$fechGrado', soporte='$location' WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";
             
             $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
         
