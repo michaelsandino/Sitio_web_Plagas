@@ -10,6 +10,7 @@
 
     if ($user_rol=='Administrador') {
 
+        /* Consultar la información del usuario  */
         $consult="SELECT * FROM usuarioapp u,solicitud_cuenta s WHERE u.email='$email' AND s.idSolicitante='$email' AND u.tpUsuario='usuario' AND s.stado_s='Revisión'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
@@ -38,7 +39,7 @@
                 ';
             }
 
-        
+        /* Consultar los estudios de los usuarios */
         $consult="SELECT * FROM formacionapp f WHERE id_usu='$email'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
@@ -61,6 +62,8 @@
                 ';
             }
         
+        /* Formulario */
+
         echo '
 
         <button data-toggle="modal" data-target="#modal" class="btn btn-light border btn-block">Validar información<img src="../../icons/jurado.svg" height="20px" class="pl-2" alt="validar"></button>

@@ -14,6 +14,7 @@
 	$photoC = $_FILES['photoC'];
     $photoD = $_FILES['photoD'];
 
+    /* Si no se coloco ninguna nueva imagen */
     if ($photoA["type"] == "" & $photoB["type"] == "" & $photoC["type"] == "" & $photoD["type"] == "") {
 
         $update = "UPDATE plagas SET tp_plaga='$tipoPlaga', nombreT_plagas='$nameT',nombreC_plagas='$nameC',Descp_plagas='$descrip'
@@ -27,7 +28,7 @@
         }  
 
     }else{
-        
+        /* Verificar el formato de la imagen */
         if (($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png" or $photoA["type"] == "") and ($photoB["type"] == "image/jpg" or $photoB["type"] == "image/jpeg" or $photoB["type"] == "image/png" or  $photoB["type"] == "") and ($photoC["type"] == "image/jpg" or $photoC["type"] == "image/jpeg" or $photoC["type"] == "image/png" or $photoC["type"] == "") and ($photoD["type"] == "image/jpg" or $photoD["type"] == "image/jpeg" or $photoD["type"] == "image/png" or $photoD["type"] == "")) {
 
             $photos = "";
@@ -150,6 +151,7 @@
 
                 }
  
+                /* Actualizar */
                 $update = "UPDATE plagas SET tp_plaga='$tipoPlaga', nombreT_plagas='$nameT',nombreC_plagas='$nameC',Descp_plagas='$descrip'$photos
                 WHERE id_plagas='$id_plagas'";
                 $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');

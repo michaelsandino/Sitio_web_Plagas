@@ -32,6 +32,7 @@
         
     }else{
 
+        /* Verificar que el formato de la imagen sea el correcto */
         if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg" or $photo["type"] == "image/png") {
 
             /* ELIMINAR FOTO */

@@ -11,6 +11,7 @@
 
     if ($user_rol == 'Admi') {
 
+        /* Consultar información del tratamiento */
         $consult="SELECT * FROM solicitud_tratamiento s, tratamiento t WHERE s.id_tatamientos='$idTratamiento' AND t.idTratamiento='$idTratamiento'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
@@ -32,6 +33,7 @@
                     </div>
             ';
 
+            /* Formulario para saber si es el usuario es el encargado */
             if ($view['stado_t']=='En espera' AND $view['evaluador_T']==$user_email) {
                     
                 echo'
@@ -63,7 +65,7 @@
                             </div>
                 ';
 
-            
+             /* Mensaje para los usuarios que no son los encargados pero ya se encuentra en revisión. */
             }else if($view['stado_t']=='En espera' AND $view['evaluador_T']!=$user_email AND $view['evaluador_T']!=null){
 
                 echo'
@@ -76,6 +78,7 @@
                         </div>
                 ';
 
+            /* Información de cuando ya fue revisado una solicitud */
             }else if($view['stado_t']!='En espera'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Información Aval</p>
@@ -89,7 +92,8 @@
                         </p>
                         </div>
                 ';
-                
+            
+            /* Mensaje cuando no hay ningun jurado encargado de la solicitud */
             }else{
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>

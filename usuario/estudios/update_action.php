@@ -14,7 +14,7 @@
     $fechGrado = $_POST['fechGrado'];
     $pdf = $_FILES['pdf'];
     
-
+    /* Si no se coloco un nuevo archivo para actualizar */
      if ($pdf["type"] == "") {
 
         $update = "UPDATE formacionapp SET nivelformativo='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
@@ -30,6 +30,7 @@
         
     }else{
 
+        /* Verificar el tipo de archivo */
         if ($pdf["type"] == "application/pdf") {
 
             /* ELIMINAR FOTO */

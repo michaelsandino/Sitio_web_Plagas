@@ -10,7 +10,7 @@
     $id_plagas = $_POST['id_plagas'];
     $id_cultivo = $_POST['id_cultivo'];
 
-    /* $consult="SELECT * FROM cultivo c,plagas p WHERE p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo' AND c.idcultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo'"; */
+    /* Consultar que la plaga sea del usuario */
     $consult="SELECT * FROM cultivo c, plagas p WHERE c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo' AND (p.stado_p='Rechazado' OR p.stado_p='Pendiente')";  
     $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 

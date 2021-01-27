@@ -10,9 +10,11 @@ $idUsuCultivo = $_SESSION['user'];
 
 if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
+    /* Consultar los cultivos del usuario */
     $consult="SELECT * FROM cultivo WHERE idUsuCultivo='$idUsuCultivo'";  
     $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
+    /* Imprimir información */
     while($view = mysqli_fetch_array($result))
     {
         echo 
@@ -51,6 +53,7 @@ if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
                 if ($plagas>0) {
 
+                    /* Buscamos en cada plaga si tiene algun tratamiento */
                     for ($i=1; $i <= $plagas; $i++) { 
 
                         $plaga=mysqli_fetch_row($review);

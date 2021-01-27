@@ -5,23 +5,25 @@ include("../connect.php");
     $pagina =$_POST['pagina'];
     $cultivo =$_POST['cultivo'];
 
-    /* SABER CANTIDAD DE RESULTADOS */
+    /* Saber la cantidad de resultados */
     if (isset($_POST['filtro_c'])) {
         $filtro = $_POST['filtro_c'];
         $cantidad="SELECT COUNT(*) FROM plagas WHERE stado_p='Activo' AND id_cultivo='$cultivo' AND(tp_plaga LIKE '%$filtro%' OR nombreT_plagas LIKE '%$filtro%' OR nombreC_plagas LIKE '%$filtro%')";  
     }else{
         $cantidad= "SELECT COUNT(*) FROM plagas WHERE stado_p='Activo' AND id_cultivo='$cultivo'";      
     }
+    /* realizamos la consulta */
     $cantidad = mysqli_query($connect,$cantidad) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
     $total=mysqli_fetch_row($cantidad);
     $total = $total[0];
 
+    /* Segun la cantidad de resultados dividimos por la cantidad de registros por paginas (5 en este caso) */
     $npage = ceil($total/5);
-
+    /* Marcamos segun la pagina en que se encuentre el usuario mostrar los registros respectivos */
     $iniciar = ($pagina-1)*5; 
     $terminar = $iniciar+5;
 
-    /* LIMITAR LA INFORMACIÓN */
+    /* limitar los registros que se muestran segun la pagina */
     if (isset($_POST['filtro_c'])) {
         $filtro = $_POST['filtro_c'];
         $consult="SELECT * FROM plagas WHERE stado_p='Activo' AND id_cultivo='$cultivo' AND(tp_plaga LIKE '%$filtro%' OR nombreT_plagas LIKE '%$filtro%' OR nombreC_plagas LIKE '%$filtro%') LIMIT $iniciar,$terminar";  
@@ -30,6 +32,7 @@ include("../connect.php");
     }
     $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
+    /* Imprimimos la información */
     while($view = mysqli_fetch_array($result))
     {
     echo 
@@ -67,12 +70,14 @@ include("../connect.php");
     </div>'; 
     }
     
+    /* Realizamos la enumeración */
     if ($total>5) {  
     echo
     '<section class="row">
         <div class="col-auto mx-auto mt-5">
             <ul class="pagination ">';
-                
+            
+                /* Desactivamos o habilitamos la opción de anterior segun la pagina actual */
                 if ($pagina!=1) {
                     echo 
                     '<li class="page-item">
@@ -88,6 +93,7 @@ include("../connect.php");
                 echo'
                 ';
 
+            /* Mostrar la cantidad de paginas generadas segun la cantidad de registro, marcando cual es la pagina en que se encuentra */
             for ($i=1; $i <= $npage ; $i++) { 
                 if ($pagina!=$i) {
                     echo'<li class="page-item"><a class="page-link" href="plagas.html?cultivo='.$cultivo.'&pagina='.$i.'">'.$i.'</a></li>';
@@ -96,6 +102,7 @@ include("../connect.php");
                 }
             }
 
+            /* Desactivamos o habilitamos la opción de siguiente segun la pagina actual */
             if ($pagina!=$npage) {
                 echo 
                 '<li class="page-item">

@@ -7,6 +7,7 @@ include("../../connect.php");
 
     $idSolicitante = $_SESSION['user'];
 
+    /* Actualizar la solicitud del usuario */
     $update = "UPDATE solicitud_cuenta SET stado_s='Revisión',Nota_s=NULL WHERE idSolicitante='$idSolicitante'";
     $result = mysqli_query($connect,$update) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
     

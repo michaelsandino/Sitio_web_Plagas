@@ -10,9 +10,11 @@
 
     if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
+        /* Consultar los estudios del usuario */
         $consult="SELECT * FROM formacionapp WHERE id_usu='$id_usu'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
     
+        /* Imprimir información */
         while($view = mysqli_fetch_array($result))
         {
             echo 

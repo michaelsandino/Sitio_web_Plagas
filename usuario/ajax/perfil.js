@@ -76,6 +76,7 @@ if(url.split('/').reverse()[0] == "actualizar.php"){
       tp_id = objeto.tp_id; 
       identidad = objeto.identidad; 
       fechanacimiento = objeto.fechanacimiento; 
+      fechanacimiento = fechanacimiento.split('-').reverse().join('-');
       telefono = objeto.telefono; 
 
       document.update.email.value = email;

@@ -80,7 +80,7 @@ if(url.split('/').reverse()[0] == ""){
 
 
 
-  /* Eliminar cultivos */
+  /* Eliminar tratamiento */
   function eliminar(idTratamiento){
 
     if (confirm("Esta seguro que desea eliminar este tratamiento?"))

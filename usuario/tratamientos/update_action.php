@@ -9,6 +9,7 @@
     /* Permite realizar el registro de la información de textos largos */
     $DesTratamiento= mysqli_real_escape_string($connect,$DesTratamiento);
 
+    /* Actualizar información del tratamiento */
     $update = "UPDATE tratamiento SET tipoTratamiento='$TpTratamiento', nameTrata='$NaTratamiento',pasosTratamiento='$DesTratamiento' WHERE idTratamiento='$idTratamiento'";
     $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 

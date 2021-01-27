@@ -1,5 +1,5 @@
 <?php
-
+/* Crear variables globales al momento de iniciar sesión*/
     include("../connect.php");
 
     $email = $_POST['email'];

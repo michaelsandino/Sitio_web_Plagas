@@ -10,9 +10,9 @@ include("../../connect.php");
 
     $id_cultivo = $_POST['id_cultivo'];
     
-
     if ($user_rol == 'Admi') {
 
+        /* consultar las solicitudes de plagas */
         $consult="SELECT * FROM plagas p, solicitud_plaga s WHERE p.id_cultivo='$id_cultivo' AND p.id_plagas=s.id_plagaSolict ORDER BY s.fech_iniPlag DESC";
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
         

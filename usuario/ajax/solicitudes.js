@@ -1,6 +1,6 @@
 url = window.location.pathname;
 
-/* Consultar */
+/* Consultar silicitudes de usuario */
 if(url.split('/').reverse()[0] == ""){   
 
     $.ajax({
@@ -80,7 +80,7 @@ if(url.split('/').reverse()[0] == "info.php"){
     }
     solicitudes();
 
-    /* Actualizar solicitud de cultivo */
+    /* Actualizar solicitud de usuario */
     function solicitud(){
         
         var loc = window.location.search

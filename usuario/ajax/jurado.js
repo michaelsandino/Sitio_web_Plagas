@@ -1,6 +1,7 @@
 url = window.location.pathname;
 if(url.split('/').reverse()[1] == "jurado"){ 
 
+    /* Consulta del estado de la solicitud */
     $.ajax({
     url: 'consult.php',
     type: 'POST',

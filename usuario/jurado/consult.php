@@ -10,6 +10,7 @@
 
     if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
+        /* Consultar el estado de la solicitud de la cuenta */
         $consult="SELECT * FROM solicitud_cuenta WHERE idSolicitante='$email'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 

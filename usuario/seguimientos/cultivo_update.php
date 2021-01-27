@@ -12,9 +12,11 @@
     $nota = $_POST['nota'];
     $fechaActual = date('d-m-Y');
 
+    /* Actualizar estado del cultivo */
     $update = "UPDATE cultivo SET stado_c='$cumplimiento' WHERE idCultivo='$idCultivo'";
     $update = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
+    /* Actualizar estado de la solicitud del cultivo */
     $update = "UPDATE solicitud_proyecto SET fech_fin='$fechaActual', nota_sp='$nota' WHERE id_cultivofk='$idCultivo' AND evaluador_sp='$user_email'";
     $result = mysqli_query($connect,$update) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error.</div>');
     

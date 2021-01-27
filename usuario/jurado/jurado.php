@@ -7,6 +7,7 @@ include("../../connect.php");
 
     $idSolicitante = $_SESSION['user'];
 
+    /* Registar una solicitud */
     $insert = "INSERT INTO solicitud_cuenta value(null,'$idSolicitante','Revisión',NULL)";
     $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
     

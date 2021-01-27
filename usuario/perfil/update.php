@@ -11,6 +11,7 @@
     $tp_id = $_POST['ti'];
     $identidad = $_POST['ni'];
     $fechanacimiento = $_POST['fechanacimiento'];
+    $fechanacimiento = date("d-m-Y", strtotime($fechanacimiento));
     $telefono = $_POST['telefono'];
 
     $update = "UPDATE usuarioapp SET nameUsu='$name', apellidoUsu='$apellido',tp_id='$tp_id',

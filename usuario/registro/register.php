@@ -8,7 +8,9 @@
     $apellido = $_POST['apellido'];
     $ti = $_POST['ti'];
     $ni = $_POST['ni'];
+
     $fechanacimiento = $_POST['fechanacimiento'];
+    $fechanacimiento = date("d-m-Y", strtotime($fechanacimiento));
     $telefono = $_POST['telefono'];
 
     $insert = "INSERT INTO usuarioapp value('$email','$ti','$ni','$name','$apellido','$fechanacimiento','$telefono','usuario')";

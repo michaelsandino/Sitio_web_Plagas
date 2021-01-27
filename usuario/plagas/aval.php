@@ -11,8 +11,8 @@
     $id_cultivo = $_POST['id_cultivo'];
     $fechaActual = date('d-m-Y');
 
-    $review="SELECT * FROM solicitud_proyecto s, cultivo c, plagas p WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo'";  
-    /* $review="SELECT * FROM cultivo c, plagas p WHERE c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo'"; */  
+    /* Consultar que la plaga sea del usuario */
+    $review="SELECT * FROM solicitud_proyecto s, cultivo c, plagas p WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo'";    
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
     /* Permite saber cuantas filas tiene la consulta*/
@@ -26,12 +26,15 @@
         </button>
         </div>'; 
     }else{
+        /* Actualizar el estado de la solicitud del cultivo al que pertenecen */
         $cultivo_update="UPDATE solicitud_proyecto SET stado_sp='En espera' WHERE id_cultivofk='$id_cultivo'";
         $cultivo_update = mysqli_query($connect,$cultivo_update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
+        /* Actualizar el estado de la plaga */
         $update = "UPDATE plagas SET stado_p='En espera' WHERE id_plagas='$id_plagas'";
         $update = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
+        /* Registrar la solicitud */
         $insert = "INSERT INTO solicitud_plaga value(null,'$id_plagas','$fechaActual',null,'En espera',null,null)";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error.</div>');
         

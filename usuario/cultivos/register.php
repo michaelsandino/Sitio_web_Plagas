@@ -14,13 +14,16 @@
     $descrip= mysqli_real_escape_string($connect,$descrip);
     $photo = $_FILES['photo'];
 
+    /* Verificar que la imagen tenga el formato adecuado */
     if ($photo["type"] == "image/jpg" or $photo["type"] == "image/jpeg" or $photo["type"] == "image/png") {
 
+        /* Consultar en que numero del auto_increment del id va en la table cultivos */
         $number = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'emprende_plagas' AND TABLE_NAME = 'cultivo'";
         $number = mysqli_query($connect,$number) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');
         $number=mysqli_fetch_row($number);
         $number = $number[0]; 
 
+        /* Guardar la imagen segun el tipo de formato */
         if ($photo["type"] == "image/png") {
             
             $name_photo = $number.".png";

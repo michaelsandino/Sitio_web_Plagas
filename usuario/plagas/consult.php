@@ -9,6 +9,7 @@ include("../../connect.php");
 
     $id_cultivo = $_POST['id_cultivo'];
 
+    /* Consultar que la plaga sea del usuario */
     $review="SELECT * FROM cultivo WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$idUsuCultivo'";
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
@@ -64,7 +65,7 @@ include("../../connect.php");
                 /* Estado por defecto */
                 if('Pendiente'==$view['stado_p']) {
         
-                    /* Consulta para saber si la plaga tiene el cultivo activo*/
+                    /* Consulta para saber si la plaga tiene el cultivo en proceso de aval*/
                     $review="SELECT * FROM tratamiento WHERE id_plaga='$view[id_plagas]'";
                     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
                     $check=mysqli_fetch_row($review);
@@ -93,7 +94,7 @@ include("../../connect.php");
                     </div>';
                     }
                     
-                /* Estado al momento de socitar aval */
+                /* Estado al momento de socilitar aval */
                 }else if('En espera'==$view['stado_p']){
                     echo
                     '<br> <button class="dropdown-item disabled"><img src="../../icons/espera.svg" alt="icono_aval" class="pr-2" height="20px">Pendiente de verificación</button> <div class="dropdown-divider"></div>

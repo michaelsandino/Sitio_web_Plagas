@@ -11,6 +11,7 @@
 
     if ($user_rol == 'Admi') {
 
+        /* Consultar información del cultivo */
         $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
@@ -35,7 +36,8 @@
                         </div>
                     </div>
             ';
-
+            
+            /* Formulario para saber si es el usuario es el encargado */
             if ($view['stado_c']=='En espera' AND $view['evaluador_sp']==$user_email) {
                     
                 echo'
@@ -67,6 +69,7 @@
                             </div>
                 ';
 
+            /* Mensaje para los usuarios que no son los encargados pero ya se encuentra en revisión. */
             }else if($view['stado_c']=='En espera' AND $view['evaluador_sp']!=$user_email AND $view['evaluador_sp']!=null){
 
                 echo'
@@ -78,7 +81,8 @@
                         
                         </div>
                 ';
-                
+
+            /* Información de cuando ya fue revisado una solicitud */
             }else if($view['stado_c']!='En espera'){
 
                 echo'
@@ -93,7 +97,8 @@
                         </p>
                         </div>
                 ';
-                
+
+            /* Mensaje cuando no hay ningun jurado encargado de la solicitud */
             }else{
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>

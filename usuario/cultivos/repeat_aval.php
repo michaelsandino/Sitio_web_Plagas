@@ -10,14 +10,16 @@
     $idCultivo = $_POST['idCultivo'];
     $fechaActual = date('d-m-Y');
 
+    /* Actualizar el estado del cultivo */
     $update = "UPDATE cultivo SET stado_c='En espera' WHERE idCultivo='$idCultivo' AND idUsuCultivo='$idUsuCultivo'";
     $update = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
-    /* Permite saber la cantidad de filas que tuvieron cambios en la BD (INSERT,UPDATE,DELETE) */
+    /* Permite saber la cantidad de filas que tuvieron cambios */
     $check = $connect->affected_rows;
 
     if ($check==1) {
 
+        /* Actualizar el estado de la solicitud */
         $update = "UPDATE solicitud_proyecto SET fech_ini='$fechaActual',fech_fin=NULL,stado_sp='En espera',nota_sp=NULL,evaluador_sp=NULL WHERE id_cultivofk='$idCultivo'";
         $result = mysqli_query($connect,$update) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error.</div>');
     

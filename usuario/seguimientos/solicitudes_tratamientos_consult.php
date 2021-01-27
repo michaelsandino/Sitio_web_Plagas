@@ -13,6 +13,7 @@ include("../../connect.php");
 
     if ($user_rol == 'Admi') {
 
+        /* consultar las solicitudes de tratamientos */
         $consult="SELECT * FROM tratamiento t, solicitud_tratamiento s WHERE t.id_plaga='$id_plaga' AND t.idTratamiento=s.id_tatamientos ORDER BY s.fech_iniT DESC";
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
         

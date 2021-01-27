@@ -10,6 +10,7 @@ include("../../connect.php");
     $id_plaga = $_POST['id_plaga'];
     $id_cultivo = $_POST['id_cultivo'];
 
+    /* Consultar el nombre de la plaga a la que pertenecen los tratamientos */
     $consult="SELECT * FROM plagas p, cultivo c WHERE p.id_plagas='$id_plaga' AND p.id_cultivo='$id_cultivo' AND c.idCultivo='$id_cultivo' AND c.idUsuCultivo='$idUsuCultivo'"; 
     $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 

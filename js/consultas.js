@@ -1,7 +1,7 @@
 url = window.location.pathname;
 
 
-/* ------------ CULTIVOS ------------ */
+/* ------------ CONSULTA PARA CULTIVOS ------------ */
 
 if(url.split('/').reverse()[0] == ""){   
 
@@ -54,6 +54,7 @@ $(cultivos());
         
   }
 
+  /* Filtro para consulta */
     $(document).on('keyup', '#filtro', function()
     {
         var valorFiltro=$(this).val();
@@ -69,11 +70,11 @@ $(cultivos());
 }
 
 
-/* ------------ PLAGAS ------------ */ 
+/* ------------ CONSULTA PARA PLAGAS ------------ */ 
 
 if(url.split('/').reverse()[0] == "plagas.html"){ 
 
-    /* ------ nombre cultivo ------- */
+    /* ------ consultar el nombre cultivo ------- */
     var loc = window.location.search;
     const urlParams  = new URLSearchParams(loc);
     var cultivo = urlParams .get('cultivo');
@@ -112,7 +113,7 @@ if(url.split('/').reverse()[0] == "plagas.html"){
 
     });    
 
-    /* ------ Consulta plaga ------ */ 
+    /* ------ Consultar plagas ------ */ 
     $(plagas());
 
     function plagas(filtro) {
@@ -179,11 +180,11 @@ if(url.split('/').reverse()[0] == "plagas.html"){
 }
 
 
-/* ------------ TRATAMIENTOS ------------ */
+/* ------------ CONSULTAR TRATAMIENTOS ------------ */
 
 if(url.split('/').reverse()[0] == "tratamientos.html"){ 
 
-    /* ------ nombre plaga ------- */
+    /* ------ consultar nombre de la plaga ------- */
     var loc = window.location.search;
     const urlParams  = new URLSearchParams(loc);
     var plaga = urlParams .get('plaga');
@@ -222,7 +223,7 @@ if(url.split('/').reverse()[0] == "tratamientos.html"){
 
     });    
 
-    /* ------ Consulta tratamientos ------ */
+    /* ------ Consulta de tratamientos ------ */
     $(tratamientos());
 
     function tratamientos(filtro) {

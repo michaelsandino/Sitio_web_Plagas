@@ -9,6 +9,7 @@
 
     if ($user_rol=='Administrador') {
 
+        /* Consultar las solicitudes que hayan hecho los usuarios */
         $consult="SELECT * FROM solicitud_cuenta s,usuarioapp u WHERE s.idSolicitante=u.email AND s.stado_s='Revisión'";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 

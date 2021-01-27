@@ -2,7 +2,7 @@ url = window.location.pathname;
 
 if(url.split('/').reverse()[0] == ""){  
   
-  /* SOLICITUDES */  
+  /* Consulta de solicitudes */  
   $.ajax({
     url: 'consult_seguimientos.php',
     type: 'POST',
@@ -29,7 +29,7 @@ if(url.split('/').reverse()[0] == ""){
 
   });
 
-  /* MIS SEGUIMIENTOS */
+  /* Consulta de mis seguimientos */
   $.ajax({
     url: 'consult_mi_lista.php',
     type: 'POST',
@@ -142,7 +142,7 @@ if(url.split('/').reverse()[0] == "cultivo.php"){
       window.location.replace('../inicio');
     } 
 
-    /* Actualizar solicitud de cultivo */
+  /* Actualizar solicitud de cultivo */
   function seguimiento_cultivo(){
     
     const urlParams  = new URLSearchParams(loc);
@@ -301,7 +301,7 @@ if(url.split('/').reverse()[0] == "plaga.php"){
       window.location.replace('../inicio');
     } 
 
-    /* Actualizar solicitud de plaga */
+  /* Actualizar solicitud de plaga */
   function seguimiento_plaga(){
     
     const urlParams  = new URLSearchParams(loc);
@@ -362,7 +362,7 @@ if(url.split('/').reverse()[0] == "plaga.php"){
   
 }
 
-/* ----------- Consultar información acerca de las plagas del cultivo ------------- */
+/* ----------- Consultar información acerca de los tratamientos de la plaga ------------- */
 
 if(url.split('/').reverse()[0] == "solicitudes_tratamientos.php"){ 
 
@@ -461,7 +461,7 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
       window.location.replace('../inicio');
     } 
 
-    /* Actualizar solicitud de cultivo */
+  /* Actualizar solicitud del tratamiento */
   function seguimiento_tratamiento(){
     
     const urlParams  = new URLSearchParams(loc);
