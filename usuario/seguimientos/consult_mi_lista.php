@@ -33,13 +33,21 @@ include("../../connect.php");
                 $check1 = $result1->num_rows;
                 if ($check1) {
                     
+                    if ($view['stado_c']!='En espera') {
+                        $stado = $view['stado_c'];
+                    }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
+                        $stado = 'Revisión';
+                    }else{
+                        $stado = 'En espera';
+                    }
+
                     echo' 
                     <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view['fech_ini'].'</strong></p>
                     <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nameUsu'].' '.$view['apellidoUsu'].'
                     <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                     <hr>
                     <p class="subtitle px-3 mb-2">Estado:</p> 
-                    <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
+                    <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$stado.'</p> 
                     <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                     ';
 
@@ -52,13 +60,21 @@ include("../../connect.php");
                     $check2 = $result2->num_rows;
                     if ($check2) {
                         
+                        if ($view['stado_c']!='En espera') {
+                            $stado = $view['stado_c'];
+                        }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
+                            $stado = 'Revisión';
+                        }else{
+                            $stado = 'En espera';
+                        }
+
                         echo' 
                         <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view['fech_ini'].'</strong></p>
                         <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nameUsu'].' '.$view['apellidoUsu'].'
                         <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                         <hr>
                         <p class="subtitle px-3 mb-2">Estado:</p> 
-                        <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
+                        <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$stado.'</p> 
                         <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                         ';
 
@@ -70,6 +86,14 @@ include("../../connect.php");
 
                         $check3 = $result3->num_rows;
                         if ($check3) {
+
+                            if ($view['stado_c']!='En espera') {
+                                $stado = $view['stado_c'];
+                            }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
+                                $stado = 'Revisión';
+                            }else{
+                                $stado = 'En espera';
+                            }
                             
                             echo' 
                             <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view['fech_ini'].'</strong></p>
@@ -77,7 +101,7 @@ include("../../connect.php");
                             <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_cultivo" height="20px"> '.$view['nameRegional'].'</br></p>
                             <hr>
                             <p class="subtitle px-3 mb-2">Estado:</p> 
-                            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_c'].'</p> 
+                            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$stado.'</p> 
                             <a href="cultivo.php?cultivo='.$view['idCultivo'].'" class="btn btn-light btn-block">Consultar<img src="../../icons/lupa-2.svg" height="25px" class="pl-2" alt="icono_consultar"></a> 
                             ';
                         }

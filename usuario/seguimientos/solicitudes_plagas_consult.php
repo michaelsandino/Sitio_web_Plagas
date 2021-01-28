@@ -23,7 +23,7 @@ include("../../connect.php");
             <p class="text px-3 mb-0"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nombreT_plagas'].'</br></p>
             <hr>
             <p class="subtitle px-3 mb-2">Estado:</p> 
-            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_p'].' 
+            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_plag'].' 
             ';
 
             if ($view['evaluador_plag']==$user_email) {

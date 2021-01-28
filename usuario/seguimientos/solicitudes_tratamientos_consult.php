@@ -24,7 +24,7 @@ include("../../connect.php");
             <p class="text px-3 mb-0"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nameTrata'].'</br></p>
             <hr>
             <p class="subtitle px-3 mb-2">Estado:</p> 
-            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_t'].'
+            <p class="text px-3"><img src="../../icons/aval.svg" class="pr-1"  alt="icono_usuario" height="20px">'.$view['stado_T'].'
             ';
 
             if ($view['evaluador_T']==$user_email) {

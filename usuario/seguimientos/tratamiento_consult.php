@@ -34,7 +34,7 @@
             ';
 
             /* Formulario para saber si es el usuario es el encargado */
-            if ($view['stado_t']=='En espera' AND $view['evaluador_T']==$user_email) {
+            if ($view['stado_T']=='Revisión' AND $view['evaluador_T']==$user_email) {
                     
                 echo'
                 <p class="text bg-orange text-white pl-3" id="nameR" style="height: 31px; font-size:20px;">Validar información</p>
@@ -66,10 +66,10 @@
                 ';
 
              /* Mensaje para los usuarios que no son los encargados pero ya se encuentra en revisión. */
-            }else if($view['stado_t']=='En espera' AND $view['evaluador_T']!=$user_email AND $view['evaluador_T']!=null){
+            }else if($view['stado_T']=='Revisión' AND $view['evaluador_T']!=$user_email AND $view['evaluador_T']!=null){
 
                 echo'
-                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en espera</p>
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en Revisión</p>
         
                         <div class="col-12">
         
@@ -79,7 +79,7 @@
                 ';
 
             /* Información de cuando ya fue revisado una solicitud */
-            }else if($view['stado_t']!='En espera'){
+            }else if($view['stado_T']!='En espera' AND $view['stado_T']!='Revisión'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Información Aval</p>
         
@@ -94,7 +94,7 @@
                 ';
             
             /* Mensaje cuando no hay ningun jurado encargado de la solicitud */
-            }else{
+            }else if($view['stado_T']=='En espera'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>
         

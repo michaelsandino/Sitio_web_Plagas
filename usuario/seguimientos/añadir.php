@@ -31,7 +31,7 @@ include("../../connect.php");
         if ($check1) {
             $id_cultivo = $check1[0]; 
 
-            $update = "UPDATE solicitud_proyecto SET evaluador_sp='$user_email' WHERE id_cultivofk='$id_cultivo'";
+            $update = "UPDATE solicitud_proyecto SET stado_sp='Revisión', evaluador_sp='$user_email' WHERE id_cultivofk='$id_cultivo'";
             $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
 
@@ -46,7 +46,7 @@ include("../../connect.php");
             
                 $id_plaga = $view2['id_plagas']; 
 
-                $update = "UPDATE solicitud_plaga SET evaluador_plag='$user_email' WHERE id_plagaSolict='$id_plaga'";
+                $update = "UPDATE solicitud_plaga SET stado_plag='Revisión', evaluador_plag='$user_email' WHERE id_plagaSolict='$id_plaga'";
                 $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
         }
 
@@ -59,7 +59,7 @@ include("../../connect.php");
             
             $id_tratamiento = $view3['idTratamiento']; 
 
-            $update = "UPDATE solicitud_tratamiento SET evaluador_T='$user_email' WHERE id_tatamientos='$id_tratamiento'";
+            $update = "UPDATE solicitud_tratamiento SET stado_T='Revisión', evaluador_T='$user_email' WHERE id_tatamientos='$id_tratamiento'";
             $result = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
         }
 

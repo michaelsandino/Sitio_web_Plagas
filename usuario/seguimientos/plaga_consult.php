@@ -49,7 +49,7 @@
             ';
             
             /* Formulario para saber si es el usuario es el encargado */
-            if ($view['stado_plag']=='En espera' AND $view['evaluador_plag']==$user_email) {
+            if ($view['stado_plag']=='Revisión' AND $view['evaluador_plag']==$user_email) {
                     
                 echo'
                 <p class="text bg-orange text-white pl-3" id="nameR" style="height: 31px; font-size:20px;">Validar información</p>
@@ -81,10 +81,10 @@
                 ';
 
             /* Mensaje para los usuarios que no son los encargados pero ya se encuentra en revisión. */
-            }else if($view['stado_plag']=='En espera' AND $view['evaluador_plag']!=$user_email AND $view['evaluador_plag']!=null){
+            }else if($view['stado_plag']=='Revisión' AND $view['evaluador_plag']!=$user_email AND $view['evaluador_plag']!=null){
 
                 echo'
-                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en espera</p>
+                <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud en Revisión</p>
         
                         <div class="col-12">
         
@@ -94,7 +94,7 @@
                 ';
 
             /* Información de cuando ya fue revisado una solicitud */
-            }else if($view['stado_plag']!='En espera'){
+            }else if($view['stado_plag']!='En espera' AND $view['stado_plag']!='Revisión'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Información Aval</p>
         
@@ -109,13 +109,13 @@
                 ';
 
             /* Mensaje cuando no hay ningun jurado encargado de la solicitud */
-            }else{
+            }else if($view['stado_plag']=='En espera'){
                 echo'
                 <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicutud sin jurado asignado</p>
         
                         <div class="col-12">
         
-                            <p class="text font-weight-bold">La solicitud aun no se encuentra en revisión.</p>
+                            <p class="text font-weight-bold">La solicitud se encuentra en espera.</p>
 
                         </div>
                 ';

@@ -11,7 +11,7 @@
     $id_cultivo = $_POST['id_cultivo'];
     $fechaActual = date('d-m-Y');
 
-    /* Consultar que la plaga sea del usuario */
+    /* Consultar si el cultivo al que pertenece ya cuenta con una solicitud */
     $review="SELECT * FROM solicitud_proyecto s, cultivo c, plagas p WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' AND p.id_cultivo='$id_cultivo' AND p.id_plagas='$id_plagas' AND c.idUsuCultivo='$idUsuCultivo'";    
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
