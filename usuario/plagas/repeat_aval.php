@@ -9,6 +9,7 @@
 
     $id_plagas = $_POST['id_plagas'];
     $id_cultivo = $_POST['id_cultivo'];
+    date_default_timezone_set("America/Bogota");
     $fechaActual = date('d-m-Y');
     
     /* Consultar si el cultivo al que pertenece ya cuenta con una solicitud */

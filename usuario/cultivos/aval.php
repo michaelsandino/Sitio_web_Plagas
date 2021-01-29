@@ -6,9 +6,11 @@
     ob_start();
 
     $idUsuCultivo = $_SESSION['user'];
-
+    
     $idCultivo = $_POST['idCultivo'];
+    date_default_timezone_set("America/Bogota");
     $fechaActual = date('d-m-Y');
+
 
     /* Actualizar el estado del cultivo */
     $update = "UPDATE cultivo SET stado_c='En espera' WHERE idCultivo='$idCultivo' AND idUsuCultivo='$idUsuCultivo'";

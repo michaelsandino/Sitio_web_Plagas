@@ -10,6 +10,7 @@
 
     $cumplimiento = $_POST['cumplimiento'];
     $nota = $_POST['nota'];
+    date_default_timezone_set("America/Bogota");
     $fechaActual = date('d-m-Y');
 
     /* Actualizar estado de la plaga */

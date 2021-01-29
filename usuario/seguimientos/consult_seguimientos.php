@@ -14,7 +14,7 @@ include("../../connect.php");
 
         /* se consulta el estado de la solicitud con referencia al cultivo */
 
-        $consult="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND s.stado_sp='$estado' ORDER BY s.fech_ini DESC";  
+        $consult="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email AND s.stado_sp='$estado' ORDER BY s.fech_ini ASC";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         $cultivos = $result->num_rows;

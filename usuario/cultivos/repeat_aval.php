@@ -8,6 +8,7 @@
     $idUsuCultivo = $_SESSION['user'];
 
     $idCultivo = $_POST['idCultivo'];
+    date_default_timezone_set("America/Bogota");
     $fechaActual = date('d-m-Y');
 
     /* Actualizar el estado del cultivo */
