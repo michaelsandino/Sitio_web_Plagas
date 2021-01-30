@@ -12,7 +12,7 @@
     if ($user_rol == 'Admi') {
 
         /* Consultar información de la plaga */
-        $consult="SELECT * FROM solicitud_plaga s, plagas p WHERE s.id_plagaSolict='$id_plagas' AND p.id_plagas='$id_plagas'";  
+        $consult="SELECT * FROM solicitud_plaga s, plagas p WHERE s.id_plagaSolict='$id_plagas' AND p.id_plagas='$id_plagas' ORDER BY s.id_solicPlag DESC LIMIT 1";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view = mysqli_fetch_array($result)){

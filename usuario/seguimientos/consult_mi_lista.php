@@ -14,8 +14,8 @@ include("../../connect.php");
 
         /* se consulta el estado de la solicitud con referencia al cultivo */
 
-        $consult="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email ORDER BY s.fech_ini ASC";  
-        $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error1</div>');
+        $consult="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk = c.idCultivo AND c.idUsuCultivo= u.email GROUP BY s.id_cultivofk ORDER BY s.fech_ini ASC";  
+        $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         $cultivos = $result->num_rows;
 
@@ -28,13 +28,15 @@ include("../../connect.php");
                 /* Consultamos el estado del cultivo para saber si la solicitud hace referencia al cultivo */
 
                 $consult1="SELECT * FROM cultivo c, solicitud_proyecto s WHERE c.idCultivo='$idCultivo' AND s.id_cultivofk='$idCultivo' AND s.evaluador_sp='$user_email'";
-                $result1 = mysqli_query($connect,$consult1) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error2</div>');
+                $result1 = mysqli_query($connect,$consult1) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
                 $check1 = $result1->num_rows;
                 if ($check1) {
-                    
+
                     if ($view['stado_c']!='En espera') {
                         $stado = $view['stado_c'];
+                    }else if($view['stado_c']!=$view['stado_sp']){
+                        $stado = 'En espera';
                     }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
                         $stado = 'Revisión';
                     }else{
@@ -55,13 +57,15 @@ include("../../connect.php");
                     /* Consultamos el estado del la plaga para saber si la solicitud hace referencia al plaga */
 
                     $consult2="SELECT * FROM cultivo c, plagas p, solicitud_plaga s WHERE c.idCultivo='$idCultivo' and p.id_cultivo='$idCultivo' and p.id_plagas=s.id_plagaSolict and s.evaluador_plag='$user_email'";
-                    $result2 = mysqli_query($connect,$consult2) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error3</div>');
+                    $result2 = mysqli_query($connect,$consult2) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
                     $check2 = $result2->num_rows;
                     if ($check2) {
-                        
+
                         if ($view['stado_c']!='En espera') {
                             $stado = $view['stado_c'];
+                        }else if($view['stado_c']!=$view['stado_sp']){
+                            $stado = 'En espera';
                         }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
                             $stado = 'Revisión';
                         }else{
@@ -82,13 +86,15 @@ include("../../connect.php");
                         /* Consultamos el estado del tratamiento para saber si la solicitud hace referencia al tratamient */
                 
                         $consult3="SELECT * FROM cultivo c, plagas p, tratamiento t, solicitud_tratamiento s WHERE c.idCultivo='$idCultivo' and p.id_cultivo='$idCultivo' and p.id_plagas=t.id_plaga and t.idTratamiento=s.id_tatamientos and s.evaluador_T='$user_email'";
-                        $result3 = mysqli_query($connect,$consult3) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error4</div>');
+                        $result3 = mysqli_query($connect,$consult3) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
                         $check3 = $result3->num_rows;
                         if ($check3) {
 
                             if ($view['stado_c']!='En espera') {
                                 $stado = $view['stado_c'];
+                            }else if($view['stado_c']!=$view['stado_sp']){
+                                $stado = 'En espera';
                             }else if($view['stado_sp']=='Revisión' or $view['evaluador_sp']==$user_email){
                                 $stado = 'Revisión';
                             }else{

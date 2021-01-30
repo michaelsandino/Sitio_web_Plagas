@@ -100,39 +100,6 @@ if(url.split('/').reverse()[0] == ""){
         
     }
   }
-
-  /* Solicitar nuevamente aval */
-  function repeat_aval(idCultivo){
-
-    if (confirm("¿Esta seguro que desea solicitar nuevamente el aval?"))
-    {
-      var parametro = 
-      {
-        "idCultivo":idCultivo,
-      };
-    
-      $.ajax({
-        data: parametro,
-        url: 'repeat_aval.php',
-        type:'POST',
-
-        beforeSend:function (objeto) {
-          $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow");
-        },
-        success: function(response)
-        {
-          $('#eliminado').html(response).fadeIn("slow");
-          setTimeout(function(){window.location.reload();}, 3000);
-
-        },
-        error: function (err) {
-          alert("Disculpe, ocurrio un error");           
-        }
-    
-      });
-        
-    }
-  }
   
 
 /* Registar cultivo */

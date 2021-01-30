@@ -12,7 +12,7 @@
     if ($user_rol == 'Admi') {
 
         /* Consultar información del tratamiento */
-        $consult="SELECT * FROM solicitud_tratamiento s, tratamiento t WHERE s.id_tatamientos='$idTratamiento' AND t.idTratamiento='$idTratamiento'";  
+        $consult="SELECT * FROM solicitud_tratamiento s, tratamiento t WHERE s.id_tatamientos='$idTratamiento' AND t.idTratamiento='$idTratamiento' ORDER BY s.id_solicT DESC LIMIT 1";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view = mysqli_fetch_array($result)){

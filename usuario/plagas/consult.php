@@ -106,7 +106,7 @@ include("../../connect.php");
                 
                 }else if('Rechazado'==$view['stado_p'] or 'Activo'==$view['stado_p']){
         
-                    $nota="SELECT * FROM solicitud_plaga WHERE id_plagaSolict='$view[id_plagas]'";  
+                    $nota="SELECT * FROM solicitud_plaga WHERE id_plagaSolict='$view[id_plagas]' ORDER BY id_solicPlag DESC LIMIT 1";  
                     $nota = mysqli_query($connect,$nota) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
         
                     $nota_plag=mysqli_fetch_row($nota);
@@ -120,7 +120,7 @@ include("../../connect.php");
                     if('Rechazado'==$view['stado_p']){
         
                         echo 
-                        '<br> <button class="dropdown-item" onclick="repeat_aval('.$view['id_plagas'].');"><img src="../../icons/rechazada.svg" alt="icono_aval" class="pr-2" height="20px">Rechazado / Solicitar de nuevo</button>
+                        '<br> <button class="dropdown-item" onclick="aval('.$view['id_plagas'].');"><img src="../../icons/rechazada.svg" alt="icono_aval" class="pr-2" height="20px">Rechazado / Solicitar de nuevo</button>
                         <a class="dropdown-item" href="actualizar.php?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/flechas-circulares.svg" alt="icono_borrar" class="pr-2" height="20px">Actualizar</a>
                         <a class="dropdown-item" href="../tratamientos/?plaga='.$view['id_plagas'].'&cultivo='.$view['id_cultivo'].'"><img src="../../icons/corazon.svg" alt="icono_tratamiento" class="pr-2" height="20px">Tratamientos</a>
                         <div class="dropdown-divider"></div>

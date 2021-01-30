@@ -12,7 +12,7 @@
     if ($user_rol == 'Admi') {
 
         /* Consultar información del cultivo */
-        $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo'";  
+        $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' ORDER BY s.id_solicP DESC LIMIT 1";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         while($view = mysqli_fetch_array($result)){
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-7">
-                            <p class="text text-left mx-3 mb-0"><strong>Nombre científico: </strong><em>'.$view['nameCientifico'].'</em></p>
+                            <p class="text text-left mx-3 mb-0"><strong>Nombre científico: </strong><em>'.$view['nameCientifico'].'</em>'.$view['stado_c'].'</p>
                             
                         </div>
 

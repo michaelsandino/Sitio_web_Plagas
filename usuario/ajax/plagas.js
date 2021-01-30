@@ -145,8 +145,9 @@ if(url.split('/').reverse()[0] == ""){
             },
             success: function(response)
             {
-
-              if (response.indexOf("El cultivo al que pertenece la plaga seleccionada requiere de tener una solicitud de aval.")=='-1'){
+              if (response.indexOf("La solicitud no ha sido enviada debido a que el cultivo al que pertenece la plaga seleccionada requiere de tener una solicitud de aval.")=='-1' & 
+              response.indexOf("La solicitud no ha sido enviada debido a que el cultivo al que pertenece la plaga seleccionada cuenta con una solicitud en revisión, debe esperar a que esta sea procesada.")=='-1' & 
+              response.indexOf("La solicitud no ha sido enviada debido a que el cultivo al que pertenece la plaga seleccionada cuenta con una solicitud que ha sido rechazada, debe solicitar enviar una solicitud de aval del cultivo.")=='-1'){
                 $('#eliminado').html(response).fadeIn("slow");
                 setTimeout(function(){window.location.reload();}, 3000);
               }else{
@@ -162,51 +163,6 @@ if(url.split('/').reverse()[0] == ""){
       }
     }
   
-    /* Solicitar nuevamente aval */
-    function repeat_aval(id_plagas){
-  
-      if (confirm("¿Esta seguro que desea solicitar nuevamente el aval?"))
-      {
-        /* obtener los valores enviamos por GET */
-        var loc = window.location.search;
-        /* Buscar en los valores el nombre del campo y obtener su valor*/
-        const urlParams  = new URLSearchParams(loc);
-        var cultivo = urlParams .get('cultivo');
-
-        var parametro = 
-        {
-          "id_plagas":id_plagas,
-          "id_cultivo":cultivo,
-        };
-      
-        $.ajax({
-          data: parametro,
-          url: 'repeat_aval.php',
-          type:'POST',
-
-          beforeSend:function (objeto) {
-            $("#eliminado").html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>').fadeIn("slow"); 
-          },
-          success: function(response)
-          {
-
-            if (response.indexOf("El cultivo al que pertenece la plaga seleccionada requiere de tener una solicitud de aval.")=='-1'){
-              $('#eliminado').html(response).fadeIn("slow");
-              setTimeout(function(){window.location.reload();}, 3000);
-            }else{
-              $('#eliminado').html(response).fadeIn("slow"); 
-            }
-
-          },
-          error: function (err) {
-            alert("Disculpe, ocurrio un error");           
-          }
-      
-        });
-      }
-    }
-  
-
 /* Registar plaga */
   $("#p_register").submit(function(e){
     e.preventDefault();
