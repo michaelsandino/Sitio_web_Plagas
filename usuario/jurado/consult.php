@@ -11,7 +11,7 @@
     if ($user_rol=='Admi' OR $user_rol=='usuario'){
 
         /* Consultar el estado de la solicitud de la cuenta */
-        $consult="SELECT * FROM solicitud_cuenta WHERE idSolicitante='$email'";  
+        $consult="SELECT * FROM solicitud_cuenta WHERE idSolicitante='$email' ORDER BY idSolicitud DESC LIMIT 1";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         $check=mysqli_fetch_row($result);
@@ -50,7 +50,7 @@
                 <p class="subtitle text-orange">Reporte:</p>
                 <p class="text">'.nl2br($Nota_s).'</p>
                 <div id="progress-jurado"></div>
-                <button type="submit" class="btn btn-success btn-block mt-4" onclick="repeat_jurado()"><img src="../../icons/jurado-blanco.svg" height="20px" class="pr-2" alt=""> QUIERO SER JURADO</button>
+                <button type="submit" class="btn btn-success btn-block mt-4" onclick="jurado()"><img src="../../icons/jurado-blanco.svg" height="20px" class="pr-2" alt=""> QUIERO SER JURADO</button>
                 ';
             }
             if ($stado_s=="Admitido") {

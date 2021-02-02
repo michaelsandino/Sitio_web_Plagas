@@ -11,7 +11,7 @@
     if ($user_rol=='Administrador') {
 
         /* Consultar la información del usuario  */
-        $consult="SELECT * FROM usuarioapp u,solicitud_cuenta s WHERE u.email='$email' AND s.idSolicitante='$email' AND u.tpUsuario='usuario' AND s.stado_s='Revisión'";  
+        $consult="SELECT * FROM usuarioapp u,solicitud_cuenta s WHERE u.email='$email' AND s.idSolicitante='$email' ORDER BY idSolicitud DESC LIMIT 2";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
         /* Permite saber la cantidad de filas afectas por la ultima consulta, delete o update. */
@@ -21,6 +21,7 @@
 
             while($view = mysqli_fetch_array($result))
             {
+                $estado = $view['stado_s'];
                 echo '
                 <div class="col-12 border rounded pt-0 pl-0 pr-0">
 
@@ -34,9 +35,17 @@
                         <p class="d-inline w-100"><img src="../../icons/celular.svg" class="mr-3" alt="icono_celular" width="25"><div class="d-inline">'.$view['telefono'].'</div></p> 
                     </div>
 
-                <p class="text bg-orange text-white pl-3 mt-4 mb-0" style="height: 31px;"><strong>Formación Académica</strong></p>
+                    <p class="text bg-orange text-white pl-3 mb-0" style="height: 31px;"><strong>Formación Académica</strong></p>
+
                 </div>
                 ';
+
+                if ($check>1) {
+                    $info=mysqli_fetch_row($result);
+                    $stado_s = $info[10]; 
+                    $nota_s = $info[11]; 
+                }
+                
             }
 
         /* Consultar los estudios de los usuarios */
@@ -61,54 +70,76 @@
                 
                 ';
             }
-        
-        /* Formulario */
-
-        echo '
-
-        <button data-toggle="modal" data-target="#modal" class="btn btn-light border btn-block">Validar información<img src="../../icons/jurado.svg" height="20px" class="pl-2" alt="validar"></button>
-        
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title title pt-0 w-100 text-center" id="exampleModalLabel">Validar Información</h5>
-                    <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close" style="right: 20px;">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                            <div class="form-group">
-                                <label for="nameR">¿El usuario cumple con la información necesaria para vincularlo como jurado en nuestro sistema?</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="cumplimiento" id="option1" value="si">
-                                    <label class="form-check-label cumplimiento_color" for="option1">
-                                        Si
-                                    </label>
-                                    </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="cumplimiento" id="option2" value="no">
-                                    <label class="form-check-label cumplimiento_color" for="option2">
-                                        No
-                                    </label>
-                                </div>
-                                <small class="form-text text-danger" id="cumplimiento_error"></small>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="nota">Nota</label>
-                                <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
-                            </div>
-                            <div id="message"></div>
-                            
-                            <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4" onclick="solicitud();">Guardar</button>
-                            
-                    </div>
-                </div>
-                </div>
+        if ($check>1) {
+            echo '
+            <p class="text bg-orange text-white pl-3 mb-0" style="height: 31px;"><strong>Solicitud anterior</strong></p>
+            <div class="col-12 border rounded pt-2 pb-2">
+                <p class="text mb-1">
+                <strong>Estado:</strong> '.$stado_s.'<br>
+                <strong>Nota:</strong> '.$nota_s.'
+                </p>
             </div>
+            
+            <p class="text bg-orange text-white pl-3 mb-0" style="height: 31px;"><strong>Formación Académica</strong></p>
+            ';
+        }
+
+
+        /* Formulario */
+        if ($estado=='Revisión') {
+            echo '
+            <button data-toggle="modal" data-target="#modal" class="btn btn-light border btn-block">Validar información<img src="../../icons/jurado.svg" height="20px" class="pl-2" alt="validar"></button>
+            
+                <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title title pt-0 w-100 text-center" id="exampleModalLabel">Validar Información</h5>
+                        <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close" style="right: 20px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nameR">¿El usuario cumple con la información necesaria para vincularlo como jurado en nuestro sistema?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cumplimiento" id="option1" value="si">
+                                        <label class="form-check-label cumplimiento_color" for="option1">
+                                            Si
+                                        </label>
+                                        </div>
+                                        <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cumplimiento" id="option2" value="no">
+                                        <label class="form-check-label cumplimiento_color" for="option2">
+                                            No
+                                        </label>
+                                    </div>
+                                    <small class="form-text text-danger" id="cumplimiento_error"></small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="nota">Nota</label>
+                                    <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
+                                </div>
+                                <div id="message"></div>
+                                
+                                <button type="submit" id="btn_enviar" class="btn btn-success btn-block mt-4" onclick="solicitud();">Guardar</button>
+                                
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            
+            ';
+        }else{
+            echo ' <div class="col-12 border rounded pt-2">
+            <p class="text text-center "><strong>La solicitud ya ha sido procesada.</strong><br>Estado: '.$estado.'</p>
+            </div>';
+        }
+
         
-        ';
+
+        
 
         }else{
             echo'solicitud_invalida';
