@@ -16,9 +16,10 @@
     /* Eliminar el archivo */
     $nameFile=mysqli_fetch_row($consult);
     $nameFile = $nameFile[6];
-    unlink($nameFile); 
-    
+    $nameFile = substr(strrchr($nameFile, "/"), 1);
 
+    unlink('../../../archivoestudio/'.$nameFile); 
+    
     $delete = "DELETE FROM formacionapp WHERE idFormacion='$idFormacion' AND id_usu='$id_usu'";
     $result = mysqli_query($connect,$delete) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 

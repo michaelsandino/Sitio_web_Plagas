@@ -22,43 +22,44 @@
         $number=mysqli_fetch_row($number);
         $number = $number[0]; 
 
+        $dominio = $_SERVER [ 'SERVER_NAME' ];
+        
         /* FOTO 1 */
 
         if ($photoA["type"] == "image/png") {
 
             $name_photoA = "a".$number.".png";
-            $routeA = "plagas_img/".$name_photoA;
+            $routeA = "../../../imgPlagas/".$name_photoA;
             move_uploaded_file($photoA["tmp_name"],$routeA);
 
-            $locationA = "plagas_img/".$name_photoA;
+            $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
 
         }else{
 
             $name_photoA = "a".$number.".jpg";
-            $routeA = "plagas_img/".$name_photoA;
+            $routeA = "../../../imgPlagas/".$name_photoA;
             move_uploaded_file($photoA["tmp_name"],$routeA);
 
-            $locationA = "plagas_img/".$name_photoA;
+            $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
 
         }
-
         /* FOTO 2 */
 
         if ($photoB["type"] == "image/png") {
 
             $name_photoB = "b".$number.".png";
-            $routeB = "plagas_img/".$name_photoB;
+            $routeB = "../../../imgPlagas/".$name_photoB;
             move_uploaded_file($photoB["tmp_name"],$routeB);
 
-            $locationB = "plagas_img/".$name_photoB;
+            $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
 
         }else{
 
             $name_photoB = "b".$number.".jpg";
-            $routeB = "plagas_img/".$name_photoB;
+            $routeB = "../../../imgPlagas/".$name_photoB;
             move_uploaded_file($photoB["tmp_name"],$routeB);
 
-            $locationB = "plagas_img/".$name_photoB;
+            $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
 
         }
 
@@ -67,18 +68,18 @@
         if ($photoC["type"] == "image/png") {
 
             $name_photoC = "c".$number.".png";
-            $routeC = "plagas_img/".$name_photoC;
+            $routeC = "../../../imgPlagas/".$name_photoC;
             move_uploaded_file($photoC["tmp_name"],$routeC);
 
-            $locationC = "plagas_img/".$name_photoC;
+            $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
 
         }else{
 
             $name_photoC = "c".$number.".jpg";
-            $routeC = "plagas_img/".$name_photoC;
+            $routeC = "../../../imgPlagas/".$name_photoC;
             move_uploaded_file($photoC["tmp_name"],$routeC);
 
-            $locationC = "plagas_img/".$name_photoC;
+            $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
 
         }
 
@@ -87,18 +88,18 @@
         if ($photoD["type"] == "image/png") {
 
             $name_photoD = "d".$number.".png";
-            $routeD = "plagas_img/".$name_photoD;
+            $routeD = "../../../imgPlagas/".$name_photoD;
             move_uploaded_file($photoD["tmp_name"],$routeD);
 
-            $locationD = "plagas_img/".$name_photoD;
+            $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
 
         }else{
 
             $name_photoD = "d".$number.".jpg";
-            $routeD = "plagas_img/".$name_photoD;
+            $routeD = "../../../imgPlagas/".$name_photoD;
             move_uploaded_file($photoD["tmp_name"],$routeD);
 
-            $locationD = "plagas_img/".$name_photoD;
+            $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
         }
 
         $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$locationA','$locationB','$locationC','$locationD','Pendiente','https://emprendegrm.com/Plagas/rasenaPlaga1.html')";

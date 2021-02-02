@@ -42,7 +42,7 @@ include("../connect.php");
 
         <div class="row">
             <div class="col-11 col-md-5 col-lg-4 pr-0">
-                <img src="../usuario/cultivos/'.$view['imagenC'].'" class="w-100 mx-3 mb-2" alt="imagen_cultivo">
+                <img src="'.$view['imagenC'].'" class="w-100 mx-3 mb-2" alt="imagen_cultivo">
             </div>
 
             <div class="col-12 col-md-7 col-lg-8">

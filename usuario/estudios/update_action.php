@@ -37,18 +37,20 @@
             /* ELIMINAR FOTO */
             $consult="SELECT * FROM formacionapp WHERE idFormacion='$idFormacion'";  
             $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
-           
+
             $nameFile=mysqli_fetch_row($consult);
             $nameFile = $nameFile[6];
-            unlink($nameFile); 
+            $nameFile = substr(strrchr($nameFile, "/"), 1);
+        
+            unlink('../../../archivoestudio/'.$nameFile); 
 
             /* Actualizar foto */
-       
             $name_file = $idFormacion.".pdf";
-            $route = "estudios_pdf/".$name_file;
+            $route = "../../../archivoestudio/".$name_file;
             move_uploaded_file($pdf["tmp_name"],$route);
 
-            $location = "estudios_pdf/".$name_file;
+            $dominio = $_SERVER [ 'SERVER_NAME' ];
+            $location = $dominio."/Plagas/archivoestudio/".$name_file;
             
             $update = "UPDATE formacionapp SET nivelformativo='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
             fechaGrado='$fechGrado', soporte='$location' WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";

@@ -23,8 +23,9 @@
 
         $namePhoto=mysqli_fetch_row($consult);
         $namePhoto = $namePhoto[5]; 
-        unlink($namePhoto); 
-    
+        $namePhoto = substr(strrchr($namePhoto, "/"), 1);
+        unlink('../../../ImgCultivo/'.$namePhoto); 
+
         echo '<div class="alert alert-success text-center mt-3" role="alert">
         Cultivo eliminado con éxito - Se actualizara dentro un momento el listado de cultivos.
         </div>';

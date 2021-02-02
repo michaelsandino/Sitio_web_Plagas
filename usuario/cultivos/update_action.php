@@ -41,20 +41,26 @@
            
             $namePhoto=mysqli_fetch_row($consult);
             $namePhoto = $namePhoto[5];
-            unlink($namePhoto); 
+            $namePhoto = substr(strrchr($namePhoto, "/"), 1);
+            unlink('../../../ImgCultivo/'.$namePhoto); 
+
+            $dominio = $_SERVER [ 'SERVER_NAME' ];
             
             /* Actualizar foto */
             if ($photo["type"] == "image/png") {
                 $name_photo = $id_cultivo.".png";
-                $route = "cultivos_img/".$name_photo;
+                $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = 'cultivos_img/'.$name_photo;
+                $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
+   
             }else{
                 $name_photo = $id_cultivo.".jpg";
-                $route = "cultivos_img/".$name_photo;
+                $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = 'cultivos_img/'.$name_photo;
+                $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
             }
+
+        
             
             $update = "UPDATE cultivo SET nameRegional='$nameR', nameCientifico='$nameC',descripCultivo='$descrip',imagenC='$location'
             WHERE idCultivo='$id_cultivo' AND idUsuCultivo='$id_user'";

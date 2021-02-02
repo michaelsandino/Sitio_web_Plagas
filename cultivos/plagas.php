@@ -56,10 +56,10 @@ include("../connect.php");
                 
                 <div class="collapse center_container" id="img'.$view['id_plagas'].'">
         
-                <img src="../usuario/plagas/'.$view['imagen_u'].'" class="plag_image" alt="imagen_plaga">
-                <img src="../usuario/plagas/'.$view['imagen_d'].'" class="plag_image" alt="imagen_plaga">
-                <img src="../usuario/plagas/'.$view['imagen_t'].'" class="plag_image" alt="imagen_plaga">
-                <img src="../usuario/plagas/'.$view['imagen_c'].'" class="plag_image" alt="imagen_plaga">
+                <img src="'.$view['imagen_u'].'" class="plag_image" alt="imagen_plaga">
+                <img src="'.$view['imagen_d'].'" class="plag_image" alt="imagen_plaga">
+                <img src="'.$view['imagen_t'].'" class="plag_image" alt="imagen_plaga">
+                <img src="'.$view['imagen_c'].'" class="plag_image" alt="imagen_plaga">
         
                 </div>
                 <a href="tratamientos.html?plaga='.$view['id_plagas'].'&pagina=1" class=" btn btn-light btn-block mt-4 font-weight-bold">Tratamientos<img src="../icons/corazon.svg" height="25px" class="pl-2" alt="icono_plaga"></a>

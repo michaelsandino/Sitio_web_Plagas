@@ -27,15 +27,16 @@
         if ($photo["type"] == "image/png") {
             
             $name_photo = $number.".png";
-            $route = "cultivos_img/".$name_photo;
+            $route = "../../../ImgCultivo/".$name_photo;
             move_uploaded_file($photo["tmp_name"],$route);
         }else{
             $name_photo = $number.".jpg";
-            $route = "cultivos_img/".$name_photo;
+            $route = "../../../ImgCultivo/".$name_photo;
             move_uploaded_file($photo["tmp_name"],$route);
         }
 
-        $location = 'cultivos_img/'.$name_photo;
+        $dominio = $_SERVER [ 'SERVER_NAME' ];
+        $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
 
         $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$location','Pendiente','https://emprendegrm.com/Plagas/rasena.html')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');

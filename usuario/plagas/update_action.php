@@ -36,32 +36,38 @@
             $consult = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
             $namePhoto=mysqli_fetch_row($consult);
             $imagen_u = $namePhoto[6]; 
+            $imagen_u = substr(strrchr($imagen_u, "/"), 1);
             $imagen_d = $namePhoto[7]; 
-            $imagen_t = $namePhoto[8]; 
-            $imagen_c = $namePhoto[9]; 
+            $imagen_d = substr(strrchr($imagen_d, "/"), 1);
+            $imagen_t = $namePhoto[8];
+            $imagen_t = substr(strrchr($imagen_t, "/"), 1);
+            $imagen_c = $namePhoto[9];
+            $imagen_c = substr(strrchr($imagen_c, "/"), 1);
+
+            $dominio = $_SERVER [ 'SERVER_NAME' ];
                 
                 if ($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png") {
 
                     if ($photoA["type"] == "image/png") {
 
-                        unlink($imagen_u); 
+                        unlink('../../../imgPlagas/'.$imagen_u); 
                         
                         $name_photoA = "a".$id_plagas.".png";
-                        $routeA = "plagas_img/".$name_photoA;
+                        $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = "plagas_img/".$name_photoA;
+                        $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }else{
 
-                        unlink($imagen_u); 
+                        unlink('../../../imgPlagas/'.$imagen_u); 
                         
                         $name_photoA = "a".$id_plagas.".jpg";
-                        $routeA = "plagas_img/".$name_photoA;
+                        $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = "plagas_img/".$name_photoA;
+                        $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }
@@ -72,24 +78,24 @@
 
                     if ($photoB["type"] == "image/png") {
 
-                        unlink($imagen_d); 
+                        unlink('../../../imgPlagas/'.$imagen_d); 
                     
                         $name_photoB = "b".$id_plagas.".png";
-                        $routeB = "plagas_img/".$name_photoB;
+                        $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = "plagas_img/".$name_photoB;
+                        $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
 
                     }else{
 
-                        unlink($imagen_d); 
+                        unlink('../../../imgPlagas/'.$imagen_d); 
                     
                         $name_photoB = "b".$id_plagas.".jpg";
-                        $routeB = "plagas_img/".$name_photoB;
+                        $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = "plagas_img/".$name_photoB;
+                        $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
                     }
                     
@@ -100,24 +106,24 @@
 
                     if ($photoC["type"] == "image/png") {
 
-                        unlink($imagen_t); 
+                        unlink('../../../imgPlagas/'.$imagen_t); 
 
                         $name_photoC = "c".$id_plagas.".png";
-                        $routeC = "plagas_img/".$name_photoC;
+                        $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = "plagas_img/".$name_photoC;
+                        $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }else{
 
-                        unlink($imagen_t); 
+                        unlink('../../../imgPlagas/'.$imagen_t); 
 
                         $name_photoC = "c".$id_plagas.".jpg";
-                        $routeC = "plagas_img/".$name_photoC;
+                        $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = "plagas_img/".$name_photoC;
+                        $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }
@@ -128,24 +134,24 @@
 
                     if ($photoD["type"] == "image/png") {
                         
-                        unlink($imagen_c); 
+                        unlink('../../../imgPlagas/'.$imagen_c); 
                     
                         $name_photoD = "d".$id_plagas.".png";
-                        $routeD = "plagas_img/".$name_photoD;
+                        $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = "plagas_img/".$name_photoD;
+                        $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
 
                     }else{
 
-                        unlink($imagen_c); 
+                        unlink('../../../imgPlagas/'.$imagen_c); 
                     
                         $name_photoD = "d".$id_plagas.".jpg";
-                        $routeD = "plagas_img/".$name_photoD;
+                        $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = "plagas_img/".$name_photoD;
+                        $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
                     } 
 
