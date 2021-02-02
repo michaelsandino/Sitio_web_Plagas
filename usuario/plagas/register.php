@@ -32,7 +32,7 @@
             $routeA = "../../../imgPlagas/".$name_photoA;
             move_uploaded_file($photoA["tmp_name"],$routeA);
 
-            $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
+            $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
 
         }else{
 
@@ -40,7 +40,7 @@
             $routeA = "../../../imgPlagas/".$name_photoA;
             move_uploaded_file($photoA["tmp_name"],$routeA);
 
-            $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
+            $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
 
         }
         /* FOTO 2 */
@@ -51,7 +51,7 @@
             $routeB = "../../../imgPlagas/".$name_photoB;
             move_uploaded_file($photoB["tmp_name"],$routeB);
 
-            $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
+            $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
 
         }else{
 
@@ -59,7 +59,7 @@
             $routeB = "../../../imgPlagas/".$name_photoB;
             move_uploaded_file($photoB["tmp_name"],$routeB);
 
-            $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
+            $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
 
         }
 
@@ -71,7 +71,7 @@
             $routeC = "../../../imgPlagas/".$name_photoC;
             move_uploaded_file($photoC["tmp_name"],$routeC);
 
-            $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
+            $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
 
         }else{
 
@@ -79,7 +79,7 @@
             $routeC = "../../../imgPlagas/".$name_photoC;
             move_uploaded_file($photoC["tmp_name"],$routeC);
 
-            $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
+            $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
 
         }
 
@@ -91,7 +91,7 @@
             $routeD = "../../../imgPlagas/".$name_photoD;
             move_uploaded_file($photoD["tmp_name"],$routeD);
 
-            $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
+            $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
 
         }else{
 
@@ -99,7 +99,7 @@
             $routeD = "../../../imgPlagas/".$name_photoD;
             move_uploaded_file($photoD["tmp_name"],$routeD);
 
-            $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
+            $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
         }
 
         $insert = "INSERT INTO plagas value(null,'$id_cultivo','$tipoPlaga','$nameT','$nameC','$descrip','$locationA','$locationB','$locationC','$locationD','Pendiente','https://emprendegrm.com/Plagas/rasenaPlaga1.html')";

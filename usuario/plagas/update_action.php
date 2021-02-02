@@ -56,7 +56,7 @@
                         $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
+                        $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }else{
@@ -67,7 +67,7 @@
                         $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = $dominio."/Plagas/ImgCultivo/".$name_photoA;
+                        $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }
@@ -84,7 +84,7 @@
                         $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
+                        $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
 
                     }else{
@@ -95,7 +95,7 @@
                         $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = $dominio."/Plagas/ImgCultivo/".$name_photoB;
+                        $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
                     }
                     
@@ -112,7 +112,7 @@
                         $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
+                        $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }else{
@@ -123,7 +123,7 @@
                         $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = $dominio."/Plagas/ImgCultivo/".$name_photoC;
+                        $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }
@@ -140,7 +140,7 @@
                         $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
+                        $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
 
                     }else{
@@ -151,7 +151,7 @@
                         $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = $dominio."/Plagas/ImgCultivo/".$name_photoD;
+                        $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
                     } 
 

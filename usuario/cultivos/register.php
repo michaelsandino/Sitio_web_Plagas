@@ -36,7 +36,7 @@
         }
 
         $dominio = $_SERVER [ 'SERVER_NAME' ];
-        $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
+        $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
 
         $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$location','Pendiente','https://emprendegrm.com/Plagas/rasena.html')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');

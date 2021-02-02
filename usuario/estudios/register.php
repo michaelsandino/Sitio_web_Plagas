@@ -29,7 +29,7 @@
         move_uploaded_file($pdf["tmp_name"],$route);
 
         $dominio = $_SERVER [ 'SERVER_NAME' ];
-        $location = $dominio."/Plagas/archivoestudio/".$name_file;
+        $location = 'https://'.$dominio."/Plagas/archivoestudio/".$name_file;
 
         $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_usu','$location')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');

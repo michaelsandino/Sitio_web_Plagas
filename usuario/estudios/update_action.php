@@ -50,7 +50,7 @@
             move_uploaded_file($pdf["tmp_name"],$route);
 
             $dominio = $_SERVER [ 'SERVER_NAME' ];
-            $location = $dominio."/Plagas/archivoestudio/".$name_file;
+            $location = 'https://'.$dominio."/Plagas/archivoestudio/".$name_file;
             
             $update = "UPDATE formacionapp SET nivelformativo='$nvformativo', tituloFormacion='$titulo',entidadEducativa='$entidadEdu',
             fechaGrado='$fechGrado', soporte='$location' WHERE id_usu='$id_usu' AND idFormacion='$idFormacion'";

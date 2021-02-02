@@ -51,13 +51,13 @@
                 $name_photo = $id_cultivo.".png";
                 $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
+                $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
    
             }else{
                 $name_photo = $id_cultivo.".jpg";
                 $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = $dominio."/Plagas/ImgCultivo/".$name_photo;
+                $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
             }
 
         
