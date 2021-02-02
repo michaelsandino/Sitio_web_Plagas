@@ -12,8 +12,10 @@
     if ($user_rol == 'Admi') {
 
         /* Consultar información del cultivo */
-        $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' ORDER BY s.id_solicP DESC LIMIT 1";  
+        $consult="SELECT * FROM solicitud_proyecto s, cultivo c WHERE s.id_cultivofk='$id_cultivo' AND c.idCultivo='$id_cultivo' ORDER BY s.id_solicP DESC LIMIT 2";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+
+        $total = $result->num_rows;
 
         while($view = mysqli_fetch_array($result)){
             
@@ -27,7 +29,7 @@
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-7">
-                            <p class="text text-left mx-3 mb-0"><strong>Nombre científico: </strong><em>'.$view['nameCientifico'].'</em>'.$view['stado_c'].'</p>
+                            <p class="text text-left mx-3 mb-0"><strong>Nombre científico: </strong><em>'.$view['nameCientifico'].'</em></p>
                             
                         </div>
 
@@ -36,6 +38,31 @@
                         </div>
                     </div>
             ';
+
+            /* Mostrar registro anterior en caso de haber sido rechazado */
+            if ($total>1) {
+                $previous=mysqli_fetch_row($result);
+                $fecha = $previous[3]; 
+                $estado = $previous[4]; 
+                $nota = $previous[5]; 
+                $evaluador = $previous[6]; 
+                
+                if (($view['stado_c']!='Rechazado' AND $view['stado_c']!='Activo')  AND $view['evaluador_sp']==$user_email) {
+                    echo '
+                    <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud anterior</p>
+                    <div class="col-12">
+            
+                        <p class="text px-1 mb-3"><strong>Estado: </strong>'.$estado.'.
+                        <br><strong>Nota: </strong>'.$nota.'
+                        <br><strong>Evaluador: </strong>'.$evaluador.'
+                        <br><strong>Fecha: </strong>'.$fecha.'
+                        </p>
+                            
+                    </div>
+                    ';
+                }
+                
+            }
             
             /* Formulario para saber si es el usuario es el encargado */
             if (($view['stado_c']!='Rechazado' AND $view['stado_c']!='Activo')  AND $view['evaluador_sp']==$user_email) {
@@ -64,7 +91,7 @@
                                 <label class="font-weight-bold" for="nota">Nota</label>
                                 <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
                                 <div id="message"></div>
-                                <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_cultivo();">Guardar</button>
+                                <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_cultivo('.$view['id_solicP'].');">Guardar</button>
                                 
                             </div>
                 ';

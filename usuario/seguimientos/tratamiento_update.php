@@ -13,12 +13,14 @@
     date_default_timezone_set("America/Bogota");
     $fechaActual = date('d-m-Y');
 
+    $id_solicT = $_POST['id_solicT'];
+
     /* Actualizar estado del tratamiento */
     $update = "UPDATE tratamiento SET stado_t='$cumplimiento' WHERE idTratamiento='$idTratamiento'";
     $update = mysqli_query($connect,$update) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
     /* Actualizar estado de la solicitud del tratamiento */
-    $update = "UPDATE solicitud_tratamiento SET fech_finT='$fechaActual', stado_T='$cumplimiento', nota_T='$nota' WHERE id_tatamientos='$idTratamiento' AND evaluador_T='$user_email'";
+    $update = "UPDATE solicitud_tratamiento SET fech_finT='$fechaActual', stado_T='$cumplimiento', nota_T='$nota' WHERE id_solicT='$id_solicT' AND id_tatamientos='$idTratamiento' AND stado_T='Revisión' AND evaluador_T='$user_email'";
     $result = mysqli_query($connect,$update) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error.</div>');
     
      if($result){

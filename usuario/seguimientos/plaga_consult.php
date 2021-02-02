@@ -12,8 +12,10 @@
     if ($user_rol == 'Admi') {
 
         /* Consultar información de la plaga */
-        $consult="SELECT * FROM solicitud_plaga s, plagas p WHERE s.id_plagaSolict='$id_plagas' AND p.id_plagas='$id_plagas' ORDER BY s.id_solicPlag DESC LIMIT 1";  
+        $consult="SELECT * FROM solicitud_plaga s, plagas p WHERE s.id_plagaSolict='$id_plagas' AND p.id_plagas='$id_plagas' ORDER BY s.id_solicPlag DESC LIMIT 2";  
         $result = mysqli_query($connect,$consult) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
+
+        $total = $result->num_rows;
 
         while($view = mysqli_fetch_array($result)){
             
@@ -47,6 +49,31 @@
                         </div>
                     </div>
             ';
+
+            /* Mostrar registro anterior en caso de haber sido rechazado */
+            if ($total>1) {
+                $previous=mysqli_fetch_row($result);
+                $fecha = $previous[3]; 
+                $estado = $previous[4]; 
+                $nota = $previous[5]; 
+                $evaluador = $previous[6]; 
+                
+                if ($view['stado_plag']=='Revisión' AND $view['evaluador_plag']==$user_email) {
+                    echo '
+                    <p class="text bg-orange text-white pl-3" style="height: 31px; font-size:20px;">Solicitud anterior</p>
+                    <div class="col-12">
+            
+                        <p class="text px-1 mb-3"><strong>Estado: </strong>'.$estado.'.
+                        <br><strong>Nota: </strong>'.$nota.'
+                        <br><strong>Evaluador: </strong>'.$evaluador.'
+                        <br><strong>Fecha: </strong>'.$fecha.'
+                        </p>
+                            
+                    </div>
+                    ';
+                }
+                
+            }
             
             /* Formulario para saber si es el usuario es el encargado */
             if ($view['stado_plag']=='Revisión' AND $view['evaluador_plag']==$user_email) {
@@ -75,7 +102,7 @@
                                 <label class="font-weight-bold" for="nota">Nota</label>
                                 <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
                                 <div id="message"></div>
-                                <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_plaga();">Guardar</button>
+                                <button type="submit" class="btn btn-success btn-block mt-4" onclick="seguimiento_plaga('.$view['id_solicPlag'].');">Guardar</button>
                                 
                             </div>
                 ';

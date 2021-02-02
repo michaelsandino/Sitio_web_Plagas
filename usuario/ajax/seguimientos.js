@@ -143,7 +143,7 @@ if(url.split('/').reverse()[0] == "cultivo.php"){
     } 
 
   /* Actualizar solicitud de cultivo */
-  function seguimiento_cultivo(){
+  function seguimiento_cultivo(id_solicP){
     
     const urlParams  = new URLSearchParams(loc);
     var id = urlParams .get('cultivo');
@@ -180,6 +180,7 @@ if(url.split('/').reverse()[0] == "cultivo.php"){
         "cumplimiento":cumplimiento,
         "nota":nota,
         "idCultivo":id,
+        "id_solicP":id_solicP,
       };
 
       $.ajax({
@@ -302,7 +303,7 @@ if(url.split('/').reverse()[0] == "plaga.php"){
     } 
 
   /* Actualizar solicitud de plaga */
-  function seguimiento_plaga(){
+  function seguimiento_plaga(id_solicPlag){
     
     const urlParams  = new URLSearchParams(loc);
     var id = urlParams .get('plaga');
@@ -339,6 +340,7 @@ if(url.split('/').reverse()[0] == "plaga.php"){
         "cumplimiento":cumplimiento,
         "nota":nota,
         "id_plagas":id,
+        "id_solicPlag":id_solicPlag,
       };
 
       $.ajax({
@@ -462,7 +464,7 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
     } 
 
   /* Actualizar solicitud del tratamiento */
-  function seguimiento_tratamiento(){
+  function seguimiento_tratamiento(id_solicT){
     
     const urlParams  = new URLSearchParams(loc);
     var id = urlParams .get('tratamiento');
@@ -499,6 +501,7 @@ if(url.split('/').reverse()[0] == "tratamiento.php"){
         "cumplimiento":cumplimiento,
         "nota":nota,
         "idTratamiento":id,
+        "id_solicT":id_solicT,
       };
 
       $.ajax({

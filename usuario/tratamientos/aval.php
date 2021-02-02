@@ -30,7 +30,6 @@
     }else{
 
         $estado = $check[4];
-        echo $estado;
 
         if ($estado=='Revisión') {
             echo '<div class="alert alert-danger text-center mt-3" role="alert">

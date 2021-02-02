@@ -47,36 +47,46 @@ include("../../connect.php");
                 $check3 = $result3->num_rows;
                 
                 if ($check1 or $check2 or $check3) {
-                    echo' 
-                    <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$view['fech_ini'].'</strong></p>
 
-                    <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nameUsu'].' '.$view['apellidoUsu'].'
-                    <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$view['nameRegional'].'</br></p> 
-                    <hr>
-                    <p class="subtitle px-3 mb-2">Tipo de solicitud:</p> 
-                    ';
+                    /* Consultamos la información de la ultima solicitud del cultivo*/
+                    $information="SELECT * FROM solicitud_proyecto s, cultivo c, usuarioapp u WHERE s.id_cultivofk='$idCultivo' AND c.idCultivo='$idCultivo' AND c.idUsuCultivo=u.email ORDER BY s.id_solicP DESC LIMIT 1";  
+                    $information = mysqli_query($connect,$information) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error</div>');
 
-                    if ($check1) {
-                        echo'<p class="text px-3 mb-1"><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px">Cultivo</p>';
-                    }
+                    while($info = mysqli_fetch_array($information)){
 
-                    if ($check2) {
-                        if ($check2>1) {
-                            echo'<p class="text px-3 mb-1"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px">Plaga | '.$check2.'</p>';
-                        }else{
-                            echo'<p class="text px-3 mb-1"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px">Plaga</p>';
-                        }      
-                    }
+                        echo' 
+                        <p class="text bg-orange text-white pl-3 mb-2" style="height: 31px;"><strong> <img src="../../icons/calendario-blanco.svg" class="pr-1"  alt="icono_usuario" height="20px"> Fecha de Solicitud: '.$info['fech_ini'].'</strong></p>
 
-                    if ($check3) {
-                        if ($check3>1) {
-                            echo'<p class="text px-3 mb-1"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px">Tratamiento | '.$check3.'</p>';
-                        }else{
-                            echo'<p class="text px-3 mb-1"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px">Tratamiento</p>';
+                        <p class="text px-3 mb-0"><img src="../../icons/usuario.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$info['nameUsu'].' '.$info['apellidoUsu'].'
+                        <br><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px"> '.$info['nameRegional'].'</br></p> 
+                        <hr>
+                        <p class="subtitle px-3 mb-2">Tipo de solicitud:</p> 
+                        ';
+
+                        if ($check1) {
+                            echo'<p class="text px-3 mb-1"><img src="../../icons/ecologico.svg" class="pr-1"  alt="icono_usuario" height="20px">Cultivo</p>';
                         }
-                    }
 
-                    echo'<button type="submit" class="btn btn-light btn-block mt-2" onclick="añadir('.$idCultivo.')">Añadir a mi lista<img src="../../icons/agregar.svg" height="25px" class="pl-2" alt="icono_añadir"></button>';
+                        if ($check2) {
+                            if ($check2>1) {
+                                echo'<p class="text px-3 mb-1"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px">Plaga | '.$check2.'</p>';
+                            }else{
+                                echo'<p class="text px-3 mb-1"><img src="../../icons/plaga-2.svg" class="pr-1"  alt="icono_usuario" height="20px">Plaga</p>';
+                            }      
+                        }
+
+                        if ($check3) {
+                            if ($check3>1) {
+                                echo'<p class="text px-3 mb-1"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px">Tratamiento | '.$check3.'</p>';
+                            }else{
+                                echo'<p class="text px-3 mb-1"><img src="../../icons/corazon.svg" class="pr-1"  alt="icono_usuario" height="20px">Tratamiento</p>';
+                            }
+                        }
+
+                        echo'<button type="submit" class="btn btn-light btn-block mt-2" onclick="añadir('.$idCultivo.')">Añadir a mi lista<img src="../../icons/agregar.svg" height="25px" class="pl-2" alt="icono_añadir"></button>';
+
+                    }
+                    
                 }
 
             }
