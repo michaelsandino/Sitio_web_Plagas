@@ -83,7 +83,7 @@ include("../../connect.php");
                             }
                         }
 
-                        echo'<button type="submit" class="btn btn-light btn-block mt-2" onclick="añadir('.$idCultivo.')">Añadir a mi lista<img src="../../icons/agregar.svg" height="25px" class="pl-2" alt="icono_añadir"></button>';
+                        echo'<button type="submit" class="btn btn-light btn-block mt-2" onclick="anadir('.$idCultivo.')">Añadir a mi lista<img src="../../icons/agregar.svg" height="25px" class="pl-2" alt="icono_añadir"></button>';
 
                     }
                     

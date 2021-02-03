@@ -58,7 +58,7 @@ if(url.split('/').reverse()[0] == ""){
 }
 
   /* añadir solicitud a mi lista */
-  function añadir(idCultivo){
+  function anadir(idCultivo){
     if (confirm("¿Seguro que desea añadir esta solicitud a su lista de seguimientos?"))
     {     
 
@@ -69,7 +69,7 @@ if(url.split('/').reverse()[0] == ""){
 
       $.ajax({
         data: parametro,
-        url: 'añadir.php',
+        url: 'anadir.php',
         type:'POST',
 
          beforeSend:function (objeto) {
