@@ -1,0 +1,28 @@
+Todo funcionara correctamente si se encuentra de la siguiente manera:
+
+Plagas/Web -> Aqui estan todos los archivos de la pagina 
+Plagas/archivoestudio -> Aqui se guardan los archivos pdf de estudios
+Plagas/ImgCultivo -> Aqui se guardan las imagenes de los cultivos
+Plagas/imgPlagas -> Aqui se guardan las imagenes de las plagas
+
+Es decir todo este dentro de una carpeta llamada Plagas
+
+si se desea cambiar la ubicacion en donde se guarda las imagenes o archivos de la pagina debe hacer lo siguiente:
+
+Entrar en las siguientes carpetas que se encuentran en usuario:
+
+-estudios
+-cultivos
+-plagas
+
+Modificar 2 archivos en cada carpeta:
+
+-register.php
+-update_action.php
+
+Especificamente debe modificar los valores de las variables, escribiendo el nombre de carpetas:
+
+-$route (Algunos archivos presenta varias variables route por las tomas de decisiones "if else" y en plagas existes varias variables route = "routaA, routeB, etc..")
+-$folder (Solo se presenta 1 vez por archivo excepto en el archivo delete.php no es utizada.)
+
+Nota: en los archivos Delete.php debe cambiar la ubicacion de unlink.

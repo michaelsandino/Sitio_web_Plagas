@@ -44,7 +44,9 @@
             $imagen_c = $namePhoto[9];
             $imagen_c = substr(strrchr($imagen_c, "/"), 1);
 
+            /* VARIABLES IMPORTANTES PARA GUARDAR ARCHIVOS EN BD*/
             $dominio = $_SERVER [ 'SERVER_NAME' ];
+            $folder = "/Plagas/imgPlagas/";
                 
                 if ($photoA["type"] == "image/jpg" or $photoA["type"] == "image/jpeg" or $photoA["type"] == "image/png") {
 
@@ -56,7 +58,7 @@
                         $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
+                        $locationA = 'https://'.$dominio.$folder.$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }else{
@@ -67,7 +69,7 @@
                         $routeA = "../../../imgPlagas/".$name_photoA;
                         move_uploaded_file($photoA["tmp_name"],$routeA);
 
-                        $locationA = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoA;
+                        $locationA = 'https://'.$dominio.$folder.$name_photoA;
                         $photos = $photos.",imagen_u='$locationA'";
 
                     }
@@ -84,7 +86,7 @@
                         $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
+                        $locationB = 'https://'.$dominio.$folder.$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
 
                     }else{
@@ -95,7 +97,7 @@
                         $routeB = "../../../imgPlagas/".$name_photoB;
                         move_uploaded_file($photoB["tmp_name"],$routeB);
 
-                        $locationB = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoB;
+                        $locationB = 'https://'.$dominio.$folder.$name_photoB;
                         $photos = $photos.",imagen_d='$locationB'";
                     }
                     
@@ -112,7 +114,7 @@
                         $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
+                        $locationC = 'https://'.$dominio.$folder.$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }else{
@@ -123,7 +125,7 @@
                         $routeC = "../../../imgPlagas/".$name_photoC;
                         move_uploaded_file($photoC["tmp_name"],$routeC);    
                         
-                        $locationC = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoC;
+                        $locationC = 'https://'.$dominio.$folder.$name_photoC;
                         $photos = $photos.",imagen_t='$locationC'";
 
                     }
@@ -140,7 +142,7 @@
                         $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
+                        $locationD = 'https://'.$dominio.$folder.$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
 
                     }else{
@@ -151,7 +153,7 @@
                         $routeD = "../../../imgPlagas/".$name_photoD;
                         move_uploaded_file($photoD["tmp_name"],$routeD);        
 
-                        $locationD = 'https://'.$dominio."/Plagas/imgPlagas/".$name_photoD;
+                        $locationD = 'https://'.$dominio.$folder.$name_photoD;
                         $photos = $photos.",imagen_c='$locationD'";
                     } 
 

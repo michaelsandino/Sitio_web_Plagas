@@ -44,20 +44,22 @@
             $namePhoto = substr(strrchr($namePhoto, "/"), 1);
             unlink('../../../ImgCultivo/'.$namePhoto); 
 
+            /* VARIABLES IMPORTANTES PARA GUARDAR ARCHIVOS EN BD*/
             $dominio = $_SERVER [ 'SERVER_NAME' ];
-            
+            $folder = "/Plagas/ImgCultivo/";
+
             /* Actualizar foto */
             if ($photo["type"] == "image/png") {
                 $name_photo = $id_cultivo.".png";
                 $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
+                $location = 'https://'.$dominio.$folder.$name_photo;
    
             }else{
                 $name_photo = $id_cultivo.".jpg";
                 $route = "../../../ImgCultivo/".$name_photo;
                 move_uploaded_file($photo["tmp_name"],$route);
-                $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
+                $location = 'https://'.$dominio.$folder.$name_photo;
             }
 
         

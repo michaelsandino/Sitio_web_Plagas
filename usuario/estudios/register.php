@@ -24,12 +24,15 @@
         $number=mysqli_fetch_row($number);
         $number = $number[0]; 
         
+        /* Mover el archivo */
         $name_file = $number.".pdf";
         $route = "../../../archivoestudio/".$name_file;
         move_uploaded_file($pdf["tmp_name"],$route);
 
+        /* VARIABLES IMPORTANTES PARA GUARDAR ARCHIVOS EN BD*/
         $dominio = $_SERVER [ 'SERVER_NAME' ];
-        $location = 'https://'.$dominio."/Plagas/archivoestudio/".$name_file;
+        $folder = "/Plagas/archivoestudio/";
+        $location = 'https://'.$dominio.$folder.$name_file;
 
         $insert = "INSERT INTO formacionapp value(null,'$nivelForm','$tituloForm','$entidad','$fechagrado','$id_usu','$location')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');

@@ -25,7 +25,7 @@
 
         /* Guardar la imagen segun el tipo de formato */
         if ($photo["type"] == "image/png") {
-            
+
             $name_photo = $number.".png";
             $route = "../../../ImgCultivo/".$name_photo;
             move_uploaded_file($photo["tmp_name"],$route);
@@ -35,8 +35,10 @@
             move_uploaded_file($photo["tmp_name"],$route);
         }
 
+        /* VARIABLES IMPORTANTES PARA GUARDAR ARCHIVOS EN BD*/
         $dominio = $_SERVER [ 'SERVER_NAME' ];
-        $location = 'https://'.$dominio."/Plagas/ImgCultivo/".$name_photo;
+        $folder = "/Plagas/ImgCultivo/";
+        $location = 'https://'.$dominio.$folder.$name_photo;
 
         $insert = "INSERT INTO cultivo value(null,'$nameR','$nameC','$descrip','$id_user','$location','Pendiente','https://emprendegrm.com/Plagas/rasena.html')";
         $result = mysqli_query($connect,$insert) or die ('<div class="alert alert-danger text-center mt-3" role="alert">Ha ocurrido un error</div>');

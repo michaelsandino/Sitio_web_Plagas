@@ -13,22 +13,22 @@
 
         session_start();
         ob_start();
-        $_SESSION['user'] = $email;
-        $_SESSION['rol'] = $rol;
-
+        if (!isset($_SESSION['user'])){
+            $_SESSION['user'] = $email;
+            $_SESSION['rol'] = $rol;
+        }
+         
         echo $rol;
     }else{
+        
         session_start();
         ob_start();
-        $_SESSION['user'] = $email;
-        $_SESSION['rol'] = 'usuario';
+        if (!isset($_SESSION['user'])){
+            $_SESSION['user'] = $email;
+            $_SESSION['rol'] = 'usuario';
+        }
+    
     }
-
-    /* while($view = mysqli_fetch_array($result))
-    {
-        $user = $view['email']; 
-        echo $user;
-    } */
 
     include("../disconnect.php");
 

@@ -1,21 +1,3 @@
-/* Función de revisión de usuario logueado */
-function observer (){  
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      /* Crear mensaje de bienvenida */
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      setTimeout(function(){window.location.replace("../usuario/inicio");}, 1000);
-    }
-  });
-}
-observer();
-
 /* Función de verificacion de correo */
 function email_verification(){
   var user = firebase.auth().currentUser;
@@ -158,6 +140,49 @@ function facebook() {
   });
 }
 
+function check_user() {
+  console.log('hola')
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+    
+      var email = user.email;
 
+      var parametro = 
+      {
+          "email":email,
+      };
+      $.ajax({
+        url: '../usuario/open.php',
+        type: 'POST',
+        data:parametro,
+        
+        success: function(response)
+        { 
+          if(!response){
+            window.location.replace("../usuario/registro");
+          }else{
+            window.location.replace("../usuario/inicio");
+          }     
+          
+        },
+        error: function (err) {
+          alert("Disculpe, ocurrio un error");           
+        }
 
+    });
+
+    
+  });
+  
+}
+
+/* Función de revisión de usuario logueado */
+function observer (){  
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      $("#autent").html('<button class="btn btn-success btn-block" onclick="check_user();">Usuario autenticado - Presione para ingresar.</button>')
+    }
+  });
+}
+observer();
 

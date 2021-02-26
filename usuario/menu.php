@@ -120,8 +120,15 @@
                 <?php
             }else if (!$user_rol) {
                 ?>
-                <p class="nav-link m-0 py-0">Ha ocurrido un problema - Por favor cierre sesión e ingrese nuevamente.</p>
-                <button class="nav-link active btn btn-link text-dark" onclick="exit()"><img src="../../icons/salida.svg" class="pr-2"  alt="icono_salir" height="20px">Cerrar Sesión</button>
+                <p class="nav-link m-0 py-0">Redireccionado, por favor espere.</p>
+                
+                <script src="../ajax/jquery-3.5.1.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        exit();
+                    });
+                </script>
+
                 <?php
             }
            ?>

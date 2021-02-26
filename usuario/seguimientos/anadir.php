@@ -12,7 +12,7 @@ include("../../connect.php");
 
     /* Consultamos si el usuario cuenta con un proceso de verificación pendiente. */
 
-    $review = $review="SELECT * FROM cultivo c, solicitud_proyecto s, solicitud_plaga p, solicitud_tratamiento t  WHERE (c.stado_c='En espera' AND c.idCultivo='s.id_cultivofk' AND s.evaluador_sp='$user_email') OR (p.evaluador_plag = '$user_email' AND p.stado_plag='En espera') OR (t.evaluador_T = '$user_email' AND t.stado_T='En espera')";
+    $review = "SELECT * FROM solicitud_proyecto c, solicitud_plaga p, solicitud_tratamiento t  WHERE (c.stado_sp='Revisión' AND c.evaluador_sp='$user_email') OR (p.evaluador_plag = '$user_email' AND p.stado_plag='Revisión') OR (t.evaluador_T = '$user_email' AND t.stado_T='Revisión')";
     $review = mysqli_query($connect,$review) or die ('<div class="alert mt-3 alert-danger text-center" role="alert">Ha ocurrido un error.</div>');
 
     $check = $review->num_rows;
